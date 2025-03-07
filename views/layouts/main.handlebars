@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <title>Dummy Automation</title>
+    </head>
+
+    <body style="background-color: rgb(144, 237, 230)">
+        <script src="/js/bootstrap.min.js"></script>
+
+
+        <nav class="navbar navbar-default" style="padding-bottom:3px;top:0;background:rgb(144, 237, 230);position:sticky;z-index:1;"><!--position:sticky;-->
+            <div class="container-fluid" style="margin:0;padding:0;">
+                {{!-- header --}}
+                <div class="navbar-header" style="width:100%;padding-left:10px;padding-right:10px;"> 
+                    <div class="row" style="margin:0;padding:0;">
+                        {{!-- Title --}}
+                        <div class="col text-start" style="max-height:70px;border-radius:0%;margin:0;padding:0;">
+                            <a class="navbar-brand" href="/" style="padding:0;margin:0;">
+                                <h1 class="text-start fst-italic fw-bolder" style="color:black;margin-bottom:0px;font-size:50px">Dummy Automation</h1>
+                            </a>
+                        </div>
+                        {{!-- username name --}}
+                        {{#if user}}
+                            <div class="col-4 text-end">
+                                <h3 class="fst-italic fw-bold" style="padding-right:20px;color: black;">
+                                    {{user.username}}
+                                </h3>
+                            </div>
+                        {{/if}}
+                        {{!-- over complicated menu button --}}
+                        <div class="col-auto text-end" style="max-height:70px;border-radius:0%;margin:0;padding:0;">
+                            <button type="button" style="border-color:white;background-color:white;font-size:50px" class="navbar-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#menu-opened" aria-controls="menu-opened" aria-expanded="false" aria-label="Toggle navigation">
+                                <div class='panel default-panel' style='background-color:black;height:7px;width:30px;margin-bottom:5px;margin-top:5px;'>&nbsp;</div>
+                                <div class='panel default-panel' style='background-color:black;height:7px;width:30px;margin-bottom:5px;'>&nbsp;</div>
+                                <div class='panel default-panel' style='background-color:black;height:7px;width:30px;margin-bottom:5px;'>&nbsp;</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                {{!-- menu options --}}
+                <div class="collapse navbar-collapse" id="menu-opened">
+                    <hr style="height:1.5px;border-radius:0%;color:black;background-color:black;margin:0;">
+                    <ul class="nav navbar-nav mr-auto" style="padding-left:10px;">
+                        {{#if user}}
+                            <li class="nav-item"><a class="nav-link" style="color:black;"href="/logout">Logout</a></li>
+                        {{else}}
+                            <li class="nav-item active"><a class="nav-link" style="color:black;" href="/zip">Zip Parsing</a></li>
+                            <li class="nav-item active"><a class="nav-link" style="color:black;" href="/">CSV Dummy Upload</a></li>
+                        {{/if}}
+
+                    </ul>
+                </div>
+            </div>
+            {{!-- line bar --}}
+            <hr style="height:1.5px;border-radius:0%;color:black;background-color:black;margin:0;width:100%;">
+        </nav>
+        {{{body}}}
+    </body>
+</html>

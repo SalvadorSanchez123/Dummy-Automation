@@ -1,0 +1,133 @@
+<style>
+    .margin-verts {
+        margin-top:30px;
+        margin-bottom:10px;
+    }
+    .file-lists {
+        margin-top:20px;
+        background-color:white;
+        width:80%;
+    }
+</style>
+
+
+{{!-- title --}}
+<h2 class="fst-italic fw-bold text-center" style="font-size:45px;padding-bottom:40px;color:black;">
+    Zip Parsing
+</h2>
+
+<div class="row">
+    <div class="col">
+        <h3 class="fst-italic fw-bold text-center" style="font-size:45px;padding-bottom:40px;color:black;">
+            Files
+        </h3>
+        <div class="panel default-panel rounded mx-auto" style="padding-bottom:15px;padding-left:20px;padding-top:10px;padding-right:20px; background-color:white; width:80%;">
+            {{!-- upload form --}}
+            <form id="zip-upload" action="/zip/upload" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="prevZip" style="margin-top:10px">Last Month's Zip</label>
+                    <input id="prevZip" type="file" name="prevZip">
+                </div>
+                <div class="form-group" style="margin-top:20px">
+                    <label for="currZip">This Month's Zip</label>
+                    <input id="currZip" type="file" name="currZip">
+                </div>
+            </form>
+
+            {{!-- Execute form --}}
+            <form id="run-parameters" action="/zip/execute" method="POST">
+                <div class="row">
+                    <div class="col">
+                        <label for="minCash">Min Cash:</label>
+                        <input pattern="^[0-9]+$" type="text" id="minCash" name="minCash" class="form-control">
+                    </div>
+                    <div class="col">
+                        <label for="maxCash">Max Cash:</label>
+                        <input pattern="^[0-9]+$" type="text" id="maxCash" name="maxCash" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="minShares">Min Shares:</label>
+                        <input pattern="^[0-9]+$" type="text" id="minShares" name="minShares" class="form-control">
+                    </div>
+                    <div class="col">
+                        <label for="maxShares">Max Shares:</label>
+                        <input pattern="^[0-9]+$" type="text" id="maxShares" name="maxShares" class="form-control">
+                    </div>
+                </div>       
+            </form>
+
+            {{!-- Buttons --}}
+            <div class="text-center row">
+                <button id="upload-button" form="zip-upload" type="submit" class="btn btn-primary margin-verts col">
+                    Upload
+                </button>
+                <form class="col" action="/zip/delete" method="POST">
+                    <button id="delete-button" type="submit" class="btn btn-primary margin-verts">
+                        Delete All Files
+                    </button>
+                </form>
+                <button id="run-button" form="run-parameters" type="submit" class="btn btn-primary margin-verts col">
+                    Run Zip Comparison
+                </button>
+            </div>
+        </div>
+
+        <div id="file-upload-spinner"></div>
+
+        {{!-- List of loaded files --}}
+        {{#each files}}
+            <div class="panel default-panel rounded mx-auto file-lists">
+                <div class="text-center">
+                    {{this}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+
+    {{!-- output side of zip parsing --}}
+    <div class="col">
+        <h3 class="fst-italic fw-bold text-center" style="font-size:45px;padding-bottom:40px;color:black;">
+            Output Diff CSV
+        </h3>
+
+        <div id="output-exec-spinner"></div>
+
+        {{#each outputFiles}}
+            <div id="output-files" class="panel default-panel rounded mx-auto file-lists">
+                <div class="text-center">
+                    <a href="/zip/download/{{this}}">
+                        {{this}}
+                    </a>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+
+<script>
+    const executeForm = document.getElementById('run-parameters');
+    const uploadForm = document.getElementById('zip-upload');
+
+    uploadForm.addEventListener('submit', () => {
+        document.getElementById("file-upload-spinner").innerHTML = `<div class="d-flex justify-content-center margin-verts">
+                                                                        <div class="spinner-border text-center" role="status"></div>
+                                                                        <div style="margin-left:10px">Uploading Files...</div>
+                                                                    </div>`;
+        document.getElementById("upload-button").hidden = true;
+        document.getElementById("delete-button").hidden = true;
+        document.getElementById("run-button").hidden = true;
+    });
+
+    executeForm.addEventListener('submit', () => {
+        document.getElementById("output-exec-spinner").innerHTML = `<div class="d-flex justify-content-center margin-verts">
+                                                                        <div class="spinner-border text-center" role="status"></div>
+                                                                        <div style="margin-left:10px">Executing Zip Comparison...</div>
+                                                                    </div>`;
+        document.getElementById("upload-button").hidden = true;
+        document.getElementById("delete-button").hidden = true;
+        document.getElementById("run-button").hidden = true;
+        document.getElementById("output-files").innerHTML = `<h3 class="text-center"> GENERATING NEW FILES </h3>`;
+    });
+</script>
