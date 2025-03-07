@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for dummy-automation on 2025-02-13T15:45:23-06:00
+# fly.toml app configuration file generated for dummy-automation on 2025-03-07T17:02:13-06:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -8,16 +8,15 @@ primary_region = 'dfw'
 
 [build]
 
-
 [http_service]
   internal_port = 3000
   force_https = true
-  auto_stop_machines = 'stop'
-  auto_start_machines = true
+  auto_stop_machines = 'suspend'
+  auto_start_machines = false
   min_machines_running = 0
   processes = ['app']
 
 [[vm]]
-  memory = '4gb'
+  memory = '2gb'
   cpu_kind = 'shared'
-  cpus = 4
+  cpus = 2

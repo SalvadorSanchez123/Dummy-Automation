@@ -16,8 +16,18 @@ const uploadDir = './file_loads/zip_uploads/';
 const outputDir = './file_loads/csv_output/';
 
 // to get all files in upload folder
-const getFiles = () => fs.readdirSync(uploadDir);
-const getOutputs = () => fs.readdirSync(outputDir);
+const getFiles = () => {
+    if (!fs.existsSync(uploadDir)){
+        fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    return fs.readdirSync(uploadDir);
+}
+const getOutputs = () => {
+    if (!fs.existsSync(outputDir)){
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
+    return fs.readdirSync(outputDir);
+}
 
 // Set up storage engine
 const storage = multer.diskStorage({
