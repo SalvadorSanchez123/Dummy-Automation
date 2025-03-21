@@ -4568,7 +4568,9 @@ static PyObject *__pyx_pf_8zipparse_4extract_property_ids_from_zip(CYTHON_UNUSED
   PyObject *__pyx_t_20 = NULL;
   PyObject *__pyx_t_21 = NULL;
   PyObject *__pyx_t_22 = NULL;
-  int __pyx_t_23;
+  PyObject *__pyx_t_23 = NULL;
+  PyObject *__pyx_t_24 = NULL;
+  int __pyx_t_25;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4859,7 +4861,7 @@ static PyObject *__pyx_pf_8zipparse_4extract_property_ids_from_zip(CYTHON_UNUSED
  *                 with zip_ref.open(file_name) as file:
  *                     for line in file:             # <<<<<<<<<<<<<<
  *                         print(f"old zip Prop ID: {line.decode('utf-8')[209:228]}")
- *                         property_ids.add(int(line.decode('utf-8')[209:228]))
+ *                         try:
  */
                       if (likely(PyList_CheckExact(__pyx_v_file)) || PyTuple_CheckExact(__pyx_v_file)) {
                         __pyx_t_6 = __pyx_v_file; __Pyx_INCREF(__pyx_t_6);
@@ -4920,8 +4922,8 @@ static PyObject *__pyx_pf_8zipparse_4extract_property_ids_from_zip(CYTHON_UNUSED
  *                 with zip_ref.open(file_name) as file:
  *                     for line in file:
  *                         print(f"old zip Prop ID: {line.decode('utf-8')[209:228]}")             # <<<<<<<<<<<<<<
- *                         property_ids.add(int(line.decode('utf-8')[209:228]))
- *     return property_ids
+ *                         try:
+ *                             property_ids.add(int(line.decode('utf-8')[209:228]))
  */
                         __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_decode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L22_error)
                         __Pyx_GOTREF(__pyx_t_3);
@@ -4964,74 +4966,161 @@ static PyObject *__pyx_pf_8zipparse_4extract_property_ids_from_zip(CYTHON_UNUSED
                         /* "zipparse.py":94
  *                     for line in file:
  *                         print(f"old zip Prop ID: {line.decode('utf-8')[209:228]}")
- *                         property_ids.add(int(line.decode('utf-8')[209:228]))             # <<<<<<<<<<<<<<
+ *                         try:             # <<<<<<<<<<<<<<
+ *                             property_ids.add(int(line.decode('utf-8')[209:228]))
+ *                         except:
+ */
+                        {
+                          __Pyx_PyThreadState_declare
+                          __Pyx_PyThreadState_assign
+                          __Pyx_ExceptionSave(&__pyx_t_20, &__pyx_t_21, &__pyx_t_22);
+                          __Pyx_XGOTREF(__pyx_t_20);
+                          __Pyx_XGOTREF(__pyx_t_21);
+                          __Pyx_XGOTREF(__pyx_t_22);
+                          /*try:*/ {
+
+                            /* "zipparse.py":95
+ *                         print(f"old zip Prop ID: {line.decode('utf-8')[209:228]}")
+ *                         try:
+ *                             property_ids.add(int(line.decode('utf-8')[209:228]))             # <<<<<<<<<<<<<<
+ *                         except:
+ *                             continue
+ */
+                            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_property_ids, __pyx_n_s_add); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L32_error)
+                            __Pyx_GOTREF(__pyx_t_3);
+                            __pyx_t_23 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_decode); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 95, __pyx_L32_error)
+                            __Pyx_GOTREF(__pyx_t_23);
+                            __pyx_t_24 = NULL;
+                            __pyx_t_4 = 0;
+                            #if CYTHON_UNPACK_METHODS
+                            if (likely(PyMethod_Check(__pyx_t_23))) {
+                              __pyx_t_24 = PyMethod_GET_SELF(__pyx_t_23);
+                              if (likely(__pyx_t_24)) {
+                                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_23);
+                                __Pyx_INCREF(__pyx_t_24);
+                                __Pyx_INCREF(function);
+                                __Pyx_DECREF_SET(__pyx_t_23, function);
+                                __pyx_t_4 = 1;
+                              }
+                            }
+                            #endif
+                            {
+                              PyObject *__pyx_callargs[2] = {__pyx_t_24, __pyx_kp_s_utf_8};
+                              __pyx_t_14 = __Pyx_PyObject_FastCall(__pyx_t_23, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                              __Pyx_XDECREF(__pyx_t_24); __pyx_t_24 = 0;
+                              if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 95, __pyx_L32_error)
+                              __Pyx_GOTREF(__pyx_t_14);
+                              __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
+                            }
+                            __pyx_t_23 = __Pyx_PyObject_GetSlice(__pyx_t_14, 0xD1, 0xE4, NULL, NULL, &__pyx_slice_, 1, 1, 1); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 95, __pyx_L32_error)
+                            __Pyx_GOTREF(__pyx_t_23);
+                            __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+                            __pyx_t_14 = __Pyx_PyNumber_Int(__pyx_t_23); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 95, __pyx_L32_error)
+                            __Pyx_GOTREF(__pyx_t_14);
+                            __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
+                            __pyx_t_23 = NULL;
+                            __pyx_t_4 = 0;
+                            #if CYTHON_UNPACK_METHODS
+                            if (likely(PyMethod_Check(__pyx_t_3))) {
+                              __pyx_t_23 = PyMethod_GET_SELF(__pyx_t_3);
+                              if (likely(__pyx_t_23)) {
+                                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+                                __Pyx_INCREF(__pyx_t_23);
+                                __Pyx_INCREF(function);
+                                __Pyx_DECREF_SET(__pyx_t_3, function);
+                                __pyx_t_4 = 1;
+                              }
+                            }
+                            #endif
+                            {
+                              PyObject *__pyx_callargs[2] = {__pyx_t_23, __pyx_t_14};
+                              __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                              __Pyx_XDECREF(__pyx_t_23); __pyx_t_23 = 0;
+                              __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+                              if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L32_error)
+                              __Pyx_GOTREF(__pyx_t_2);
+                              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                            }
+                            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+                            /* "zipparse.py":94
+ *                     for line in file:
+ *                         print(f"old zip Prop ID: {line.decode('utf-8')[209:228]}")
+ *                         try:             # <<<<<<<<<<<<<<
+ *                             property_ids.add(int(line.decode('utf-8')[209:228]))
+ *                         except:
+ */
+                          }
+                          __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
+                          __Pyx_XDECREF(__pyx_t_21); __pyx_t_21 = 0;
+                          __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
+                          goto __pyx_L39_try_end;
+                          __pyx_L32_error:;
+                          __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
+                          __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+                          __Pyx_XDECREF(__pyx_t_23); __pyx_t_23 = 0;
+                          __Pyx_XDECREF(__pyx_t_24); __pyx_t_24 = 0;
+                          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+                          /* "zipparse.py":96
+ *                         try:
+ *                             property_ids.add(int(line.decode('utf-8')[209:228]))
+ *                         except:             # <<<<<<<<<<<<<<
+ *                             continue
+ *     return property_ids
+ */
+                          /*except:*/ {
+                            __Pyx_AddTraceback("zipparse.extract_property_ids_from_zip", __pyx_clineno, __pyx_lineno, __pyx_filename);
+                            if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_3, &__pyx_t_14) < 0) __PYX_ERR(0, 96, __pyx_L34_except_error)
+                            __Pyx_XGOTREF(__pyx_t_2);
+                            __Pyx_XGOTREF(__pyx_t_3);
+                            __Pyx_XGOTREF(__pyx_t_14);
+
+                            /* "zipparse.py":97
+ *                             property_ids.add(int(line.decode('utf-8')[209:228]))
+ *                         except:
+ *                             continue             # <<<<<<<<<<<<<<
  *     return property_ids
  * 
  */
-                        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_property_ids, __pyx_n_s_add); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L22_error)
-                        __Pyx_GOTREF(__pyx_t_3);
-                        __pyx_t_20 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_decode); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 94, __pyx_L22_error)
-                        __Pyx_GOTREF(__pyx_t_20);
-                        __pyx_t_21 = NULL;
-                        __pyx_t_4 = 0;
-                        #if CYTHON_UNPACK_METHODS
-                        if (likely(PyMethod_Check(__pyx_t_20))) {
-                          __pyx_t_21 = PyMethod_GET_SELF(__pyx_t_20);
-                          if (likely(__pyx_t_21)) {
-                            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_20);
-                            __Pyx_INCREF(__pyx_t_21);
-                            __Pyx_INCREF(function);
-                            __Pyx_DECREF_SET(__pyx_t_20, function);
-                            __pyx_t_4 = 1;
+                            goto __pyx_L40_except_continue;
+                            __pyx_L40_except_continue:;
+                            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                            __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
+                            goto __pyx_L38_try_continue;
                           }
+
+                          /* "zipparse.py":94
+ *                     for line in file:
+ *                         print(f"old zip Prop ID: {line.decode('utf-8')[209:228]}")
+ *                         try:             # <<<<<<<<<<<<<<
+ *                             property_ids.add(int(line.decode('utf-8')[209:228]))
+ *                         except:
+ */
+                          __pyx_L34_except_error:;
+                          __Pyx_XGIVEREF(__pyx_t_20);
+                          __Pyx_XGIVEREF(__pyx_t_21);
+                          __Pyx_XGIVEREF(__pyx_t_22);
+                          __Pyx_ExceptionReset(__pyx_t_20, __pyx_t_21, __pyx_t_22);
+                          goto __pyx_L22_error;
+                          __pyx_L38_try_continue:;
+                          __Pyx_XGIVEREF(__pyx_t_20);
+                          __Pyx_XGIVEREF(__pyx_t_21);
+                          __Pyx_XGIVEREF(__pyx_t_22);
+                          __Pyx_ExceptionReset(__pyx_t_20, __pyx_t_21, __pyx_t_22);
+                          goto __pyx_L30_continue;
+                          __pyx_L39_try_end:;
                         }
-                        #endif
-                        {
-                          PyObject *__pyx_callargs[2] = {__pyx_t_21, __pyx_kp_s_utf_8};
-                          __pyx_t_14 = __Pyx_PyObject_FastCall(__pyx_t_20, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                          __Pyx_XDECREF(__pyx_t_21); __pyx_t_21 = 0;
-                          if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 94, __pyx_L22_error)
-                          __Pyx_GOTREF(__pyx_t_14);
-                          __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                        }
-                        __pyx_t_20 = __Pyx_PyObject_GetSlice(__pyx_t_14, 0xD1, 0xE4, NULL, NULL, &__pyx_slice_, 1, 1, 1); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 94, __pyx_L22_error)
-                        __Pyx_GOTREF(__pyx_t_20);
-                        __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-                        __pyx_t_14 = __Pyx_PyNumber_Int(__pyx_t_20); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 94, __pyx_L22_error)
-                        __Pyx_GOTREF(__pyx_t_14);
-                        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                        __pyx_t_20 = NULL;
-                        __pyx_t_4 = 0;
-                        #if CYTHON_UNPACK_METHODS
-                        if (likely(PyMethod_Check(__pyx_t_3))) {
-                          __pyx_t_20 = PyMethod_GET_SELF(__pyx_t_3);
-                          if (likely(__pyx_t_20)) {
-                            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-                            __Pyx_INCREF(__pyx_t_20);
-                            __Pyx_INCREF(function);
-                            __Pyx_DECREF_SET(__pyx_t_3, function);
-                            __pyx_t_4 = 1;
-                          }
-                        }
-                        #endif
-                        {
-                          PyObject *__pyx_callargs[2] = {__pyx_t_20, __pyx_t_14};
-                          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                          __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-                          __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-                          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L22_error)
-                          __Pyx_GOTREF(__pyx_t_2);
-                          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                        }
-                        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
                         /* "zipparse.py":92
  *             if "_Transparency_" in file_name:
  *                 with zip_ref.open(file_name) as file:
  *                     for line in file:             # <<<<<<<<<<<<<<
  *                         print(f"old zip Prop ID: {line.decode('utf-8')[209:228]}")
- *                         property_ids.add(int(line.decode('utf-8')[209:228]))
+ *                         try:
  */
+                        __pyx_L30_continue:;
                       }
                       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
@@ -5050,37 +5139,37 @@ static PyObject *__pyx_pf_8zipparse_4extract_property_ids_from_zip(CYTHON_UNUSED
                     __pyx_L22_error:;
                     __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
                     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-                    __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-                    __Pyx_XDECREF(__pyx_t_21); __pyx_t_21 = 0;
+                    __Pyx_XDECREF(__pyx_t_23); __pyx_t_23 = 0;
+                    __Pyx_XDECREF(__pyx_t_24); __pyx_t_24 = 0;
                     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
                     /*except:*/ {
                       __Pyx_AddTraceback("zipparse.extract_property_ids_from_zip", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_2, &__pyx_t_3) < 0) __PYX_ERR(0, 91, __pyx_L24_except_error)
+                      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_14, &__pyx_t_3) < 0) __PYX_ERR(0, 91, __pyx_L24_except_error)
                       __Pyx_XGOTREF(__pyx_t_6);
-                      __Pyx_XGOTREF(__pyx_t_2);
+                      __Pyx_XGOTREF(__pyx_t_14);
                       __Pyx_XGOTREF(__pyx_t_3);
-                      __pyx_t_14 = PyTuple_Pack(3, __pyx_t_6, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 91, __pyx_L24_except_error)
-                      __Pyx_GOTREF(__pyx_t_14);
-                      __pyx_t_22 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_14, NULL);
+                      __pyx_t_2 = PyTuple_Pack(3, __pyx_t_6, __pyx_t_14, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L24_except_error)
+                      __Pyx_GOTREF(__pyx_t_2);
+                      __pyx_t_22 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_2, NULL);
                       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-                      __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+                      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                       if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 91, __pyx_L24_except_error)
                       __Pyx_GOTREF(__pyx_t_22);
                       __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_22);
                       __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
                       if (__pyx_t_12 < 0) __PYX_ERR(0, 91, __pyx_L24_except_error)
-                      __pyx_t_23 = (!__pyx_t_12);
-                      if (unlikely(__pyx_t_23)) {
+                      __pyx_t_25 = (!__pyx_t_12);
+                      if (unlikely(__pyx_t_25)) {
                         __Pyx_GIVEREF(__pyx_t_6);
-                        __Pyx_GIVEREF(__pyx_t_2);
+                        __Pyx_GIVEREF(__pyx_t_14);
                         __Pyx_XGIVEREF(__pyx_t_3);
-                        __Pyx_ErrRestoreWithState(__pyx_t_6, __pyx_t_2, __pyx_t_3);
-                        __pyx_t_6 = 0; __pyx_t_2 = 0; __pyx_t_3 = 0; 
+                        __Pyx_ErrRestoreWithState(__pyx_t_6, __pyx_t_14, __pyx_t_3);
+                        __pyx_t_6 = 0; __pyx_t_14 = 0; __pyx_t_3 = 0; 
                         __PYX_ERR(0, 91, __pyx_L24_except_error)
                       }
                       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-                      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+                      __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
                       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                       goto __pyx_L23_exception_handled;
                     }
@@ -5111,11 +5200,11 @@ static PyObject *__pyx_pf_8zipparse_4extract_property_ids_from_zip(CYTHON_UNUSED
                   }
                   __pyx_L21:;
                 }
-                goto __pyx_L36;
+                goto __pyx_L46;
                 __pyx_L16_error:;
                 __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
                 goto __pyx_L7_error;
-                __pyx_L36:;
+                __pyx_L46:;
               }
 
               /* "zipparse.py":90
@@ -5153,38 +5242,38 @@ static PyObject *__pyx_pf_8zipparse_4extract_property_ids_from_zip(CYTHON_UNUSED
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-        __Pyx_XDECREF(__pyx_t_21); __pyx_t_21 = 0;
+        __Pyx_XDECREF(__pyx_t_23); __pyx_t_23 = 0;
+        __Pyx_XDECREF(__pyx_t_24); __pyx_t_24 = 0;
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         /*except:*/ {
           __Pyx_AddTraceback("zipparse.extract_property_ids_from_zip", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_3, &__pyx_t_2) < 0) __PYX_ERR(0, 88, __pyx_L9_except_error)
+          if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_3, &__pyx_t_14) < 0) __PYX_ERR(0, 88, __pyx_L9_except_error)
           __Pyx_XGOTREF(__pyx_t_1);
           __Pyx_XGOTREF(__pyx_t_3);
-          __Pyx_XGOTREF(__pyx_t_2);
-          __pyx_t_6 = PyTuple_Pack(3, __pyx_t_1, __pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 88, __pyx_L9_except_error)
+          __Pyx_XGOTREF(__pyx_t_14);
+          __pyx_t_6 = PyTuple_Pack(3, __pyx_t_1, __pyx_t_3, __pyx_t_14); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 88, __pyx_L9_except_error)
           __Pyx_GOTREF(__pyx_t_6);
           __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, NULL);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 88, __pyx_L9_except_error)
           __Pyx_GOTREF(__pyx_t_13);
-          __pyx_t_23 = __Pyx_PyObject_IsTrue(__pyx_t_13);
+          __pyx_t_25 = __Pyx_PyObject_IsTrue(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (__pyx_t_23 < 0) __PYX_ERR(0, 88, __pyx_L9_except_error)
-          __pyx_t_12 = (!__pyx_t_23);
+          if (__pyx_t_25 < 0) __PYX_ERR(0, 88, __pyx_L9_except_error)
+          __pyx_t_12 = (!__pyx_t_25);
           if (unlikely(__pyx_t_12)) {
             __Pyx_GIVEREF(__pyx_t_1);
             __Pyx_GIVEREF(__pyx_t_3);
-            __Pyx_XGIVEREF(__pyx_t_2);
-            __Pyx_ErrRestoreWithState(__pyx_t_1, __pyx_t_3, __pyx_t_2);
-            __pyx_t_1 = 0; __pyx_t_3 = 0; __pyx_t_2 = 0; 
+            __Pyx_XGIVEREF(__pyx_t_14);
+            __Pyx_ErrRestoreWithState(__pyx_t_1, __pyx_t_3, __pyx_t_14);
+            __pyx_t_1 = 0; __pyx_t_3 = 0; __pyx_t_14 = 0; 
             __PYX_ERR(0, 88, __pyx_L9_except_error)
           }
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
           goto __pyx_L8_exception_handled;
         }
         __pyx_L9_except_error:;
@@ -5214,16 +5303,16 @@ static PyObject *__pyx_pf_8zipparse_4extract_property_ids_from_zip(CYTHON_UNUSED
       }
       __pyx_L6:;
     }
-    goto __pyx_L41;
+    goto __pyx_L51;
     __pyx_L3_error:;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     goto __pyx_L1_error;
-    __pyx_L41:;
+    __pyx_L51:;
   }
 
-  /* "zipparse.py":95
- *                         print(f"old zip Prop ID: {line.decode('utf-8')[209:228]}")
- *                         property_ids.add(int(line.decode('utf-8')[209:228]))
+  /* "zipparse.py":98
+ *                         except:
+ *                             continue
  *     return property_ids             # <<<<<<<<<<<<<<
  * 
  * def generateLists(arg1, arg2, arg3, arg4, arg5, arg6):
@@ -5248,8 +5337,8 @@ static PyObject *__pyx_pf_8zipparse_4extract_property_ids_from_zip(CYTHON_UNUSED
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_14);
-  __Pyx_XDECREF(__pyx_t_20);
-  __Pyx_XDECREF(__pyx_t_21);
+  __Pyx_XDECREF(__pyx_t_23);
+  __Pyx_XDECREF(__pyx_t_24);
   __Pyx_AddTraceback("zipparse.extract_property_ids_from_zip", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -5263,7 +5352,7 @@ static PyObject *__pyx_pf_8zipparse_4extract_property_ids_from_zip(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "zipparse.py":97
+/* "zipparse.py":100
  *     return property_ids
  * 
  * def generateLists(arg1, arg2, arg3, arg4, arg5, arg6):             # <<<<<<<<<<<<<<
@@ -5339,7 +5428,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 97, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 100, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -5347,9 +5436,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 97, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 100, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("generateLists", 1, 6, 6, 1); __PYX_ERR(0, 97, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("generateLists", 1, 6, 6, 1); __PYX_ERR(0, 100, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -5357,9 +5446,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 97, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 100, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("generateLists", 1, 6, 6, 2); __PYX_ERR(0, 97, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("generateLists", 1, 6, 6, 2); __PYX_ERR(0, 100, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -5367,9 +5456,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 97, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 100, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("generateLists", 1, 6, 6, 3); __PYX_ERR(0, 97, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("generateLists", 1, 6, 6, 3); __PYX_ERR(0, 100, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -5377,9 +5466,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 97, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 100, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("generateLists", 1, 6, 6, 4); __PYX_ERR(0, 97, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("generateLists", 1, 6, 6, 4); __PYX_ERR(0, 100, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -5387,14 +5476,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 97, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 100, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("generateLists", 1, 6, 6, 5); __PYX_ERR(0, 97, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("generateLists", 1, 6, 6, 5); __PYX_ERR(0, 100, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "generateLists") < 0)) __PYX_ERR(0, 97, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "generateLists") < 0)) __PYX_ERR(0, 100, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 6)) {
       goto __pyx_L5_argtuple_error;
@@ -5415,7 +5504,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("generateLists", 1, 6, 6, __pyx_nargs); __PYX_ERR(0, 97, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("generateLists", 1, 6, 6, __pyx_nargs); __PYX_ERR(0, 100, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5442,7 +5531,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-/* "zipparse.py":194
+/* "zipparse.py":200
  *                 }
  * 
  *     sortedOwnerByCash = dict(sorted(ownerExistsSortedDict.items(), key=lambda item: item[1]['Cash Total'], reverse=True))             # <<<<<<<<<<<<<<
@@ -5503,12 +5592,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 194, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 200, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lambda") < 0)) __PYX_ERR(0, 194, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lambda") < 0)) __PYX_ERR(0, 200, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -5519,7 +5608,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lambda", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 194, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lambda", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 200, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5556,9 +5645,9 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_item, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_item, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_kp_s_Cash_Total); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_kp_s_Cash_Total); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
@@ -5577,7 +5666,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   return __pyx_r;
 }
 
-/* "zipparse.py":195
+/* "zipparse.py":201
  * 
  *     sortedOwnerByCash = dict(sorted(ownerExistsSortedDict.items(), key=lambda item: item[1]['Cash Total'], reverse=True))
  *     sortedOwnerByShares = dict(sorted(ownerExistsSortedDict.items(), key=lambda item: item[1]['Shares Total'], reverse=True))             # <<<<<<<<<<<<<<
@@ -5638,12 +5727,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lambda1") < 0)) __PYX_ERR(0, 195, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lambda1") < 0)) __PYX_ERR(0, 201, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -5654,7 +5743,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lambda1", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 195, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lambda1", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 201, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5691,9 +5780,9 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda1", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_item, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_item, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_kp_s_Shares_Total); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_kp_s_Shares_Total); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
@@ -5712,7 +5801,7 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "zipparse.py":198
+/* "zipparse.py":204
  *     print(f'Owner exists finished sorting')
  * 
  *     sortedEmptyOwnerByCash = dict(sorted(ownerEmptyDict.items(), key=lambda item: item[1]['Cash'], reverse=True))             # <<<<<<<<<<<<<<
@@ -5773,12 +5862,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 198, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 204, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lambda2") < 0)) __PYX_ERR(0, 198, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lambda2") < 0)) __PYX_ERR(0, 204, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -5789,7 +5878,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lambda2", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 198, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lambda2", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 204, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5826,9 +5915,9 @@ static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda2", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_item, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_item, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_Cash); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_Cash); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
@@ -5847,7 +5936,7 @@ static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "zipparse.py":199
+/* "zipparse.py":205
  * 
  *     sortedEmptyOwnerByCash = dict(sorted(ownerEmptyDict.items(), key=lambda item: item[1]['Cash'], reverse=True))
  *     sortedEmptyOwnerByShares = dict(sorted(ownerEmptyDict.items(), key=lambda item: item[1]['Shares'], reverse=True))             # <<<<<<<<<<<<<<
@@ -5908,12 +5997,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 199, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 205, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lambda3") < 0)) __PYX_ERR(0, 199, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "lambda3") < 0)) __PYX_ERR(0, 205, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -5924,7 +6013,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lambda3", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 199, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lambda3", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 205, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5961,9 +6050,9 @@ static PyObject *__pyx_lambda_funcdef_lambda3(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda3", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_item, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_item, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_Shares); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_Shares); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
@@ -5982,7 +6071,7 @@ static PyObject *__pyx_lambda_funcdef_lambda3(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "zipparse.py":97
+/* "zipparse.py":100
  *     return property_ids
  * 
  * def generateLists(arg1, arg2, arg3, arg4, arg5, arg6):             # <<<<<<<<<<<<<<
@@ -6053,32 +6142,34 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
   PyObject *__pyx_t_23 = NULL;
   Py_ssize_t __pyx_t_24;
   PyObject *(*__pyx_t_25)(PyObject *);
-  int __pyx_t_26;
+  PyObject *__pyx_t_26 = NULL;
   PyObject *__pyx_t_27 = NULL;
   PyObject *__pyx_t_28 = NULL;
-  Py_ssize_t __pyx_t_29;
-  int __pyx_t_30;
+  int __pyx_t_29;
+  PyObject *__pyx_t_30 = NULL;
   PyObject *__pyx_t_31 = NULL;
-  int __pyx_t_32;
+  Py_ssize_t __pyx_t_32;
   int __pyx_t_33;
-  PyObject *__pyx_t_34 = NULL;
-  Py_ssize_t __pyx_t_35;
-  Py_UCS4 __pyx_t_36;
+  int __pyx_t_34;
+  int __pyx_t_35;
+  PyObject *__pyx_t_36 = NULL;
+  Py_ssize_t __pyx_t_37;
+  Py_UCS4 __pyx_t_38;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("generateLists", 1);
 
-  /* "zipparse.py":98
+  /* "zipparse.py":101
  * 
  * def generateLists(arg1, arg2, arg3, arg4, arg5, arg6):
  *     startTime = datetime.now()             # <<<<<<<<<<<<<<
  * 
  *     oldZipPath = uploadPath + arg1
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_datetime); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_datetime); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_now); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_now); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -6099,119 +6190,119 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __pyx_v_startTime = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "zipparse.py":100
+  /* "zipparse.py":103
  *     startTime = datetime.now()
  * 
  *     oldZipPath = uploadPath + arg1             # <<<<<<<<<<<<<<
  *     newZipPath = uploadPath + arg2
  *     minCash = float(arg3) if arg3 != "" else float("-inf")
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_uploadPath); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_uploadPath); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_v_arg1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_v_arg1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_oldZipPath = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "zipparse.py":101
+  /* "zipparse.py":104
  * 
  *     oldZipPath = uploadPath + arg1
  *     newZipPath = uploadPath + arg2             # <<<<<<<<<<<<<<
  *     minCash = float(arg3) if arg3 != "" else float("-inf")
  *     maxCash = float(arg4) if arg4 != "" else float("inf")
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_uploadPath); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_uploadPath); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_arg2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_arg2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_newZipPath = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "zipparse.py":102
+  /* "zipparse.py":105
  *     oldZipPath = uploadPath + arg1
  *     newZipPath = uploadPath + arg2
  *     minCash = float(arg3) if arg3 != "" else float("-inf")             # <<<<<<<<<<<<<<
  *     maxCash = float(arg4) if arg4 != "" else float("inf")
  *     minShares = float(arg5) if arg5 != "" else float("-inf")
  */
-  __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_arg3, __pyx_kp_s__3, Py_NE)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_arg3, __pyx_kp_s__3, Py_NE)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 105, __pyx_L1_error)
   if (__pyx_t_6) {
-    __pyx_t_7 = __Pyx_PyObject_AsDouble(__pyx_v_arg3); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_AsDouble(__pyx_v_arg3); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L1_error)
     __pyx_t_5 = __pyx_t_7;
   } else {
-    __pyx_t_7 = __Pyx_PyString_AsDouble(__pyx_kp_s_inf); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyString_AsDouble(__pyx_kp_s_inf); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L1_error)
     __pyx_t_5 = __pyx_t_7;
   }
   __pyx_v_minCash = __pyx_t_5;
 
-  /* "zipparse.py":103
+  /* "zipparse.py":106
  *     newZipPath = uploadPath + arg2
  *     minCash = float(arg3) if arg3 != "" else float("-inf")
  *     maxCash = float(arg4) if arg4 != "" else float("inf")             # <<<<<<<<<<<<<<
  *     minShares = float(arg5) if arg5 != "" else float("-inf")
  *     maxShares = float(arg6) if arg6 != "" else float("inf")
  */
-  __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_arg4, __pyx_kp_s__3, Py_NE)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_arg4, __pyx_kp_s__3, Py_NE)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 106, __pyx_L1_error)
   if (__pyx_t_6) {
-    __pyx_t_7 = __Pyx_PyObject_AsDouble(__pyx_v_arg4); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 103, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_AsDouble(__pyx_v_arg4); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 106, __pyx_L1_error)
     __pyx_t_5 = __pyx_t_7;
   } else {
-    __pyx_t_7 = __Pyx_PyString_AsDouble(__pyx_n_s_inf_2); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 103, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyString_AsDouble(__pyx_n_s_inf_2); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 106, __pyx_L1_error)
     __pyx_t_5 = __pyx_t_7;
   }
   __pyx_v_maxCash = __pyx_t_5;
 
-  /* "zipparse.py":104
+  /* "zipparse.py":107
  *     minCash = float(arg3) if arg3 != "" else float("-inf")
  *     maxCash = float(arg4) if arg4 != "" else float("inf")
  *     minShares = float(arg5) if arg5 != "" else float("-inf")             # <<<<<<<<<<<<<<
  *     maxShares = float(arg6) if arg6 != "" else float("inf")
  * 
  */
-  __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_arg5, __pyx_kp_s__3, Py_NE)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_arg5, __pyx_kp_s__3, Py_NE)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 107, __pyx_L1_error)
   if (__pyx_t_6) {
-    __pyx_t_7 = __Pyx_PyObject_AsDouble(__pyx_v_arg5); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_AsDouble(__pyx_v_arg5); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 107, __pyx_L1_error)
     __pyx_t_5 = __pyx_t_7;
   } else {
-    __pyx_t_7 = __Pyx_PyString_AsDouble(__pyx_kp_s_inf); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyString_AsDouble(__pyx_kp_s_inf); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 107, __pyx_L1_error)
     __pyx_t_5 = __pyx_t_7;
   }
   __pyx_v_minShares = __pyx_t_5;
 
-  /* "zipparse.py":105
+  /* "zipparse.py":108
  *     maxCash = float(arg4) if arg4 != "" else float("inf")
  *     minShares = float(arg5) if arg5 != "" else float("-inf")
  *     maxShares = float(arg6) if arg6 != "" else float("inf")             # <<<<<<<<<<<<<<
  * 
  *     # Extract property IDs from old zip files
  */
-  __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_arg6, __pyx_kp_s__3, Py_NE)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_arg6, __pyx_kp_s__3, Py_NE)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 108, __pyx_L1_error)
   if (__pyx_t_6) {
-    __pyx_t_7 = __Pyx_PyObject_AsDouble(__pyx_v_arg6); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_AsDouble(__pyx_v_arg6); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 108, __pyx_L1_error)
     __pyx_t_5 = __pyx_t_7;
   } else {
-    __pyx_t_7 = __Pyx_PyString_AsDouble(__pyx_n_s_inf_2); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyString_AsDouble(__pyx_n_s_inf_2); if (unlikely(__pyx_t_7 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 108, __pyx_L1_error)
     __pyx_t_5 = __pyx_t_7;
   }
   __pyx_v_maxShares = __pyx_t_5;
 
-  /* "zipparse.py":108
+  /* "zipparse.py":111
  * 
  *     # Extract property IDs from old zip files
  *     property_ids_old = extract_property_ids_from_zip(oldZipPath)             # <<<<<<<<<<<<<<
  *     '''
  *     {
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_extract_property_ids_from_zip); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_extract_property_ids_from_zip); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   __pyx_t_4 = 0;
@@ -6231,21 +6322,21 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
     PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_oldZipPath};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __pyx_v_property_ids_old = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "zipparse.py":123
+  /* "zipparse.py":126
  *     }
  *     '''
  *     propertyIdSortedDict = SortedDict()             # <<<<<<<<<<<<<<
  * 
  *     # Write the filtered data to the output CSV
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_SortedDict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_SortedDict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = NULL;
   __pyx_t_4 = 0;
@@ -6265,14 +6356,14 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __pyx_v_propertyIdSortedDict = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "zipparse.py":126
+  /* "zipparse.py":129
  * 
  *     # Write the filtered data to the output CSV
  *     with zipfile.ZipFile(newZipPath, 'r') as zip_ref, open(outputParsed, 'w', newline='') as output_file:             # <<<<<<<<<<<<<<
@@ -6280,9 +6371,9 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  *         csv_writer.writerow(output_headers)
  */
   /*with:*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_zipfile); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_zipfile); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ZipFile); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ZipFile); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -6303,13 +6394,13 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
       PyObject *__pyx_callargs[3] = {__pyx_t_3, __pyx_v_newZipPath, __pyx_n_s_r};
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 2+__pyx_t_4);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
-    __pyx_t_8 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_exit); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 126, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_exit); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_3 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_enter); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L3_error)
+    __pyx_t_3 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_enter); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L3_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_9 = NULL;
     __pyx_t_4 = 0;
@@ -6329,7 +6420,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
       PyObject *__pyx_callargs[2] = {__pyx_t_9, NULL};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L3_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
@@ -6348,26 +6439,26 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
           __pyx_v_zip_ref = __pyx_t_3;
           __pyx_t_3 = 0;
           /*with:*/ {
-            __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_outputParsed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L7_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_outputParsed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L7_error)
+            __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_GIVEREF(__pyx_t_3);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3)) __PYX_ERR(0, 126, __pyx_L7_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3)) __PYX_ERR(0, 129, __pyx_L7_error);
             __Pyx_INCREF(__pyx_n_s_w);
             __Pyx_GIVEREF(__pyx_n_s_w);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_w)) __PYX_ERR(0, 126, __pyx_L7_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_w)) __PYX_ERR(0, 129, __pyx_L7_error);
             __pyx_t_3 = 0;
-            __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L7_error)
+            __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_3);
-            if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_newline, __pyx_kp_s__3) < 0) __PYX_ERR(0, 126, __pyx_L7_error)
-            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L7_error)
+            if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_newline, __pyx_kp_s__3) < 0) __PYX_ERR(0, 129, __pyx_L7_error)
+            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            __pyx_t_13 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_exit); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 126, __pyx_L7_error)
+            __pyx_t_13 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_exit); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 129, __pyx_L7_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_1 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_enter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L13_error)
+            __pyx_t_1 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_enter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L13_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_9 = NULL;
             __pyx_t_4 = 0;
@@ -6387,7 +6478,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
               PyObject *__pyx_callargs[2] = {__pyx_t_9, NULL};
               __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
               __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L13_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L13_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
@@ -6406,16 +6497,16 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                   __pyx_v_output_file = __pyx_t_1;
                   __pyx_t_1 = 0;
 
-                  /* "zipparse.py":127
+                  /* "zipparse.py":130
  *     # Write the filtered data to the output CSV
  *     with zipfile.ZipFile(newZipPath, 'r') as zip_ref, open(outputParsed, 'w', newline='') as output_file:
  *         csv_writer = csv.writer(output_file)             # <<<<<<<<<<<<<<
  *         csv_writer.writerow(output_headers)
  * 
  */
-                  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_csv); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L17_error)
+                  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_csv); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L17_error)
                   __Pyx_GOTREF(__pyx_t_2);
-                  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_writer); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 127, __pyx_L17_error)
+                  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_writer); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L17_error)
                   __Pyx_GOTREF(__pyx_t_3);
                   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                   __pyx_t_2 = NULL;
@@ -6436,23 +6527,23 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                     PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_output_file};
                     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
                     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-                    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L17_error)
+                    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L17_error)
                     __Pyx_GOTREF(__pyx_t_1);
                     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                   }
                   __pyx_v_csv_writer = __pyx_t_1;
                   __pyx_t_1 = 0;
 
-                  /* "zipparse.py":128
+                  /* "zipparse.py":131
  *     with zipfile.ZipFile(newZipPath, 'r') as zip_ref, open(outputParsed, 'w', newline='') as output_file:
  *         csv_writer = csv.writer(output_file)
  *         csv_writer.writerow(output_headers)             # <<<<<<<<<<<<<<
  * 
  *         for file_name in zip_ref.namelist():
  */
-                  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L17_error)
+                  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L17_error)
                   __Pyx_GOTREF(__pyx_t_3);
-                  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_output_headers); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L17_error)
+                  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_output_headers); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L17_error)
                   __Pyx_GOTREF(__pyx_t_2);
                   __pyx_t_9 = NULL;
                   __pyx_t_4 = 0;
@@ -6473,20 +6564,20 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
                     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
                     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L17_error)
+                    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L17_error)
                     __Pyx_GOTREF(__pyx_t_1);
                     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                   }
                   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-                  /* "zipparse.py":130
+                  /* "zipparse.py":133
  *         csv_writer.writerow(output_headers)
  * 
  *         for file_name in zip_ref.namelist():             # <<<<<<<<<<<<<<
  *             if "_Transparency_" in file_name:
  *                 with zip_ref.open(file_name) as file:
  */
-                  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_zip_ref, __pyx_n_s_namelist); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L17_error)
+                  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_zip_ref, __pyx_n_s_namelist); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L17_error)
                   __Pyx_GOTREF(__pyx_t_3);
                   __pyx_t_2 = NULL;
                   __pyx_t_4 = 0;
@@ -6506,7 +6597,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
                     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
                     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-                    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L17_error)
+                    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L17_error)
                     __Pyx_GOTREF(__pyx_t_1);
                     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                   }
@@ -6515,9 +6606,9 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                     __pyx_t_17 = 0;
                     __pyx_t_18 = NULL;
                   } else {
-                    __pyx_t_17 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L17_error)
+                    __pyx_t_17 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L17_error)
                     __Pyx_GOTREF(__pyx_t_3);
-                    __pyx_t_18 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 130, __pyx_L17_error)
+                    __pyx_t_18 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 133, __pyx_L17_error)
                   }
                   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                   for (;;) {
@@ -6526,28 +6617,28 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                         {
                           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_3);
                           #if !CYTHON_ASSUME_SAFE_MACROS
-                          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 130, __pyx_L17_error)
+                          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 133, __pyx_L17_error)
                           #endif
                           if (__pyx_t_17 >= __pyx_temp) break;
                         }
                         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_17); __Pyx_INCREF(__pyx_t_1); __pyx_t_17++; if (unlikely((0 < 0))) __PYX_ERR(0, 130, __pyx_L17_error)
+                        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_17); __Pyx_INCREF(__pyx_t_1); __pyx_t_17++; if (unlikely((0 < 0))) __PYX_ERR(0, 133, __pyx_L17_error)
                         #else
-                        __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_17); __pyx_t_17++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L17_error)
+                        __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_17); __pyx_t_17++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L17_error)
                         __Pyx_GOTREF(__pyx_t_1);
                         #endif
                       } else {
                         {
                           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_3);
                           #if !CYTHON_ASSUME_SAFE_MACROS
-                          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 130, __pyx_L17_error)
+                          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 133, __pyx_L17_error)
                           #endif
                           if (__pyx_t_17 >= __pyx_temp) break;
                         }
                         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_17); __Pyx_INCREF(__pyx_t_1); __pyx_t_17++; if (unlikely((0 < 0))) __PYX_ERR(0, 130, __pyx_L17_error)
+                        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_17); __Pyx_INCREF(__pyx_t_1); __pyx_t_17++; if (unlikely((0 < 0))) __PYX_ERR(0, 133, __pyx_L17_error)
                         #else
-                        __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_17); __pyx_t_17++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L17_error)
+                        __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_17); __pyx_t_17++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L17_error)
                         __Pyx_GOTREF(__pyx_t_1);
                         #endif
                       }
@@ -6557,7 +6648,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                         PyObject* exc_type = PyErr_Occurred();
                         if (exc_type) {
                           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                          else __PYX_ERR(0, 130, __pyx_L17_error)
+                          else __PYX_ERR(0, 133, __pyx_L17_error)
                         }
                         break;
                       }
@@ -6566,25 +6657,25 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                     __Pyx_XDECREF_SET(__pyx_v_file_name, __pyx_t_1);
                     __pyx_t_1 = 0;
 
-                    /* "zipparse.py":131
+                    /* "zipparse.py":134
  * 
  *         for file_name in zip_ref.namelist():
  *             if "_Transparency_" in file_name:             # <<<<<<<<<<<<<<
  *                 with zip_ref.open(file_name) as file:
  *                     for line in file:
  */
-                    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_Transparency, __pyx_v_file_name, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 131, __pyx_L17_error)
+                    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_n_s_Transparency, __pyx_v_file_name, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 134, __pyx_L17_error)
                     if (__pyx_t_6) {
 
-                      /* "zipparse.py":132
+                      /* "zipparse.py":135
  *         for file_name in zip_ref.namelist():
  *             if "_Transparency_" in file_name:
  *                 with zip_ref.open(file_name) as file:             # <<<<<<<<<<<<<<
  *                     for line in file:
- *                         property_id_new = int(line.decode('utf-8')[209:228])
+ *                         try:
  */
                       /*with:*/ {
-                        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_zip_ref, __pyx_n_s_open); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L17_error)
+                        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_zip_ref, __pyx_n_s_open); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L17_error)
                         __Pyx_GOTREF(__pyx_t_2);
                         __pyx_t_9 = NULL;
                         __pyx_t_4 = 0;
@@ -6604,13 +6695,13 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                           PyObject *__pyx_callargs[2] = {__pyx_t_9, __pyx_v_file_name};
                           __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
                           __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-                          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L17_error)
+                          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L17_error)
                           __Pyx_GOTREF(__pyx_t_1);
                           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                         }
-                        __pyx_t_19 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_exit); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 132, __pyx_L17_error)
+                        __pyx_t_19 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_exit); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 135, __pyx_L17_error)
                         __Pyx_GOTREF(__pyx_t_19);
-                        __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_enter); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 132, __pyx_L26_error)
+                        __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_1, __pyx_n_s_enter); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 135, __pyx_L26_error)
                         __Pyx_GOTREF(__pyx_t_9);
                         __pyx_t_20 = NULL;
                         __pyx_t_4 = 0;
@@ -6630,7 +6721,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                           PyObject *__pyx_callargs[2] = {__pyx_t_20, NULL};
                           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
                           __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-                          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L26_error)
+                          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L26_error)
                           __Pyx_GOTREF(__pyx_t_2);
                           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
                         }
@@ -6649,21 +6740,21 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                               __Pyx_XDECREF_SET(__pyx_v_file, __pyx_t_9);
                               __pyx_t_9 = 0;
 
-                              /* "zipparse.py":133
+                              /* "zipparse.py":136
  *             if "_Transparency_" in file_name:
  *                 with zip_ref.open(file_name) as file:
  *                     for line in file:             # <<<<<<<<<<<<<<
- *                         property_id_new = int(line.decode('utf-8')[209:228])
- *                         print(f"newzip Prop ID: {property_id_new}")
+ *                         try:
+ *                             property_id_new = int(line.decode('utf-8')[209:228])
  */
                               if (likely(PyList_CheckExact(__pyx_v_file)) || PyTuple_CheckExact(__pyx_v_file)) {
                                 __pyx_t_9 = __pyx_v_file; __Pyx_INCREF(__pyx_t_9);
                                 __pyx_t_24 = 0;
                                 __pyx_t_25 = NULL;
                               } else {
-                                __pyx_t_24 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_v_file); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 133, __pyx_L32_error)
+                                __pyx_t_24 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_v_file); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 136, __pyx_L32_error)
                                 __Pyx_GOTREF(__pyx_t_9);
-                                __pyx_t_25 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_9); if (unlikely(!__pyx_t_25)) __PYX_ERR(0, 133, __pyx_L32_error)
+                                __pyx_t_25 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_9); if (unlikely(!__pyx_t_25)) __PYX_ERR(0, 136, __pyx_L32_error)
                               }
                               for (;;) {
                                 if (likely(!__pyx_t_25)) {
@@ -6671,28 +6762,28 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                                     {
                                       Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_9);
                                       #if !CYTHON_ASSUME_SAFE_MACROS
-                                      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 133, __pyx_L32_error)
+                                      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 136, __pyx_L32_error)
                                       #endif
                                       if (__pyx_t_24 >= __pyx_temp) break;
                                     }
                                     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                                    __pyx_t_1 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_24); __Pyx_INCREF(__pyx_t_1); __pyx_t_24++; if (unlikely((0 < 0))) __PYX_ERR(0, 133, __pyx_L32_error)
+                                    __pyx_t_1 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_24); __Pyx_INCREF(__pyx_t_1); __pyx_t_24++; if (unlikely((0 < 0))) __PYX_ERR(0, 136, __pyx_L32_error)
                                     #else
-                                    __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_9, __pyx_t_24); __pyx_t_24++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L32_error)
+                                    __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_9, __pyx_t_24); __pyx_t_24++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L32_error)
                                     __Pyx_GOTREF(__pyx_t_1);
                                     #endif
                                   } else {
                                     {
                                       Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_9);
                                       #if !CYTHON_ASSUME_SAFE_MACROS
-                                      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 133, __pyx_L32_error)
+                                      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 136, __pyx_L32_error)
                                       #endif
                                       if (__pyx_t_24 >= __pyx_temp) break;
                                     }
                                     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                                    __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_24); __Pyx_INCREF(__pyx_t_1); __pyx_t_24++; if (unlikely((0 < 0))) __PYX_ERR(0, 133, __pyx_L32_error)
+                                    __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_24); __Pyx_INCREF(__pyx_t_1); __pyx_t_24++; if (unlikely((0 < 0))) __PYX_ERR(0, 136, __pyx_L32_error)
                                     #else
-                                    __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_9, __pyx_t_24); __pyx_t_24++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L32_error)
+                                    __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_9, __pyx_t_24); __pyx_t_24++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L32_error)
                                     __Pyx_GOTREF(__pyx_t_1);
                                     #endif
                                   }
@@ -6702,7 +6793,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                                     PyObject* exc_type = PyErr_Occurred();
                                     if (exc_type) {
                                       if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                                      else __PYX_ERR(0, 133, __pyx_L32_error)
+                                      else __PYX_ERR(0, 136, __pyx_L32_error)
                                     }
                                     break;
                                   }
@@ -6711,80 +6802,164 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                                 __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_1);
                                 __pyx_t_1 = 0;
 
-                                /* "zipparse.py":134
+                                /* "zipparse.py":137
  *                 with zip_ref.open(file_name) as file:
  *                     for line in file:
- *                         property_id_new = int(line.decode('utf-8')[209:228])             # <<<<<<<<<<<<<<
- *                         print(f"newzip Prop ID: {property_id_new}")
- *                         if not property_ids_old.__contains__(property_id_new):
+ *                         try:             # <<<<<<<<<<<<<<
+ *                             property_id_new = int(line.decode('utf-8')[209:228])
+ *                         except:
  */
-                                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_decode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L32_error)
-                                __Pyx_GOTREF(__pyx_t_2);
-                                __pyx_t_20 = NULL;
-                                __pyx_t_4 = 0;
-                                #if CYTHON_UNPACK_METHODS
-                                if (likely(PyMethod_Check(__pyx_t_2))) {
-                                  __pyx_t_20 = PyMethod_GET_SELF(__pyx_t_2);
-                                  if (likely(__pyx_t_20)) {
-                                    PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-                                    __Pyx_INCREF(__pyx_t_20);
-                                    __Pyx_INCREF(function);
-                                    __Pyx_DECREF_SET(__pyx_t_2, function);
-                                    __pyx_t_4 = 1;
-                                  }
-                                }
-                                #endif
                                 {
-                                  PyObject *__pyx_callargs[2] = {__pyx_t_20, __pyx_kp_s_utf_8};
-                                  __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                                  __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-                                  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L32_error)
-                                  __Pyx_GOTREF(__pyx_t_1);
-                                  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                                }
-                                __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0xD1, 0xE4, NULL, NULL, &__pyx_slice_, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L32_error)
-                                __Pyx_GOTREF(__pyx_t_2);
-                                __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                                __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L32_error)
-                                __Pyx_GOTREF(__pyx_t_1);
-                                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                                __Pyx_XDECREF_SET(__pyx_v_property_id_new, __pyx_t_1);
-                                __pyx_t_1 = 0;
+                                  __Pyx_PyThreadState_declare
+                                  __Pyx_PyThreadState_assign
+                                  __Pyx_ExceptionSave(&__pyx_t_26, &__pyx_t_27, &__pyx_t_28);
+                                  __Pyx_XGOTREF(__pyx_t_26);
+                                  __Pyx_XGOTREF(__pyx_t_27);
+                                  __Pyx_XGOTREF(__pyx_t_28);
+                                  /*try:*/ {
 
-                                /* "zipparse.py":135
+                                    /* "zipparse.py":138
  *                     for line in file:
- *                         property_id_new = int(line.decode('utf-8')[209:228])
+ *                         try:
+ *                             property_id_new = int(line.decode('utf-8')[209:228])             # <<<<<<<<<<<<<<
+ *                         except:
+ *                             continue
+ */
+                                    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_decode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L42_error)
+                                    __Pyx_GOTREF(__pyx_t_2);
+                                    __pyx_t_20 = NULL;
+                                    __pyx_t_4 = 0;
+                                    #if CYTHON_UNPACK_METHODS
+                                    if (likely(PyMethod_Check(__pyx_t_2))) {
+                                      __pyx_t_20 = PyMethod_GET_SELF(__pyx_t_2);
+                                      if (likely(__pyx_t_20)) {
+                                        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+                                        __Pyx_INCREF(__pyx_t_20);
+                                        __Pyx_INCREF(function);
+                                        __Pyx_DECREF_SET(__pyx_t_2, function);
+                                        __pyx_t_4 = 1;
+                                      }
+                                    }
+                                    #endif
+                                    {
+                                      PyObject *__pyx_callargs[2] = {__pyx_t_20, __pyx_kp_s_utf_8};
+                                      __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                                      __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
+                                      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L42_error)
+                                      __Pyx_GOTREF(__pyx_t_1);
+                                      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                                    }
+                                    __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0xD1, 0xE4, NULL, NULL, &__pyx_slice_, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L42_error)
+                                    __Pyx_GOTREF(__pyx_t_2);
+                                    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                    __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L42_error)
+                                    __Pyx_GOTREF(__pyx_t_1);
+                                    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                                    __Pyx_XDECREF_SET(__pyx_v_property_id_new, __pyx_t_1);
+                                    __pyx_t_1 = 0;
+
+                                    /* "zipparse.py":137
+ *                 with zip_ref.open(file_name) as file:
+ *                     for line in file:
+ *                         try:             # <<<<<<<<<<<<<<
+ *                             property_id_new = int(line.decode('utf-8')[209:228])
+ *                         except:
+ */
+                                  }
+                                  __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
+                                  __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
+                                  __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
+                                  goto __pyx_L49_try_end;
+                                  __pyx_L42_error:;
+                                  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                  __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+                                  __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
+
+                                  /* "zipparse.py":139
+ *                         try:
+ *                             property_id_new = int(line.decode('utf-8')[209:228])
+ *                         except:             # <<<<<<<<<<<<<<
+ *                             continue
+ * 
+ */
+                                  /*except:*/ {
+                                    __Pyx_AddTraceback("zipparse.generateLists", __pyx_clineno, __pyx_lineno, __pyx_filename);
+                                    if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_20) < 0) __PYX_ERR(0, 139, __pyx_L44_except_error)
+                                    __Pyx_XGOTREF(__pyx_t_1);
+                                    __Pyx_XGOTREF(__pyx_t_2);
+                                    __Pyx_XGOTREF(__pyx_t_20);
+
+                                    /* "zipparse.py":140
+ *                             property_id_new = int(line.decode('utf-8')[209:228])
+ *                         except:
+ *                             continue             # <<<<<<<<<<<<<<
+ * 
+ *                         print(f"newzip Prop ID: {property_id_new}")
+ */
+                                    goto __pyx_L50_except_continue;
+                                    __pyx_L50_except_continue:;
+                                    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                                    __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
+                                    goto __pyx_L48_try_continue;
+                                  }
+
+                                  /* "zipparse.py":137
+ *                 with zip_ref.open(file_name) as file:
+ *                     for line in file:
+ *                         try:             # <<<<<<<<<<<<<<
+ *                             property_id_new = int(line.decode('utf-8')[209:228])
+ *                         except:
+ */
+                                  __pyx_L44_except_error:;
+                                  __Pyx_XGIVEREF(__pyx_t_26);
+                                  __Pyx_XGIVEREF(__pyx_t_27);
+                                  __Pyx_XGIVEREF(__pyx_t_28);
+                                  __Pyx_ExceptionReset(__pyx_t_26, __pyx_t_27, __pyx_t_28);
+                                  goto __pyx_L32_error;
+                                  __pyx_L48_try_continue:;
+                                  __Pyx_XGIVEREF(__pyx_t_26);
+                                  __Pyx_XGIVEREF(__pyx_t_27);
+                                  __Pyx_XGIVEREF(__pyx_t_28);
+                                  __Pyx_ExceptionReset(__pyx_t_26, __pyx_t_27, __pyx_t_28);
+                                  goto __pyx_L40_continue;
+                                  __pyx_L49_try_end:;
+                                }
+
+                                /* "zipparse.py":142
+ *                             continue
+ * 
  *                         print(f"newzip Prop ID: {property_id_new}")             # <<<<<<<<<<<<<<
  *                         if not property_ids_old.__contains__(property_id_new):
  *                             parsed_data = parse_line(line.decode('utf-8'), columns)
  */
-                                __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_property_id_new, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L32_error)
-                                __Pyx_GOTREF(__pyx_t_1);
-                                __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_kp_u_newzip_Prop_ID, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L32_error)
+                                __pyx_t_20 = __Pyx_PyObject_FormatSimple(__pyx_v_property_id_new, __pyx_empty_unicode); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 142, __pyx_L32_error)
+                                __Pyx_GOTREF(__pyx_t_20);
+                                __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_kp_u_newzip_Prop_ID, __pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L32_error)
                                 __Pyx_GOTREF(__pyx_t_2);
-                                __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                                __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L32_error)
-                                __Pyx_GOTREF(__pyx_t_1);
+                                __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                                __pyx_t_20 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_2); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 142, __pyx_L32_error)
+                                __Pyx_GOTREF(__pyx_t_20);
                                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                                __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
 
-                                /* "zipparse.py":136
- *                         property_id_new = int(line.decode('utf-8')[209:228])
+                                /* "zipparse.py":143
+ * 
  *                         print(f"newzip Prop ID: {property_id_new}")
  *                         if not property_ids_old.__contains__(property_id_new):             # <<<<<<<<<<<<<<
  *                             parsed_data = parse_line(line.decode('utf-8'), columns)
  *                             dollar_amount = float(parsed_data['Dollar Amount']) / 100
  */
-                                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_property_ids_old, __pyx_n_s_contains); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L32_error)
+                                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_property_ids_old, __pyx_n_s_contains); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L32_error)
                                 __Pyx_GOTREF(__pyx_t_2);
-                                __pyx_t_20 = NULL;
+                                __pyx_t_1 = NULL;
                                 __pyx_t_4 = 0;
                                 #if CYTHON_UNPACK_METHODS
                                 if (likely(PyMethod_Check(__pyx_t_2))) {
-                                  __pyx_t_20 = PyMethod_GET_SELF(__pyx_t_2);
-                                  if (likely(__pyx_t_20)) {
+                                  __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
+                                  if (likely(__pyx_t_1)) {
                                     PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-                                    __Pyx_INCREF(__pyx_t_20);
+                                    __Pyx_INCREF(__pyx_t_1);
                                     __Pyx_INCREF(function);
                                     __Pyx_DECREF_SET(__pyx_t_2, function);
                                     __pyx_t_4 = 1;
@@ -6792,61 +6967,61 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                                 }
                                 #endif
                                 {
-                                  PyObject *__pyx_callargs[2] = {__pyx_t_20, __pyx_v_property_id_new};
-                                  __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                                  __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-                                  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L32_error)
-                                  __Pyx_GOTREF(__pyx_t_1);
+                                  PyObject *__pyx_callargs[2] = {__pyx_t_1, __pyx_v_property_id_new};
+                                  __pyx_t_20 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                                  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                  if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 143, __pyx_L32_error)
+                                  __Pyx_GOTREF(__pyx_t_20);
                                   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                                 }
-                                __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 136, __pyx_L32_error)
-                                __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                                __pyx_t_26 = (!__pyx_t_6);
-                                if (__pyx_t_26) {
+                                __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_20); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 143, __pyx_L32_error)
+                                __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                                __pyx_t_29 = (!__pyx_t_6);
+                                if (__pyx_t_29) {
 
-                                  /* "zipparse.py":137
+                                  /* "zipparse.py":144
  *                         print(f"newzip Prop ID: {property_id_new}")
  *                         if not property_ids_old.__contains__(property_id_new):
  *                             parsed_data = parse_line(line.decode('utf-8'), columns)             # <<<<<<<<<<<<<<
  *                             dollar_amount = float(parsed_data['Dollar Amount']) / 100
  *                             shares = float(parsed_data['Number of Shares Remitted']) / 100
  */
-                                  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_parse_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L32_error)
+                                  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_parse_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L32_error)
                                   __Pyx_GOTREF(__pyx_t_2);
-                                  __pyx_t_27 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_decode); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 137, __pyx_L32_error)
-                                  __Pyx_GOTREF(__pyx_t_27);
-                                  __pyx_t_28 = NULL;
+                                  __pyx_t_30 = __Pyx_PyObject_GetAttrStr(__pyx_v_line, __pyx_n_s_decode); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 144, __pyx_L32_error)
+                                  __Pyx_GOTREF(__pyx_t_30);
+                                  __pyx_t_31 = NULL;
                                   __pyx_t_4 = 0;
                                   #if CYTHON_UNPACK_METHODS
-                                  if (likely(PyMethod_Check(__pyx_t_27))) {
-                                    __pyx_t_28 = PyMethod_GET_SELF(__pyx_t_27);
-                                    if (likely(__pyx_t_28)) {
-                                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_27);
-                                      __Pyx_INCREF(__pyx_t_28);
+                                  if (likely(PyMethod_Check(__pyx_t_30))) {
+                                    __pyx_t_31 = PyMethod_GET_SELF(__pyx_t_30);
+                                    if (likely(__pyx_t_31)) {
+                                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_30);
+                                      __Pyx_INCREF(__pyx_t_31);
                                       __Pyx_INCREF(function);
-                                      __Pyx_DECREF_SET(__pyx_t_27, function);
+                                      __Pyx_DECREF_SET(__pyx_t_30, function);
                                       __pyx_t_4 = 1;
                                     }
                                   }
                                   #endif
                                   {
-                                    PyObject *__pyx_callargs[2] = {__pyx_t_28, __pyx_kp_s_utf_8};
-                                    __pyx_t_20 = __Pyx_PyObject_FastCall(__pyx_t_27, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                                    __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
-                                    if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 137, __pyx_L32_error)
-                                    __Pyx_GOTREF(__pyx_t_20);
-                                    __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+                                    PyObject *__pyx_callargs[2] = {__pyx_t_31, __pyx_kp_s_utf_8};
+                                    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_30, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                                    __Pyx_XDECREF(__pyx_t_31); __pyx_t_31 = 0;
+                                    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L32_error)
+                                    __Pyx_GOTREF(__pyx_t_1);
+                                    __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
                                   }
-                                  __Pyx_GetModuleGlobalName(__pyx_t_27, __pyx_n_s_columns); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 137, __pyx_L32_error)
-                                  __Pyx_GOTREF(__pyx_t_27);
-                                  __pyx_t_28 = NULL;
+                                  __Pyx_GetModuleGlobalName(__pyx_t_30, __pyx_n_s_columns); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 144, __pyx_L32_error)
+                                  __Pyx_GOTREF(__pyx_t_30);
+                                  __pyx_t_31 = NULL;
                                   __pyx_t_4 = 0;
                                   #if CYTHON_UNPACK_METHODS
                                   if (unlikely(PyMethod_Check(__pyx_t_2))) {
-                                    __pyx_t_28 = PyMethod_GET_SELF(__pyx_t_2);
-                                    if (likely(__pyx_t_28)) {
+                                    __pyx_t_31 = PyMethod_GET_SELF(__pyx_t_2);
+                                    if (likely(__pyx_t_31)) {
                                       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-                                      __Pyx_INCREF(__pyx_t_28);
+                                      __Pyx_INCREF(__pyx_t_31);
                                       __Pyx_INCREF(function);
                                       __Pyx_DECREF_SET(__pyx_t_2, function);
                                       __pyx_t_4 = 1;
@@ -6854,46 +7029,46 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                                   }
                                   #endif
                                   {
-                                    PyObject *__pyx_callargs[3] = {__pyx_t_28, __pyx_t_20, __pyx_t_27};
-                                    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 2+__pyx_t_4);
-                                    __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
-                                    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                                    __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-                                    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L32_error)
-                                    __Pyx_GOTREF(__pyx_t_1);
+                                    PyObject *__pyx_callargs[3] = {__pyx_t_31, __pyx_t_1, __pyx_t_30};
+                                    __pyx_t_20 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 2+__pyx_t_4);
+                                    __Pyx_XDECREF(__pyx_t_31); __pyx_t_31 = 0;
+                                    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                    __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
+                                    if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 144, __pyx_L32_error)
+                                    __Pyx_GOTREF(__pyx_t_20);
                                     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                                   }
-                                  __Pyx_XDECREF_SET(__pyx_v_parsed_data, __pyx_t_1);
-                                  __pyx_t_1 = 0;
+                                  __Pyx_XDECREF_SET(__pyx_v_parsed_data, __pyx_t_20);
+                                  __pyx_t_20 = 0;
 
-                                  /* "zipparse.py":138
+                                  /* "zipparse.py":145
  *                         if not property_ids_old.__contains__(property_id_new):
  *                             parsed_data = parse_line(line.decode('utf-8'), columns)
  *                             dollar_amount = float(parsed_data['Dollar Amount']) / 100             # <<<<<<<<<<<<<<
  *                             shares = float(parsed_data['Number of Shares Remitted']) / 100
  * 
  */
-                                  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Dollar_Amount); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L32_error)
-                                  __Pyx_GOTREF(__pyx_t_1);
-                                  __pyx_t_5 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__pyx_t_5 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L32_error)
-                                  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                  __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Dollar_Amount); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 145, __pyx_L32_error)
+                                  __Pyx_GOTREF(__pyx_t_20);
+                                  __pyx_t_5 = __Pyx_PyObject_AsDouble(__pyx_t_20); if (unlikely(__pyx_t_5 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L32_error)
+                                  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
                                   __pyx_v_dollar_amount = (__pyx_t_5 / 100.0);
 
-                                  /* "zipparse.py":139
+                                  /* "zipparse.py":146
  *                             parsed_data = parse_line(line.decode('utf-8'), columns)
  *                             dollar_amount = float(parsed_data['Dollar Amount']) / 100
  *                             shares = float(parsed_data['Number of Shares Remitted']) / 100             # <<<<<<<<<<<<<<
  * 
- * 
+ *                             if (dollar_amount >= minCash and dollar_amount <= maxCash) or (shares >= minShares and shares <= maxShares):
  */
-                                  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Number_of_Shares_Remitted); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L32_error)
-                                  __Pyx_GOTREF(__pyx_t_1);
-                                  __pyx_t_5 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__pyx_t_5 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 139, __pyx_L32_error)
-                                  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                  __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Number_of_Shares_Remitted); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 146, __pyx_L32_error)
+                                  __Pyx_GOTREF(__pyx_t_20);
+                                  __pyx_t_5 = __Pyx_PyObject_AsDouble(__pyx_t_20); if (unlikely(__pyx_t_5 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 146, __pyx_L32_error)
+                                  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
                                   __pyx_v_shares = (__pyx_t_5 / 100.0);
 
-                                  /* "zipparse.py":142
- * 
+                                  /* "zipparse.py":148
+ *                             shares = float(parsed_data['Number of Shares Remitted']) / 100
  * 
  *                             if (dollar_amount >= minCash and dollar_amount <= maxCash) or (shares >= minShares and shares <= maxShares):             # <<<<<<<<<<<<<<
  *                                 # write output of unsorted properties to original file
@@ -6901,44 +7076,44 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  */
                                   __pyx_t_6 = (__pyx_v_dollar_amount >= __pyx_v_minCash);
                                   if (!__pyx_t_6) {
-                                    goto __pyx_L45_next_or;
+                                    goto __pyx_L55_next_or;
                                   } else {
                                   }
                                   __pyx_t_6 = (__pyx_v_dollar_amount <= __pyx_v_maxCash);
                                   if (!__pyx_t_6) {
                                   } else {
-                                    __pyx_t_26 = __pyx_t_6;
-                                    goto __pyx_L44_bool_binop_done;
+                                    __pyx_t_29 = __pyx_t_6;
+                                    goto __pyx_L54_bool_binop_done;
                                   }
-                                  __pyx_L45_next_or:;
+                                  __pyx_L55_next_or:;
                                   __pyx_t_6 = (__pyx_v_shares >= __pyx_v_minShares);
                                   if (__pyx_t_6) {
                                   } else {
-                                    __pyx_t_26 = __pyx_t_6;
-                                    goto __pyx_L44_bool_binop_done;
+                                    __pyx_t_29 = __pyx_t_6;
+                                    goto __pyx_L54_bool_binop_done;
                                   }
                                   __pyx_t_6 = (__pyx_v_shares <= __pyx_v_maxShares);
-                                  __pyx_t_26 = __pyx_t_6;
-                                  __pyx_L44_bool_binop_done:;
-                                  if (__pyx_t_26) {
+                                  __pyx_t_29 = __pyx_t_6;
+                                  __pyx_L54_bool_binop_done:;
+                                  if (__pyx_t_29) {
 
-                                    /* "zipparse.py":144
+                                    /* "zipparse.py":150
  *                             if (dollar_amount >= minCash and dollar_amount <= maxCash) or (shares >= minShares and shares <= maxShares):
  *                                 # write output of unsorted properties to original file
  *                                 output_data = convert_to_output_format(parsed_data) # array of strings of output             # <<<<<<<<<<<<<<
  *                                 csv_writer.writerow(output_data)
  * 
  */
-                                    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_convert_to_output_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L32_error)
+                                    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_convert_to_output_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 150, __pyx_L32_error)
                                     __Pyx_GOTREF(__pyx_t_2);
-                                    __pyx_t_27 = NULL;
+                                    __pyx_t_30 = NULL;
                                     __pyx_t_4 = 0;
                                     #if CYTHON_UNPACK_METHODS
                                     if (unlikely(PyMethod_Check(__pyx_t_2))) {
-                                      __pyx_t_27 = PyMethod_GET_SELF(__pyx_t_2);
-                                      if (likely(__pyx_t_27)) {
+                                      __pyx_t_30 = PyMethod_GET_SELF(__pyx_t_2);
+                                      if (likely(__pyx_t_30)) {
                                         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-                                        __Pyx_INCREF(__pyx_t_27);
+                                        __Pyx_INCREF(__pyx_t_30);
                                         __Pyx_INCREF(function);
                                         __Pyx_DECREF_SET(__pyx_t_2, function);
                                         __pyx_t_4 = 1;
@@ -6946,33 +7121,33 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                                     }
                                     #endif
                                     {
-                                      PyObject *__pyx_callargs[2] = {__pyx_t_27, __pyx_v_parsed_data};
-                                      __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                                      __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-                                      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_1);
+                                      PyObject *__pyx_callargs[2] = {__pyx_t_30, __pyx_v_parsed_data};
+                                      __pyx_t_20 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                                      __Pyx_XDECREF(__pyx_t_30); __pyx_t_30 = 0;
+                                      if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 150, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_20);
                                       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                                     }
-                                    __Pyx_XDECREF_SET(__pyx_v_output_data, __pyx_t_1);
-                                    __pyx_t_1 = 0;
+                                    __Pyx_XDECREF_SET(__pyx_v_output_data, __pyx_t_20);
+                                    __pyx_t_20 = 0;
 
-                                    /* "zipparse.py":145
+                                    /* "zipparse.py":151
  *                                 # write output of unsorted properties to original file
  *                                 output_data = convert_to_output_format(parsed_data) # array of strings of output
  *                                 csv_writer.writerow(output_data)             # <<<<<<<<<<<<<<
  * 
  *                                 # Group Property IDs to declare a mian owner to each of them
  */
-                                    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L32_error)
+                                    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L32_error)
                                     __Pyx_GOTREF(__pyx_t_2);
-                                    __pyx_t_27 = NULL;
+                                    __pyx_t_30 = NULL;
                                     __pyx_t_4 = 0;
                                     #if CYTHON_UNPACK_METHODS
                                     if (likely(PyMethod_Check(__pyx_t_2))) {
-                                      __pyx_t_27 = PyMethod_GET_SELF(__pyx_t_2);
-                                      if (likely(__pyx_t_27)) {
+                                      __pyx_t_30 = PyMethod_GET_SELF(__pyx_t_2);
+                                      if (likely(__pyx_t_30)) {
                                         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-                                        __Pyx_INCREF(__pyx_t_27);
+                                        __Pyx_INCREF(__pyx_t_30);
                                         __Pyx_INCREF(function);
                                         __Pyx_DECREF_SET(__pyx_t_2, function);
                                         __pyx_t_4 = 1;
@@ -6980,31 +7155,31 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                                     }
                                     #endif
                                     {
-                                      PyObject *__pyx_callargs[2] = {__pyx_t_27, __pyx_v_output_data};
-                                      __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                                      __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-                                      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_1);
+                                      PyObject *__pyx_callargs[2] = {__pyx_t_30, __pyx_v_output_data};
+                                      __pyx_t_20 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                                      __Pyx_XDECREF(__pyx_t_30); __pyx_t_30 = 0;
+                                      if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 151, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_20);
                                       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                                     }
-                                    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
 
-                                    /* "zipparse.py":149
+                                    /* "zipparse.py":155
  *                                 # Group Property IDs to declare a mian owner to each of them
  *                                 # Add to sorted dictionary of property IDs with main owner and array of repeated lines
  *                                 propId = int(parsed_data['Property ID'])             # <<<<<<<<<<<<<<
  *                                 mainOwner = ""
  *                                 # main owner being e.g. "Jack Turner 123 N Bell Ave" for distinct person
  */
-                                    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Property_ID); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L32_error)
-                                    __Pyx_GOTREF(__pyx_t_1);
-                                    __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L32_error)
+                                    __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Property_ID); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 155, __pyx_L32_error)
+                                    __Pyx_GOTREF(__pyx_t_20);
+                                    __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L32_error)
                                     __Pyx_GOTREF(__pyx_t_2);
-                                    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
                                     __Pyx_XDECREF_SET(__pyx_v_propId, __pyx_t_2);
                                     __pyx_t_2 = 0;
 
-                                    /* "zipparse.py":150
+                                    /* "zipparse.py":156
  *                                 # Add to sorted dictionary of property IDs with main owner and array of repeated lines
  *                                 propId = int(parsed_data['Property ID'])
  *                                 mainOwner = ""             # <<<<<<<<<<<<<<
@@ -7014,51 +7189,51 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                                     __Pyx_INCREF(__pyx_kp_s__3);
                                     __Pyx_XDECREF_SET(__pyx_v_mainOwner, __pyx_kp_s__3);
 
-                                    /* "zipparse.py":152
+                                    /* "zipparse.py":158
  *                                 mainOwner = ""
  *                                 # main owner being e.g. "Jack Turner 123 N Bell Ave" for distinct person
  *                                 if len(parsed_data['Owner Address Line 1']) != 0:             # <<<<<<<<<<<<<<
  *                                     mainOwner = " ".join([parsed_data['Owner First Name'], parsed_data['Owner Last Name'], parsed_data['Owner Address Line 1']])
  *                                 if propertyIdSortedDict.__contains__(propId): # Already in the dictionary
  */
-                                    __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Owner_Address_Line_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L32_error)
+                                    __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Owner_Address_Line_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L32_error)
                                     __Pyx_GOTREF(__pyx_t_2);
-                                    __pyx_t_29 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_29 == ((Py_ssize_t)-1))) __PYX_ERR(0, 152, __pyx_L32_error)
+                                    __pyx_t_32 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_32 == ((Py_ssize_t)-1))) __PYX_ERR(0, 158, __pyx_L32_error)
                                     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                                    __pyx_t_26 = (__pyx_t_29 != 0);
-                                    if (__pyx_t_26) {
+                                    __pyx_t_29 = (__pyx_t_32 != 0);
+                                    if (__pyx_t_29) {
 
-                                      /* "zipparse.py":153
+                                      /* "zipparse.py":159
  *                                 # main owner being e.g. "Jack Turner 123 N Bell Ave" for distinct person
  *                                 if len(parsed_data['Owner Address Line 1']) != 0:
  *                                     mainOwner = " ".join([parsed_data['Owner First Name'], parsed_data['Owner Last Name'], parsed_data['Owner Address Line 1']])             # <<<<<<<<<<<<<<
  *                                 if propertyIdSortedDict.__contains__(propId): # Already in the dictionary
  *                                     if propertyIdSortedDict[propId]['Main Owner'] == "":
  */
-                                      __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Owner_First_Name); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 153, __pyx_L32_error)
+                                      __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Owner_First_Name); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L32_error)
                                       __Pyx_GOTREF(__pyx_t_2);
-                                      __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Owner_Last_Name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_1);
-                                      __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Owner_Address_Line_1); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 153, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_27);
-                                      __pyx_t_20 = PyList_New(3); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 153, __pyx_L32_error)
+                                      __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Owner_Last_Name); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 159, __pyx_L32_error)
                                       __Pyx_GOTREF(__pyx_t_20);
+                                      __pyx_t_30 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Owner_Address_Line_1); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 159, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_30);
+                                      __pyx_t_1 = PyList_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_1);
                                       __Pyx_GIVEREF(__pyx_t_2);
-                                      if (__Pyx_PyList_SET_ITEM(__pyx_t_20, 0, __pyx_t_2)) __PYX_ERR(0, 153, __pyx_L32_error);
-                                      __Pyx_GIVEREF(__pyx_t_1);
-                                      if (__Pyx_PyList_SET_ITEM(__pyx_t_20, 1, __pyx_t_1)) __PYX_ERR(0, 153, __pyx_L32_error);
-                                      __Pyx_GIVEREF(__pyx_t_27);
-                                      if (__Pyx_PyList_SET_ITEM(__pyx_t_20, 2, __pyx_t_27)) __PYX_ERR(0, 153, __pyx_L32_error);
+                                      if (__Pyx_PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_2)) __PYX_ERR(0, 159, __pyx_L32_error);
+                                      __Pyx_GIVEREF(__pyx_t_20);
+                                      if (__Pyx_PyList_SET_ITEM(__pyx_t_1, 1, __pyx_t_20)) __PYX_ERR(0, 159, __pyx_L32_error);
+                                      __Pyx_GIVEREF(__pyx_t_30);
+                                      if (__Pyx_PyList_SET_ITEM(__pyx_t_1, 2, __pyx_t_30)) __PYX_ERR(0, 159, __pyx_L32_error);
                                       __pyx_t_2 = 0;
-                                      __pyx_t_1 = 0;
-                                      __pyx_t_27 = 0;
-                                      __pyx_t_27 = __Pyx_PyString_Join(__pyx_kp_s__4, __pyx_t_20); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 153, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_27);
-                                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                                      __Pyx_DECREF_SET(__pyx_v_mainOwner, __pyx_t_27);
-                                      __pyx_t_27 = 0;
+                                      __pyx_t_20 = 0;
+                                      __pyx_t_30 = 0;
+                                      __pyx_t_30 = __Pyx_PyString_Join(__pyx_kp_s__4, __pyx_t_1); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 159, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_30);
+                                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                      __Pyx_DECREF_SET(__pyx_v_mainOwner, __pyx_t_30);
+                                      __pyx_t_30 = 0;
 
-                                      /* "zipparse.py":152
+                                      /* "zipparse.py":158
  *                                 mainOwner = ""
  *                                 # main owner being e.g. "Jack Turner 123 N Bell Ave" for distinct person
  *                                 if len(parsed_data['Owner Address Line 1']) != 0:             # <<<<<<<<<<<<<<
@@ -7067,70 +7242,70 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  */
                                     }
 
-                                    /* "zipparse.py":154
+                                    /* "zipparse.py":160
  *                                 if len(parsed_data['Owner Address Line 1']) != 0:
  *                                     mainOwner = " ".join([parsed_data['Owner First Name'], parsed_data['Owner Last Name'], parsed_data['Owner Address Line 1']])
  *                                 if propertyIdSortedDict.__contains__(propId): # Already in the dictionary             # <<<<<<<<<<<<<<
  *                                     if propertyIdSortedDict[propId]['Main Owner'] == "":
  *                                         propertyIdSortedDict[propId]['Main Owner'] = mainOwner
  */
-                                    __pyx_t_20 = __Pyx_PyObject_GetAttrStr(__pyx_v_propertyIdSortedDict, __pyx_n_s_contains); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 154, __pyx_L32_error)
-                                    __Pyx_GOTREF(__pyx_t_20);
-                                    __pyx_t_1 = NULL;
+                                    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_propertyIdSortedDict, __pyx_n_s_contains); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L32_error)
+                                    __Pyx_GOTREF(__pyx_t_1);
+                                    __pyx_t_20 = NULL;
                                     __pyx_t_4 = 0;
                                     #if CYTHON_UNPACK_METHODS
-                                    if (likely(PyMethod_Check(__pyx_t_20))) {
-                                      __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_20);
-                                      if (likely(__pyx_t_1)) {
-                                        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_20);
-                                        __Pyx_INCREF(__pyx_t_1);
+                                    if (likely(PyMethod_Check(__pyx_t_1))) {
+                                      __pyx_t_20 = PyMethod_GET_SELF(__pyx_t_1);
+                                      if (likely(__pyx_t_20)) {
+                                        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+                                        __Pyx_INCREF(__pyx_t_20);
                                         __Pyx_INCREF(function);
-                                        __Pyx_DECREF_SET(__pyx_t_20, function);
+                                        __Pyx_DECREF_SET(__pyx_t_1, function);
                                         __pyx_t_4 = 1;
                                       }
                                     }
                                     #endif
                                     {
-                                      PyObject *__pyx_callargs[2] = {__pyx_t_1, __pyx_v_propId};
-                                      __pyx_t_27 = __Pyx_PyObject_FastCall(__pyx_t_20, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                                      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-                                      if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 154, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_27);
-                                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                                      PyObject *__pyx_callargs[2] = {__pyx_t_20, __pyx_v_propId};
+                                      __pyx_t_30 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                                      __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
+                                      if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 160, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_30);
+                                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                                     }
-                                    __pyx_t_26 = __Pyx_PyObject_IsTrue(__pyx_t_27); if (unlikely((__pyx_t_26 < 0))) __PYX_ERR(0, 154, __pyx_L32_error)
-                                    __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-                                    if (__pyx_t_26) {
+                                    __pyx_t_29 = __Pyx_PyObject_IsTrue(__pyx_t_30); if (unlikely((__pyx_t_29 < 0))) __PYX_ERR(0, 160, __pyx_L32_error)
+                                    __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
+                                    if (__pyx_t_29) {
 
-                                      /* "zipparse.py":155
+                                      /* "zipparse.py":161
  *                                     mainOwner = " ".join([parsed_data['Owner First Name'], parsed_data['Owner Last Name'], parsed_data['Owner Address Line 1']])
  *                                 if propertyIdSortedDict.__contains__(propId): # Already in the dictionary
  *                                     if propertyIdSortedDict[propId]['Main Owner'] == "":             # <<<<<<<<<<<<<<
  *                                         propertyIdSortedDict[propId]['Main Owner'] = mainOwner
  *                                     propertyIdSortedDict[propId]['Lines'].append(output_data)
  */
-                                      __pyx_t_27 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 155, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_27);
-                                      __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_t_27, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 155, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_20);
-                                      __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-                                      __pyx_t_26 = (__Pyx_PyString_Equals(__pyx_t_20, __pyx_kp_s__3, Py_EQ)); if (unlikely((__pyx_t_26 < 0))) __PYX_ERR(0, 155, __pyx_L32_error)
-                                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                                      if (__pyx_t_26) {
+                                      __pyx_t_30 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 161, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_30);
+                                      __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_30, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_1);
+                                      __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
+                                      __pyx_t_29 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s__3, Py_EQ)); if (unlikely((__pyx_t_29 < 0))) __PYX_ERR(0, 161, __pyx_L32_error)
+                                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                      if (__pyx_t_29) {
 
-                                        /* "zipparse.py":156
+                                        /* "zipparse.py":162
  *                                 if propertyIdSortedDict.__contains__(propId): # Already in the dictionary
  *                                     if propertyIdSortedDict[propId]['Main Owner'] == "":
  *                                         propertyIdSortedDict[propId]['Main Owner'] = mainOwner             # <<<<<<<<<<<<<<
  *                                     propertyIdSortedDict[propId]['Lines'].append(output_data)
  *                                 else: # not contained in dictionary
  */
-                                        __pyx_t_20 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 156, __pyx_L32_error)
-                                        __Pyx_GOTREF(__pyx_t_20);
-                                        if (unlikely((PyObject_SetItem(__pyx_t_20, __pyx_kp_s_Main_Owner, __pyx_v_mainOwner) < 0))) __PYX_ERR(0, 156, __pyx_L32_error)
-                                        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                                        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L32_error)
+                                        __Pyx_GOTREF(__pyx_t_1);
+                                        if (unlikely((PyObject_SetItem(__pyx_t_1, __pyx_kp_s_Main_Owner, __pyx_v_mainOwner) < 0))) __PYX_ERR(0, 162, __pyx_L32_error)
+                                        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-                                        /* "zipparse.py":155
+                                        /* "zipparse.py":161
  *                                     mainOwner = " ".join([parsed_data['Owner First Name'], parsed_data['Owner Last Name'], parsed_data['Owner Address Line 1']])
  *                                 if propertyIdSortedDict.__contains__(propId): # Already in the dictionary
  *                                     if propertyIdSortedDict[propId]['Main Owner'] == "":             # <<<<<<<<<<<<<<
@@ -7139,32 +7314,32 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  */
                                       }
 
-                                      /* "zipparse.py":157
+                                      /* "zipparse.py":163
  *                                     if propertyIdSortedDict[propId]['Main Owner'] == "":
  *                                         propertyIdSortedDict[propId]['Main Owner'] = mainOwner
  *                                     propertyIdSortedDict[propId]['Lines'].append(output_data)             # <<<<<<<<<<<<<<
  *                                 else: # not contained in dictionary
  *                                     propertyIdSortedDict[propId] = {
  */
-                                      __pyx_t_20 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 157, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_20);
-                                      __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_t_20, __pyx_n_s_Lines); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 157, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_27);
-                                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                                      __pyx_t_30 = __Pyx_PyObject_Append(__pyx_t_27, __pyx_v_output_data); if (unlikely(__pyx_t_30 == ((int)-1))) __PYX_ERR(0, 157, __pyx_L32_error)
-                                      __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+                                      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_1);
+                                      __pyx_t_30 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_Lines); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 163, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_30);
+                                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                      __pyx_t_33 = __Pyx_PyObject_Append(__pyx_t_30, __pyx_v_output_data); if (unlikely(__pyx_t_33 == ((int)-1))) __PYX_ERR(0, 163, __pyx_L32_error)
+                                      __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
 
-                                      /* "zipparse.py":154
+                                      /* "zipparse.py":160
  *                                 if len(parsed_data['Owner Address Line 1']) != 0:
  *                                     mainOwner = " ".join([parsed_data['Owner First Name'], parsed_data['Owner Last Name'], parsed_data['Owner Address Line 1']])
  *                                 if propertyIdSortedDict.__contains__(propId): # Already in the dictionary             # <<<<<<<<<<<<<<
  *                                     if propertyIdSortedDict[propId]['Main Owner'] == "":
  *                                         propertyIdSortedDict[propId]['Main Owner'] = mainOwner
  */
-                                      goto __pyx_L49;
+                                      goto __pyx_L59;
                                     }
 
-                                    /* "zipparse.py":160
+                                    /* "zipparse.py":166
  *                                 else: # not contained in dictionary
  *                                     propertyIdSortedDict[propId] = {
  *                                         'Main Owner': mainOwner,             # <<<<<<<<<<<<<<
@@ -7172,71 +7347,71 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  *                                         'Cash': float(parsed_data['Dollar Amount']) / 100,
  */
                                     /*else*/ {
-                                      __pyx_t_27 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 160, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_27);
-                                      if (PyDict_SetItem(__pyx_t_27, __pyx_kp_s_Main_Owner, __pyx_v_mainOwner) < 0) __PYX_ERR(0, 160, __pyx_L32_error)
+                                      __pyx_t_30 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 166, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_30);
+                                      if (PyDict_SetItem(__pyx_t_30, __pyx_kp_s_Main_Owner, __pyx_v_mainOwner) < 0) __PYX_ERR(0, 166, __pyx_L32_error)
 
-                                      /* "zipparse.py":161
+                                      /* "zipparse.py":167
  *                                     propertyIdSortedDict[propId] = {
  *                                         'Main Owner': mainOwner,
  *                                         'Lines': [output_data],             # <<<<<<<<<<<<<<
  *                                         'Cash': float(parsed_data['Dollar Amount']) / 100,
  *                                         'Shares': float(parsed_data['Number of Shares Remitted']) / 100
  */
-                                      __pyx_t_20 = PyList_New(1); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 161, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_20);
+                                      __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_1);
                                       __Pyx_INCREF(__pyx_v_output_data);
                                       __Pyx_GIVEREF(__pyx_v_output_data);
-                                      if (__Pyx_PyList_SET_ITEM(__pyx_t_20, 0, __pyx_v_output_data)) __PYX_ERR(0, 161, __pyx_L32_error);
-                                      if (PyDict_SetItem(__pyx_t_27, __pyx_n_s_Lines, __pyx_t_20) < 0) __PYX_ERR(0, 160, __pyx_L32_error)
-                                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                                      if (__Pyx_PyList_SET_ITEM(__pyx_t_1, 0, __pyx_v_output_data)) __PYX_ERR(0, 167, __pyx_L32_error);
+                                      if (PyDict_SetItem(__pyx_t_30, __pyx_n_s_Lines, __pyx_t_1) < 0) __PYX_ERR(0, 166, __pyx_L32_error)
+                                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-                                      /* "zipparse.py":162
+                                      /* "zipparse.py":168
  *                                         'Main Owner': mainOwner,
  *                                         'Lines': [output_data],
  *                                         'Cash': float(parsed_data['Dollar Amount']) / 100,             # <<<<<<<<<<<<<<
  *                                         'Shares': float(parsed_data['Number of Shares Remitted']) / 100
  *                                     }
  */
-                                      __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Dollar_Amount); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 162, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_20);
-                                      __pyx_t_5 = __Pyx_PyObject_AsDouble(__pyx_t_20); if (unlikely(__pyx_t_5 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 162, __pyx_L32_error)
-                                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                                      __pyx_t_20 = PyFloat_FromDouble((__pyx_t_5 / 100.0)); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 162, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_20);
-                                      if (PyDict_SetItem(__pyx_t_27, __pyx_n_s_Cash, __pyx_t_20) < 0) __PYX_ERR(0, 160, __pyx_L32_error)
-                                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                                      __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Dollar_Amount); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_1);
+                                      __pyx_t_5 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__pyx_t_5 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 168, __pyx_L32_error)
+                                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                      __pyx_t_1 = PyFloat_FromDouble((__pyx_t_5 / 100.0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_1);
+                                      if (PyDict_SetItem(__pyx_t_30, __pyx_n_s_Cash, __pyx_t_1) < 0) __PYX_ERR(0, 166, __pyx_L32_error)
+                                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-                                      /* "zipparse.py":163
+                                      /* "zipparse.py":169
  *                                         'Lines': [output_data],
  *                                         'Cash': float(parsed_data['Dollar Amount']) / 100,
  *                                         'Shares': float(parsed_data['Number of Shares Remitted']) / 100             # <<<<<<<<<<<<<<
  *                                     }
  * 
  */
-                                      __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Number_of_Shares_Remitted); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 163, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_20);
-                                      __pyx_t_5 = __Pyx_PyObject_AsDouble(__pyx_t_20); if (unlikely(__pyx_t_5 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 163, __pyx_L32_error)
-                                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                                      __pyx_t_20 = PyFloat_FromDouble((__pyx_t_5 / 100.0)); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 163, __pyx_L32_error)
-                                      __Pyx_GOTREF(__pyx_t_20);
-                                      if (PyDict_SetItem(__pyx_t_27, __pyx_n_s_Shares, __pyx_t_20) < 0) __PYX_ERR(0, 160, __pyx_L32_error)
-                                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                                      __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_parsed_data, __pyx_kp_s_Number_of_Shares_Remitted); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_1);
+                                      __pyx_t_5 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__pyx_t_5 == ((double)((double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 169, __pyx_L32_error)
+                                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                                      __pyx_t_1 = PyFloat_FromDouble((__pyx_t_5 / 100.0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L32_error)
+                                      __Pyx_GOTREF(__pyx_t_1);
+                                      if (PyDict_SetItem(__pyx_t_30, __pyx_n_s_Shares, __pyx_t_1) < 0) __PYX_ERR(0, 166, __pyx_L32_error)
+                                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-                                      /* "zipparse.py":159
+                                      /* "zipparse.py":165
  *                                     propertyIdSortedDict[propId]['Lines'].append(output_data)
  *                                 else: # not contained in dictionary
  *                                     propertyIdSortedDict[propId] = {             # <<<<<<<<<<<<<<
  *                                         'Main Owner': mainOwner,
  *                                         'Lines': [output_data],
  */
-                                      if (unlikely((PyObject_SetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId, __pyx_t_27) < 0))) __PYX_ERR(0, 159, __pyx_L32_error)
-                                      __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+                                      if (unlikely((PyObject_SetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId, __pyx_t_30) < 0))) __PYX_ERR(0, 165, __pyx_L32_error)
+                                      __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
                                     }
-                                    __pyx_L49:;
+                                    __pyx_L59:;
 
-                                    /* "zipparse.py":142
- * 
+                                    /* "zipparse.py":148
+ *                             shares = float(parsed_data['Number of Shares Remitted']) / 100
  * 
  *                             if (dollar_amount >= minCash and dollar_amount <= maxCash) or (shares >= minShares and shares <= maxShares):             # <<<<<<<<<<<<<<
  *                                 # write output of unsorted properties to original file
@@ -7244,8 +7419,8 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  */
                                   }
 
-                                  /* "zipparse.py":136
- *                         property_id_new = int(line.decode('utf-8')[209:228])
+                                  /* "zipparse.py":143
+ * 
  *                         print(f"newzip Prop ID: {property_id_new}")
  *                         if not property_ids_old.__contains__(property_id_new):             # <<<<<<<<<<<<<<
  *                             parsed_data = parse_line(line.decode('utf-8'), columns)
@@ -7253,22 +7428,23 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  */
                                 }
 
-                                /* "zipparse.py":133
+                                /* "zipparse.py":136
  *             if "_Transparency_" in file_name:
  *                 with zip_ref.open(file_name) as file:
  *                     for line in file:             # <<<<<<<<<<<<<<
- *                         property_id_new = int(line.decode('utf-8')[209:228])
- *                         print(f"newzip Prop ID: {property_id_new}")
+ *                         try:
+ *                             property_id_new = int(line.decode('utf-8')[209:228])
  */
+                                __pyx_L40_continue:;
                               }
                               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-                              /* "zipparse.py":132
+                              /* "zipparse.py":135
  *         for file_name in zip_ref.namelist():
  *             if "_Transparency_" in file_name:
  *                 with zip_ref.open(file_name) as file:             # <<<<<<<<<<<<<<
  *                     for line in file:
- *                         property_id_new = int(line.decode('utf-8')[209:228])
+ *                         try:
  */
                             }
                             __Pyx_XDECREF(__pyx_t_21); __pyx_t_21 = 0;
@@ -7279,37 +7455,37 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                             __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
                             __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
                             __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-                            __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-                            __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
+                            __Pyx_XDECREF(__pyx_t_30); __pyx_t_30 = 0;
+                            __Pyx_XDECREF(__pyx_t_31); __pyx_t_31 = 0;
                             __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
                             /*except:*/ {
                               __Pyx_AddTraceback("zipparse.generateLists", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                              if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_27, &__pyx_t_20) < 0) __PYX_ERR(0, 132, __pyx_L34_except_error)
+                              if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_30, &__pyx_t_1) < 0) __PYX_ERR(0, 135, __pyx_L34_except_error)
                               __Pyx_XGOTREF(__pyx_t_9);
-                              __Pyx_XGOTREF(__pyx_t_27);
-                              __Pyx_XGOTREF(__pyx_t_20);
-                              __pyx_t_1 = PyTuple_Pack(3, __pyx_t_9, __pyx_t_27, __pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L34_except_error)
-                              __Pyx_GOTREF(__pyx_t_1);
-                              __pyx_t_31 = __Pyx_PyObject_Call(__pyx_t_19, __pyx_t_1, NULL);
+                              __Pyx_XGOTREF(__pyx_t_30);
+                              __Pyx_XGOTREF(__pyx_t_1);
+                              __pyx_t_20 = PyTuple_Pack(3, __pyx_t_9, __pyx_t_30, __pyx_t_1); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 135, __pyx_L34_except_error)
+                              __Pyx_GOTREF(__pyx_t_20);
+                              __pyx_t_28 = __Pyx_PyObject_Call(__pyx_t_19, __pyx_t_20, NULL);
                               __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
-                              __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                              if (unlikely(!__pyx_t_31)) __PYX_ERR(0, 132, __pyx_L34_except_error)
-                              __Pyx_GOTREF(__pyx_t_31);
-                              __pyx_t_26 = __Pyx_PyObject_IsTrue(__pyx_t_31);
-                              __Pyx_DECREF(__pyx_t_31); __pyx_t_31 = 0;
-                              if (__pyx_t_26 < 0) __PYX_ERR(0, 132, __pyx_L34_except_error)
-                              __pyx_t_6 = (!__pyx_t_26);
+                              __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                              if (unlikely(!__pyx_t_28)) __PYX_ERR(0, 135, __pyx_L34_except_error)
+                              __Pyx_GOTREF(__pyx_t_28);
+                              __pyx_t_29 = __Pyx_PyObject_IsTrue(__pyx_t_28);
+                              __Pyx_DECREF(__pyx_t_28); __pyx_t_28 = 0;
+                              if (__pyx_t_29 < 0) __PYX_ERR(0, 135, __pyx_L34_except_error)
+                              __pyx_t_6 = (!__pyx_t_29);
                               if (unlikely(__pyx_t_6)) {
                                 __Pyx_GIVEREF(__pyx_t_9);
-                                __Pyx_GIVEREF(__pyx_t_27);
-                                __Pyx_XGIVEREF(__pyx_t_20);
-                                __Pyx_ErrRestoreWithState(__pyx_t_9, __pyx_t_27, __pyx_t_20);
-                                __pyx_t_9 = 0; __pyx_t_27 = 0; __pyx_t_20 = 0; 
-                                __PYX_ERR(0, 132, __pyx_L34_except_error)
+                                __Pyx_GIVEREF(__pyx_t_30);
+                                __Pyx_XGIVEREF(__pyx_t_1);
+                                __Pyx_ErrRestoreWithState(__pyx_t_9, __pyx_t_30, __pyx_t_1);
+                                __pyx_t_9 = 0; __pyx_t_30 = 0; __pyx_t_1 = 0; 
+                                __PYX_ERR(0, 135, __pyx_L34_except_error)
                               }
                               __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-                              __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-                              __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
+                              __Pyx_XDECREF(__pyx_t_30); __pyx_t_30 = 0;
+                              __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
                               goto __pyx_L33_exception_handled;
                             }
                             __pyx_L34_except_error:;
@@ -7331,7 +7507,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                             if (__pyx_t_19) {
                               __pyx_t_23 = __Pyx_PyObject_Call(__pyx_t_19, __pyx_tuple__2, NULL);
                               __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
-                              if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 132, __pyx_L17_error)
+                              if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 135, __pyx_L17_error)
                               __Pyx_GOTREF(__pyx_t_23);
                               __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
                             }
@@ -7339,14 +7515,14 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                           }
                           __pyx_L31:;
                         }
-                        goto __pyx_L55;
+                        goto __pyx_L65;
                         __pyx_L26_error:;
                         __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
                         goto __pyx_L17_error;
-                        __pyx_L55:;
+                        __pyx_L65:;
                       }
 
-                      /* "zipparse.py":131
+                      /* "zipparse.py":134
  * 
  *         for file_name in zip_ref.namelist():
  *             if "_Transparency_" in file_name:             # <<<<<<<<<<<<<<
@@ -7355,7 +7531,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  */
                     }
 
-                    /* "zipparse.py":130
+                    /* "zipparse.py":133
  *         csv_writer.writerow(output_headers)
  * 
  *         for file_name in zip_ref.namelist():             # <<<<<<<<<<<<<<
@@ -7365,7 +7541,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                   }
                   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-                  /* "zipparse.py":126
+                  /* "zipparse.py":129
  * 
  *     # Write the filtered data to the output CSV
  *     with zipfile.ZipFile(newZipPath, 'r') as zip_ref, open(outputParsed, 'w', newline='') as output_file:             # <<<<<<<<<<<<<<
@@ -7381,38 +7557,38 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                 __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
                 __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
                 __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-                __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-                __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
                 __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+                __Pyx_XDECREF(__pyx_t_30); __pyx_t_30 = 0;
+                __Pyx_XDECREF(__pyx_t_31); __pyx_t_31 = 0;
                 __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
                 /*except:*/ {
                   __Pyx_AddTraceback("zipparse.generateLists", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                  if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_20, &__pyx_t_27) < 0) __PYX_ERR(0, 126, __pyx_L19_except_error)
+                  if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_1, &__pyx_t_30) < 0) __PYX_ERR(0, 129, __pyx_L19_except_error)
                   __Pyx_XGOTREF(__pyx_t_3);
-                  __Pyx_XGOTREF(__pyx_t_20);
-                  __Pyx_XGOTREF(__pyx_t_27);
-                  __pyx_t_9 = PyTuple_Pack(3, __pyx_t_3, __pyx_t_20, __pyx_t_27); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 126, __pyx_L19_except_error)
+                  __Pyx_XGOTREF(__pyx_t_1);
+                  __Pyx_XGOTREF(__pyx_t_30);
+                  __pyx_t_9 = PyTuple_Pack(3, __pyx_t_3, __pyx_t_1, __pyx_t_30); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 129, __pyx_L19_except_error)
                   __Pyx_GOTREF(__pyx_t_9);
                   __pyx_t_19 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_9, NULL);
                   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
                   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                  if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 126, __pyx_L19_except_error)
+                  if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 129, __pyx_L19_except_error)
                   __Pyx_GOTREF(__pyx_t_19);
                   __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_19);
                   __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
-                  if (__pyx_t_6 < 0) __PYX_ERR(0, 126, __pyx_L19_except_error)
-                  __pyx_t_26 = (!__pyx_t_6);
-                  if (unlikely(__pyx_t_26)) {
+                  if (__pyx_t_6 < 0) __PYX_ERR(0, 129, __pyx_L19_except_error)
+                  __pyx_t_29 = (!__pyx_t_6);
+                  if (unlikely(__pyx_t_29)) {
                     __Pyx_GIVEREF(__pyx_t_3);
-                    __Pyx_GIVEREF(__pyx_t_20);
-                    __Pyx_XGIVEREF(__pyx_t_27);
-                    __Pyx_ErrRestoreWithState(__pyx_t_3, __pyx_t_20, __pyx_t_27);
-                    __pyx_t_3 = 0; __pyx_t_20 = 0; __pyx_t_27 = 0; 
-                    __PYX_ERR(0, 126, __pyx_L19_except_error)
+                    __Pyx_GIVEREF(__pyx_t_1);
+                    __Pyx_XGIVEREF(__pyx_t_30);
+                    __Pyx_ErrRestoreWithState(__pyx_t_3, __pyx_t_1, __pyx_t_30);
+                    __pyx_t_3 = 0; __pyx_t_1 = 0; __pyx_t_30 = 0; 
+                    __PYX_ERR(0, 129, __pyx_L19_except_error)
                   }
                   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-                  __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-                  __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
+                  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+                  __Pyx_XDECREF(__pyx_t_30); __pyx_t_30 = 0;
                   goto __pyx_L18_exception_handled;
                 }
                 __pyx_L19_except_error:;
@@ -7434,7 +7610,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                 if (__pyx_t_13) {
                   __pyx_t_16 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_tuple__2, NULL);
                   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-                  if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 126, __pyx_L7_error)
+                  if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 129, __pyx_L7_error)
                   __Pyx_GOTREF(__pyx_t_16);
                   __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
                 }
@@ -7442,11 +7618,11 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
               }
               __pyx_L16:;
             }
-            goto __pyx_L60;
+            goto __pyx_L70;
             __pyx_L13_error:;
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             goto __pyx_L7_error;
-            __pyx_L60:;
+            __pyx_L70:;
           }
         }
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -7457,37 +7633,37 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-        __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-        __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __Pyx_XDECREF(__pyx_t_30); __pyx_t_30 = 0;
+        __Pyx_XDECREF(__pyx_t_31); __pyx_t_31 = 0;
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         /*except:*/ {
           __Pyx_AddTraceback("zipparse.generateLists", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_27, &__pyx_t_20, &__pyx_t_3) < 0) __PYX_ERR(0, 126, __pyx_L9_except_error)
-          __Pyx_XGOTREF(__pyx_t_27);
-          __Pyx_XGOTREF(__pyx_t_20);
+          if (__Pyx_GetException(&__pyx_t_30, &__pyx_t_1, &__pyx_t_3) < 0) __PYX_ERR(0, 129, __pyx_L9_except_error)
+          __Pyx_XGOTREF(__pyx_t_30);
+          __Pyx_XGOTREF(__pyx_t_1);
           __Pyx_XGOTREF(__pyx_t_3);
-          __pyx_t_9 = PyTuple_Pack(3, __pyx_t_27, __pyx_t_20, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 126, __pyx_L9_except_error)
+          __pyx_t_9 = PyTuple_Pack(3, __pyx_t_30, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 129, __pyx_L9_except_error)
           __Pyx_GOTREF(__pyx_t_9);
           __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_9, NULL);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 126, __pyx_L9_except_error)
+          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 129, __pyx_L9_except_error)
           __Pyx_GOTREF(__pyx_t_13);
-          __pyx_t_26 = __Pyx_PyObject_IsTrue(__pyx_t_13);
+          __pyx_t_29 = __Pyx_PyObject_IsTrue(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (__pyx_t_26 < 0) __PYX_ERR(0, 126, __pyx_L9_except_error)
-          __pyx_t_6 = (!__pyx_t_26);
+          if (__pyx_t_29 < 0) __PYX_ERR(0, 129, __pyx_L9_except_error)
+          __pyx_t_6 = (!__pyx_t_29);
           if (unlikely(__pyx_t_6)) {
-            __Pyx_GIVEREF(__pyx_t_27);
-            __Pyx_GIVEREF(__pyx_t_20);
+            __Pyx_GIVEREF(__pyx_t_30);
+            __Pyx_GIVEREF(__pyx_t_1);
             __Pyx_XGIVEREF(__pyx_t_3);
-            __Pyx_ErrRestoreWithState(__pyx_t_27, __pyx_t_20, __pyx_t_3);
-            __pyx_t_27 = 0; __pyx_t_20 = 0; __pyx_t_3 = 0; 
-            __PYX_ERR(0, 126, __pyx_L9_except_error)
+            __Pyx_ErrRestoreWithState(__pyx_t_30, __pyx_t_1, __pyx_t_3);
+            __pyx_t_30 = 0; __pyx_t_1 = 0; __pyx_t_3 = 0; 
+            __PYX_ERR(0, 129, __pyx_L9_except_error)
           }
-          __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-          __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
+          __Pyx_XDECREF(__pyx_t_30); __pyx_t_30 = 0;
+          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           goto __pyx_L8_exception_handled;
         }
@@ -7510,7 +7686,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
         if (__pyx_t_8) {
           __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_tuple__2, NULL);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 126, __pyx_L1_error)
+          if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 129, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         }
@@ -7518,60 +7694,60 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
       }
       __pyx_L6:;
     }
-    goto __pyx_L64;
+    goto __pyx_L74;
     __pyx_L3_error:;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     goto __pyx_L1_error;
-    __pyx_L64:;
+    __pyx_L74:;
   }
 
-  /* "zipparse.py":173
+  /* "zipparse.py":179
  *     }'''
  *     # Group by main owner and have their cash and share total summed up
  *     ownerExistsSortedDict = SortedDict()             # <<<<<<<<<<<<<<
  *     ownerEmptyDict = {}
  *     for id, propObj in propertyIdSortedDict.items():
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_20, __pyx_n_s_SortedDict); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 173, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_20);
-  __pyx_t_27 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_SortedDict); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_30 = NULL;
   __pyx_t_4 = 0;
   #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_20))) {
-    __pyx_t_27 = PyMethod_GET_SELF(__pyx_t_20);
-    if (likely(__pyx_t_27)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_20);
-      __Pyx_INCREF(__pyx_t_27);
+  if (unlikely(PyMethod_Check(__pyx_t_1))) {
+    __pyx_t_30 = PyMethod_GET_SELF(__pyx_t_1);
+    if (likely(__pyx_t_30)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      __Pyx_INCREF(__pyx_t_30);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_20, function);
+      __Pyx_DECREF_SET(__pyx_t_1, function);
       __pyx_t_4 = 1;
     }
   }
   #endif
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_27, NULL};
-    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_20, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
-    __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L1_error)
+    PyObject *__pyx_callargs[2] = {__pyx_t_30, NULL};
+    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
+    __Pyx_XDECREF(__pyx_t_30); __pyx_t_30 = 0;
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 179, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
   __pyx_v_ownerExistsSortedDict = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "zipparse.py":174
+  /* "zipparse.py":180
  *     # Group by main owner and have their cash and share total summed up
  *     ownerExistsSortedDict = SortedDict()
  *     ownerEmptyDict = {}             # <<<<<<<<<<<<<<
  *     for id, propObj in propertyIdSortedDict.items():
  *         print(f"loading owner dictionary: {id}")
  */
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 180, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_ownerEmptyDict = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "zipparse.py":175
+  /* "zipparse.py":181
  *     ownerExistsSortedDict = SortedDict()
  *     ownerEmptyDict = {}
  *     for id, propObj in propertyIdSortedDict.items():             # <<<<<<<<<<<<<<
@@ -7581,104 +7757,104 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
   __pyx_t_17 = 0;
   if (unlikely(__pyx_v_propertyIdSortedDict == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "items");
-    __PYX_ERR(0, 175, __pyx_L1_error)
+    __PYX_ERR(0, 181, __pyx_L1_error)
   }
-  __pyx_t_20 = __Pyx_dict_iterator(__pyx_v_propertyIdSortedDict, 0, __pyx_n_s_items, (&__pyx_t_24), (&__pyx_t_32)); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 175, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_20);
+  __pyx_t_1 = __Pyx_dict_iterator(__pyx_v_propertyIdSortedDict, 0, __pyx_n_s_items, (&__pyx_t_24), (&__pyx_t_34)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_3);
-  __pyx_t_3 = __pyx_t_20;
-  __pyx_t_20 = 0;
+  __pyx_t_3 = __pyx_t_1;
+  __pyx_t_1 = 0;
   while (1) {
-    __pyx_t_33 = __Pyx_dict_iter_next(__pyx_t_3, __pyx_t_24, &__pyx_t_17, &__pyx_t_20, &__pyx_t_27, NULL, __pyx_t_32);
-    if (unlikely(__pyx_t_33 == 0)) break;
-    if (unlikely(__pyx_t_33 == -1)) __PYX_ERR(0, 175, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_20);
-    __Pyx_GOTREF(__pyx_t_27);
-    __Pyx_XDECREF_SET(__pyx_v_id, __pyx_t_20);
-    __pyx_t_20 = 0;
-    __Pyx_XDECREF_SET(__pyx_v_propObj, __pyx_t_27);
-    __pyx_t_27 = 0;
+    __pyx_t_35 = __Pyx_dict_iter_next(__pyx_t_3, __pyx_t_24, &__pyx_t_17, &__pyx_t_1, &__pyx_t_30, NULL, __pyx_t_34);
+    if (unlikely(__pyx_t_35 == 0)) break;
+    if (unlikely(__pyx_t_35 == -1)) __PYX_ERR(0, 181, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_GOTREF(__pyx_t_30);
+    __Pyx_XDECREF_SET(__pyx_v_id, __pyx_t_1);
+    __pyx_t_1 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_propObj, __pyx_t_30);
+    __pyx_t_30 = 0;
 
-    /* "zipparse.py":176
+    /* "zipparse.py":182
  *     ownerEmptyDict = {}
  *     for id, propObj in propertyIdSortedDict.items():
  *         print(f"loading owner dictionary: {id}")             # <<<<<<<<<<<<<<
  *         if propObj['Main Owner'] == "":
  *             ownerEmptyDict[int(id)] = {
  */
-    __pyx_t_27 = __Pyx_PyObject_FormatSimple(__pyx_v_id, __pyx_empty_unicode); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 176, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_27);
-    __pyx_t_20 = __Pyx_PyUnicode_Concat(__pyx_kp_u_loading_owner_dictionary, __pyx_t_27); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 176, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_20);
-    __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-    __pyx_t_27 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_20); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 176, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_27);
-    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-    __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+    __pyx_t_30 = __Pyx_PyObject_FormatSimple(__pyx_v_id, __pyx_empty_unicode); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_30);
+    __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_kp_u_loading_owner_dictionary, __pyx_t_30); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
+    __pyx_t_30 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_30);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
 
-    /* "zipparse.py":177
+    /* "zipparse.py":183
  *     for id, propObj in propertyIdSortedDict.items():
  *         print(f"loading owner dictionary: {id}")
  *         if propObj['Main Owner'] == "":             # <<<<<<<<<<<<<<
  *             ownerEmptyDict[int(id)] = {
  *                 'Cash': propObj['Cash'],
  */
-    __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 177, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_27);
-    __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_t_27, __pyx_kp_s__3, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 177, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+    __pyx_t_30 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 183, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_30);
+    __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_t_30, __pyx_kp_s__3, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 183, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
     if (__pyx_t_6) {
 
-      /* "zipparse.py":179
+      /* "zipparse.py":185
  *         if propObj['Main Owner'] == "":
  *             ownerEmptyDict[int(id)] = {
  *                 'Cash': propObj['Cash'],             # <<<<<<<<<<<<<<
  *                 'Shares': propObj['Shares']
  *             }
  */
-      __pyx_t_27 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 179, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_27);
-      __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_n_s_Cash); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 179, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_20);
-      if (PyDict_SetItem(__pyx_t_27, __pyx_n_s_Cash, __pyx_t_20) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+      __pyx_t_30 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 185, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_30);
+      __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_n_s_Cash); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (PyDict_SetItem(__pyx_t_30, __pyx_n_s_Cash, __pyx_t_1) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "zipparse.py":180
+      /* "zipparse.py":186
  *             ownerEmptyDict[int(id)] = {
  *                 'Cash': propObj['Cash'],
  *                 'Shares': propObj['Shares']             # <<<<<<<<<<<<<<
  *             }
  *         else: # owner exists
  */
-      __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_n_s_Shares); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 180, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_20);
-      if (PyDict_SetItem(__pyx_t_27, __pyx_n_s_Shares, __pyx_t_20) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+      __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_n_s_Shares); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (PyDict_SetItem(__pyx_t_30, __pyx_n_s_Shares, __pyx_t_1) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "zipparse.py":178
+      /* "zipparse.py":184
  *         print(f"loading owner dictionary: {id}")
  *         if propObj['Main Owner'] == "":
  *             ownerEmptyDict[int(id)] = {             # <<<<<<<<<<<<<<
  *                 'Cash': propObj['Cash'],
  *                 'Shares': propObj['Shares']
  */
-      __pyx_t_20 = __Pyx_PyNumber_Int(__pyx_v_id); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 178, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_20);
-      if (unlikely((PyDict_SetItem(__pyx_v_ownerEmptyDict, __pyx_t_20, __pyx_t_27) < 0))) __PYX_ERR(0, 178, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-      __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+      __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_v_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (unlikely((PyDict_SetItem(__pyx_v_ownerEmptyDict, __pyx_t_1, __pyx_t_30) < 0))) __PYX_ERR(0, 184, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
 
-      /* "zipparse.py":177
+      /* "zipparse.py":183
  *     for id, propObj in propertyIdSortedDict.items():
  *         print(f"loading owner dictionary: {id}")
  *         if propObj['Main Owner'] == "":             # <<<<<<<<<<<<<<
  *             ownerEmptyDict[int(id)] = {
  *                 'Cash': propObj['Cash'],
  */
-      goto __pyx_L67;
+      goto __pyx_L77;
     }
 
-    /* "zipparse.py":183
+    /* "zipparse.py":189
  *             }
  *         else: # owner exists
  *             if ownerExistsSortedDict.__contains__(propObj['Main Owner']):             # <<<<<<<<<<<<<<
@@ -7686,123 +7862,123 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  *                 ownerExistsSortedDict[propObj['Main Owner']]['Cash Total'] += propObj['Cash']
  */
     /*else*/ {
-      __pyx_t_20 = __Pyx_PyObject_GetAttrStr(__pyx_v_ownerExistsSortedDict, __pyx_n_s_contains); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 183, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_20);
-      __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 183, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_ownerExistsSortedDict, __pyx_n_s_contains); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 189, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_1 = NULL;
+      __pyx_t_20 = NULL;
       __pyx_t_4 = 0;
       #if CYTHON_UNPACK_METHODS
-      if (likely(PyMethod_Check(__pyx_t_20))) {
-        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_20);
-        if (likely(__pyx_t_1)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_20);
-          __Pyx_INCREF(__pyx_t_1);
+      if (likely(PyMethod_Check(__pyx_t_1))) {
+        __pyx_t_20 = PyMethod_GET_SELF(__pyx_t_1);
+        if (likely(__pyx_t_20)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+          __Pyx_INCREF(__pyx_t_20);
           __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_20, function);
+          __Pyx_DECREF_SET(__pyx_t_1, function);
           __pyx_t_4 = 1;
         }
       }
       #endif
       {
-        PyObject *__pyx_callargs[2] = {__pyx_t_1, __pyx_t_9};
-        __pyx_t_27 = __Pyx_PyObject_FastCall(__pyx_t_20, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-        __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+        PyObject *__pyx_callargs[2] = {__pyx_t_20, __pyx_t_9};
+        __pyx_t_30 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+        __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 183, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_27);
-        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+        if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 189, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_30);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_27); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 183, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_30); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 189, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
       if (__pyx_t_6) {
 
-        /* "zipparse.py":184
+        /* "zipparse.py":190
  *         else: # owner exists
  *             if ownerExistsSortedDict.__contains__(propObj['Main Owner']):
  *                 ownerExistsSortedDict[propObj['Main Owner']]['Property Ids'].append(int(id))             # <<<<<<<<<<<<<<
  *                 ownerExistsSortedDict[propObj['Main Owner']]['Cash Total'] += propObj['Cash']
  *                 ownerExistsSortedDict[propObj['Main Owner']]['Shares Total'] += propObj['Shares']
  */
-        __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 184, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_27);
-        __pyx_t_20 = __Pyx_PyObject_GetItem(__pyx_v_ownerExistsSortedDict, __pyx_t_27); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 184, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_20);
-        __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-        __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_t_20, __pyx_kp_s_Property_Ids); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 184, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_27);
-        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-        __pyx_t_20 = __Pyx_PyNumber_Int(__pyx_v_id); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 184, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_20);
-        __pyx_t_30 = __Pyx_PyObject_Append(__pyx_t_27, __pyx_t_20); if (unlikely(__pyx_t_30 == ((int)-1))) __PYX_ERR(0, 184, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+        __pyx_t_30 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 190, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_30);
+        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_ownerExistsSortedDict, __pyx_t_30); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
+        __pyx_t_30 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_kp_s_Property_Ids); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 190, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_30);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_v_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_33 = __Pyx_PyObject_Append(__pyx_t_30, __pyx_t_1); if (unlikely(__pyx_t_33 == ((int)-1))) __PYX_ERR(0, 190, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "zipparse.py":185
+        /* "zipparse.py":191
  *             if ownerExistsSortedDict.__contains__(propObj['Main Owner']):
  *                 ownerExistsSortedDict[propObj['Main Owner']]['Property Ids'].append(int(id))
  *                 ownerExistsSortedDict[propObj['Main Owner']]['Cash Total'] += propObj['Cash']             # <<<<<<<<<<<<<<
  *                 ownerExistsSortedDict[propObj['Main Owner']]['Shares Total'] += propObj['Shares']
  *             else:
  */
-        __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 185, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_20);
-        __pyx_t_27 = __Pyx_PyObject_GetItem(__pyx_v_ownerExistsSortedDict, __pyx_t_20); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 185, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_27);
-        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-        __Pyx_INCREF(__pyx_kp_s_Cash_Total);
-        __pyx_t_34 = __pyx_kp_s_Cash_Total;
-        __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_t_27, __pyx_t_34); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 185, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_20);
-        __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_n_s_Cash); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 185, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_t_20, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (unlikely((PyObject_SetItem(__pyx_t_27, __pyx_t_34, __pyx_t_1) < 0))) __PYX_ERR(0, 185, __pyx_L1_error)
+        __pyx_t_30 = __Pyx_PyObject_GetItem(__pyx_v_ownerExistsSortedDict, __pyx_t_1); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 191, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_30);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __Pyx_DECREF(__pyx_t_34); __pyx_t_34 = 0;
-        __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+        __Pyx_INCREF(__pyx_kp_s_Cash_Total);
+        __pyx_t_36 = __pyx_kp_s_Cash_Total;
+        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_30, __pyx_t_36); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_n_s_Cash); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 191, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_20 = PyNumber_InPlaceAdd(__pyx_t_1, __pyx_t_9); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 191, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_20);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        if (unlikely((PyObject_SetItem(__pyx_t_30, __pyx_t_36, __pyx_t_20) < 0))) __PYX_ERR(0, 191, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+        __Pyx_DECREF(__pyx_t_36); __pyx_t_36 = 0;
+        __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
 
-        /* "zipparse.py":186
+        /* "zipparse.py":192
  *                 ownerExistsSortedDict[propObj['Main Owner']]['Property Ids'].append(int(id))
  *                 ownerExistsSortedDict[propObj['Main Owner']]['Cash Total'] += propObj['Cash']
  *                 ownerExistsSortedDict[propObj['Main Owner']]['Shares Total'] += propObj['Shares']             # <<<<<<<<<<<<<<
  *             else:
  *                 ownerExistsSortedDict[propObj['Main Owner']] = {
  */
-        __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 186, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_27);
-        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_ownerExistsSortedDict, __pyx_t_27); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-        __Pyx_INCREF(__pyx_kp_s_Shares_Total);
-        __pyx_t_34 = __pyx_kp_s_Shares_Total;
-        __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_t_34); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 186, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_27);
-        __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_n_s_Shares); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 186, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_20 = PyNumber_InPlaceAdd(__pyx_t_27, __pyx_t_9); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 186, __pyx_L1_error)
+        __pyx_t_30 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 192, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_30);
+        __pyx_t_20 = __Pyx_PyObject_GetItem(__pyx_v_ownerExistsSortedDict, __pyx_t_30); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 192, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_20);
-        __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+        __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
+        __Pyx_INCREF(__pyx_kp_s_Shares_Total);
+        __pyx_t_36 = __pyx_kp_s_Shares_Total;
+        __pyx_t_30 = __Pyx_PyObject_Dict_GetItem(__pyx_t_20, __pyx_t_36); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 192, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_30);
+        __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_n_s_Shares); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 192, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_t_30, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (unlikely((PyObject_SetItem(__pyx_t_1, __pyx_t_34, __pyx_t_20) < 0))) __PYX_ERR(0, 186, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-        __Pyx_DECREF(__pyx_t_34); __pyx_t_34 = 0;
+        if (unlikely((PyObject_SetItem(__pyx_t_20, __pyx_t_36, __pyx_t_1) < 0))) __PYX_ERR(0, 192, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_36); __pyx_t_36 = 0;
+        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
 
-        /* "zipparse.py":183
+        /* "zipparse.py":189
  *             }
  *         else: # owner exists
  *             if ownerExistsSortedDict.__contains__(propObj['Main Owner']):             # <<<<<<<<<<<<<<
  *                 ownerExistsSortedDict[propObj['Main Owner']]['Property Ids'].append(int(id))
  *                 ownerExistsSortedDict[propObj['Main Owner']]['Cash Total'] += propObj['Cash']
  */
-        goto __pyx_L68;
+        goto __pyx_L78;
       }
 
-      /* "zipparse.py":189
+      /* "zipparse.py":195
  *             else:
  *                 ownerExistsSortedDict[propObj['Main Owner']] = {
  *                     'Property Ids': [int(id)],             # <<<<<<<<<<<<<<
@@ -7810,131 +7986,131 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  *                     'Shares Total': propObj['Shares']
  */
       /*else*/ {
-        __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_20 = __Pyx_PyNumber_Int(__pyx_v_id); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 189, __pyx_L1_error)
+        __pyx_t_20 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 195, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_20);
-        __pyx_t_9 = PyList_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 189, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_v_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_9 = PyList_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 195, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_GIVEREF(__pyx_t_20);
-        if (__Pyx_PyList_SET_ITEM(__pyx_t_9, 0, __pyx_t_20)) __PYX_ERR(0, 189, __pyx_L1_error);
-        __pyx_t_20 = 0;
-        if (PyDict_SetItem(__pyx_t_1, __pyx_kp_s_Property_Ids, __pyx_t_9) < 0) __PYX_ERR(0, 189, __pyx_L1_error)
+        __Pyx_GIVEREF(__pyx_t_1);
+        if (__Pyx_PyList_SET_ITEM(__pyx_t_9, 0, __pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error);
+        __pyx_t_1 = 0;
+        if (PyDict_SetItem(__pyx_t_20, __pyx_kp_s_Property_Ids, __pyx_t_9) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "zipparse.py":190
+        /* "zipparse.py":196
  *                 ownerExistsSortedDict[propObj['Main Owner']] = {
  *                     'Property Ids': [int(id)],
  *                     'Cash Total': propObj['Cash'],             # <<<<<<<<<<<<<<
  *                     'Shares Total': propObj['Shares']
  *                 }
  */
-        __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_n_s_Cash); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 190, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_n_s_Cash); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 196, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_kp_s_Cash_Total, __pyx_t_9) < 0) __PYX_ERR(0, 189, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_20, __pyx_kp_s_Cash_Total, __pyx_t_9) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "zipparse.py":191
+        /* "zipparse.py":197
  *                     'Property Ids': [int(id)],
  *                     'Cash Total': propObj['Cash'],
  *                     'Shares Total': propObj['Shares']             # <<<<<<<<<<<<<<
  *                 }
  * 
  */
-        __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_n_s_Shares); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 191, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_n_s_Shares); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 197, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_kp_s_Shares_Total, __pyx_t_9) < 0) __PYX_ERR(0, 189, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_20, __pyx_kp_s_Shares_Total, __pyx_t_9) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "zipparse.py":188
+        /* "zipparse.py":194
  *                 ownerExistsSortedDict[propObj['Main Owner']]['Shares Total'] += propObj['Shares']
  *             else:
  *                 ownerExistsSortedDict[propObj['Main Owner']] = {             # <<<<<<<<<<<<<<
  *                     'Property Ids': [int(id)],
  *                     'Cash Total': propObj['Cash'],
  */
-        __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 188, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_propObj, __pyx_kp_s_Main_Owner); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 194, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        if (unlikely((PyObject_SetItem(__pyx_v_ownerExistsSortedDict, __pyx_t_9, __pyx_t_1) < 0))) __PYX_ERR(0, 188, __pyx_L1_error)
+        if (unlikely((PyObject_SetItem(__pyx_v_ownerExistsSortedDict, __pyx_t_9, __pyx_t_20) < 0))) __PYX_ERR(0, 194, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
       }
-      __pyx_L68:;
+      __pyx_L78:;
     }
-    __pyx_L67:;
+    __pyx_L77:;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "zipparse.py":194
+  /* "zipparse.py":200
  *                 }
  * 
  *     sortedOwnerByCash = dict(sorted(ownerExistsSortedDict.items(), key=lambda item: item[1]['Cash Total'], reverse=True))             # <<<<<<<<<<<<<<
  *     sortedOwnerByShares = dict(sorted(ownerExistsSortedDict.items(), key=lambda item: item[1]['Shares Total'], reverse=True))
  *     print(f'Owner exists finished sorting')
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_ownerExistsSortedDict, __pyx_n_s_items); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_20 = __Pyx_PyObject_GetAttrStr(__pyx_v_ownerExistsSortedDict, __pyx_n_s_items); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_20);
   __pyx_t_9 = NULL;
   __pyx_t_4 = 0;
   #if CYTHON_UNPACK_METHODS
-  if (likely(PyMethod_Check(__pyx_t_1))) {
-    __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_1);
+  if (likely(PyMethod_Check(__pyx_t_20))) {
+    __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_20);
     if (likely(__pyx_t_9)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_20);
       __Pyx_INCREF(__pyx_t_9);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_1, function);
+      __Pyx_DECREF_SET(__pyx_t_20, function);
       __pyx_t_4 = 1;
     }
   }
   #endif
   {
     PyObject *__pyx_callargs[2] = {__pyx_t_9, NULL};
-    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
+    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_20, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
   }
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_20 = PyTuple_New(1); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_20);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_20, 0, __pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_9 = __Pyx_CyFunction_New(&__pyx_mdef_8zipparse_13generateLists_lambda, 0, __pyx_n_s_generateLists_locals_lambda, NULL, __pyx_n_s_zipparse, __pyx_d, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_CyFunction_New(&__pyx_mdef_8zipparse_13generateLists_lambda, 0, __pyx_n_s_generateLists_locals_lambda, NULL, __pyx_n_s_zipparse, __pyx_d, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_key, __pyx_t_9) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_key, __pyx_t_9) < 0) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_reverse, Py_True) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
-  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 194, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_reverse, Py_True) < 0) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_20, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyDict_Type)), __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyDict_Type)), __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_v_sortedOwnerByCash = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "zipparse.py":195
+  /* "zipparse.py":201
  * 
  *     sortedOwnerByCash = dict(sorted(ownerExistsSortedDict.items(), key=lambda item: item[1]['Cash Total'], reverse=True))
  *     sortedOwnerByShares = dict(sorted(ownerExistsSortedDict.items(), key=lambda item: item[1]['Shares Total'], reverse=True))             # <<<<<<<<<<<<<<
  *     print(f'Owner exists finished sorting')
  * 
  */
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_ownerExistsSortedDict, __pyx_n_s_items); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_ownerExistsSortedDict, __pyx_n_s_items); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_1 = NULL;
+  __pyx_t_20 = NULL;
   __pyx_t_4 = 0;
   #if CYTHON_UNPACK_METHODS
   if (likely(PyMethod_Check(__pyx_t_9))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_9);
-    if (likely(__pyx_t_1)) {
+    __pyx_t_20 = PyMethod_GET_SELF(__pyx_t_9);
+    if (likely(__pyx_t_20)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
-      __Pyx_INCREF(__pyx_t_1);
+      __Pyx_INCREF(__pyx_t_20);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_9, function);
       __pyx_t_4 = 1;
@@ -7942,120 +8118,120 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
   }
   #endif
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
+    PyObject *__pyx_callargs[2] = {__pyx_t_20, NULL};
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
-  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_8zipparse_13generateLists_1lambda1, 0, __pyx_n_s_generateLists_locals_lambda, NULL, __pyx_n_s_zipparse, __pyx_d, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_key, __pyx_t_1) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_reverse, Py_True) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_9, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_20 = __Pyx_CyFunction_New(&__pyx_mdef_8zipparse_13generateLists_1lambda1, 0, __pyx_n_s_generateLists_locals_lambda, NULL, __pyx_n_s_zipparse, __pyx_d, NULL); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_20);
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_key, __pyx_t_20) < 0) __PYX_ERR(0, 201, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_reverse, Py_True) < 0) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_20 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_9, __pyx_t_3); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_20);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyDict_Type)), __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyDict_Type)), __pyx_t_20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
   __pyx_v_sortedOwnerByShares = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "zipparse.py":196
+  /* "zipparse.py":202
  *     sortedOwnerByCash = dict(sorted(ownerExistsSortedDict.items(), key=lambda item: item[1]['Cash Total'], reverse=True))
  *     sortedOwnerByShares = dict(sorted(ownerExistsSortedDict.items(), key=lambda item: item[1]['Shares Total'], reverse=True))
  *     print(f'Owner exists finished sorting')             # <<<<<<<<<<<<<<
  * 
  *     sortedEmptyOwnerByCash = dict(sorted(ownerEmptyDict.items(), key=lambda item: item[1]['Cash'], reverse=True))
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "zipparse.py":198
+  /* "zipparse.py":204
  *     print(f'Owner exists finished sorting')
  * 
  *     sortedEmptyOwnerByCash = dict(sorted(ownerEmptyDict.items(), key=lambda item: item[1]['Cash'], reverse=True))             # <<<<<<<<<<<<<<
  *     sortedEmptyOwnerByShares = dict(sorted(ownerEmptyDict.items(), key=lambda item: item[1]['Shares'], reverse=True))
  *     print(f'No Owner exists sorting finished')
  */
-  __pyx_t_3 = __Pyx_PyDict_Items(__pyx_v_ownerEmptyDict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_Items(__pyx_v_ownerEmptyDict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 198, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_20 = PyTuple_New(1); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_20);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_20, 0, __pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_9 = __Pyx_CyFunction_New(&__pyx_mdef_8zipparse_13generateLists_2lambda2, 0, __pyx_n_s_generateLists_locals_lambda, NULL, __pyx_n_s_zipparse, __pyx_d, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_CyFunction_New(&__pyx_mdef_8zipparse_13generateLists_2lambda2, 0, __pyx_n_s_generateLists_locals_lambda, NULL, __pyx_n_s_zipparse, __pyx_d, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_key, __pyx_t_9) < 0) __PYX_ERR(0, 198, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_key, __pyx_t_9) < 0) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_reverse, Py_True) < 0) __PYX_ERR(0, 198, __pyx_L1_error)
-  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 198, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_reverse, Py_True) < 0) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_20, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyDict_Type)), __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyDict_Type)), __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_v_sortedEmptyOwnerByCash = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "zipparse.py":199
+  /* "zipparse.py":205
  * 
  *     sortedEmptyOwnerByCash = dict(sorted(ownerEmptyDict.items(), key=lambda item: item[1]['Cash'], reverse=True))
  *     sortedEmptyOwnerByShares = dict(sorted(ownerEmptyDict.items(), key=lambda item: item[1]['Shares'], reverse=True))             # <<<<<<<<<<<<<<
  *     print(f'No Owner exists sorting finished')
  * 
  */
-  __pyx_t_3 = __Pyx_PyDict_Items(__pyx_v_ownerEmptyDict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_Items(__pyx_v_ownerEmptyDict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_8zipparse_13generateLists_3lambda3, 0, __pyx_n_s_generateLists_locals_lambda, NULL, __pyx_n_s_zipparse, __pyx_d, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_key, __pyx_t_1) < 0) __PYX_ERR(0, 199, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_reverse, Py_True) < 0) __PYX_ERR(0, 199, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_9, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_20 = __Pyx_CyFunction_New(&__pyx_mdef_8zipparse_13generateLists_3lambda3, 0, __pyx_n_s_generateLists_locals_lambda, NULL, __pyx_n_s_zipparse, __pyx_d, NULL); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_20);
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_key, __pyx_t_20) < 0) __PYX_ERR(0, 205, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_reverse, Py_True) < 0) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_20 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_9, __pyx_t_3); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_20);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyDict_Type)), __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyDict_Type)), __pyx_t_20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
   __pyx_v_sortedEmptyOwnerByShares = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "zipparse.py":200
+  /* "zipparse.py":206
  *     sortedEmptyOwnerByCash = dict(sorted(ownerEmptyDict.items(), key=lambda item: item[1]['Cash'], reverse=True))
  *     sortedEmptyOwnerByShares = dict(sorted(ownerEmptyDict.items(), key=lambda item: item[1]['Shares'], reverse=True))
  *     print(f'No Owner exists sorting finished')             # <<<<<<<<<<<<<<
  * 
  *     with open(outputCashSorted, 'w', newline='') as cash_output_file, open(outputSharesSorted, 'w', newline='') as shares_output_file:
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "zipparse.py":202
+  /* "zipparse.py":208
  *     print(f'No Owner exists sorting finished')
  * 
  *     with open(outputCashSorted, 'w', newline='') as cash_output_file, open(outputSharesSorted, 'w', newline='') as shares_output_file:             # <<<<<<<<<<<<<<
@@ -8063,50 +8239,50 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  *         csv_shares_writer = csv.writer(shares_output_file)
  */
   /*with:*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_outputCashSorted); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_outputCashSorted); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_20 = PyTuple_New(2); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 208, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_20);
     __Pyx_GIVEREF(__pyx_t_3);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_20, 0, __pyx_t_3)) __PYX_ERR(0, 208, __pyx_L1_error);
     __Pyx_INCREF(__pyx_n_s_w);
     __Pyx_GIVEREF(__pyx_n_s_w);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_w)) __PYX_ERR(0, 202, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_20, 1, __pyx_n_s_w)) __PYX_ERR(0, 208, __pyx_L1_error);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_newline, __pyx_kp_s__3) < 0) __PYX_ERR(0, 202, __pyx_L1_error)
-    __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 202, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_newline, __pyx_kp_s__3) < 0) __PYX_ERR(0, 208, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_20, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_8 = __Pyx_PyObject_LookupSpecial(__pyx_t_9, __pyx_n_s_exit); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_LookupSpecial(__pyx_t_9, __pyx_n_s_exit); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_1 = __Pyx_PyObject_LookupSpecial(__pyx_t_9, __pyx_n_s_enter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L69_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_20 = NULL;
+    __pyx_t_20 = __Pyx_PyObject_LookupSpecial(__pyx_t_9, __pyx_n_s_enter); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 208, __pyx_L79_error)
+    __Pyx_GOTREF(__pyx_t_20);
+    __pyx_t_1 = NULL;
     __pyx_t_4 = 0;
     #if CYTHON_UNPACK_METHODS
-    if (likely(PyMethod_Check(__pyx_t_1))) {
-      __pyx_t_20 = PyMethod_GET_SELF(__pyx_t_1);
-      if (likely(__pyx_t_20)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-        __Pyx_INCREF(__pyx_t_20);
+    if (likely(PyMethod_Check(__pyx_t_20))) {
+      __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_20);
+      if (likely(__pyx_t_1)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_20);
+        __Pyx_INCREF(__pyx_t_1);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_1, function);
+        __Pyx_DECREF_SET(__pyx_t_20, function);
         __pyx_t_4 = 1;
       }
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_20, NULL};
-      __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
-      __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L69_error)
+      PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
+      __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_20, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
+      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 208, __pyx_L79_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
     }
-    __pyx_t_1 = __pyx_t_3;
+    __pyx_t_20 = __pyx_t_3;
     __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     /*try:*/ {
@@ -8118,38 +8294,38 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
         __Pyx_XGOTREF(__pyx_t_11);
         __Pyx_XGOTREF(__pyx_t_10);
         /*try:*/ {
-          __pyx_v_cash_output_file = __pyx_t_1;
-          __pyx_t_1 = 0;
+          __pyx_v_cash_output_file = __pyx_t_20;
+          __pyx_t_20 = 0;
           /*with:*/ {
-            __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_outputSharesSorted); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L73_error)
-            __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 202, __pyx_L73_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_20, __pyx_n_s_outputSharesSorted); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 208, __pyx_L83_error)
+            __Pyx_GOTREF(__pyx_t_20);
+            __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 208, __pyx_L83_error)
             __Pyx_GOTREF(__pyx_t_9);
-            __Pyx_GIVEREF(__pyx_t_1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_1)) __PYX_ERR(0, 202, __pyx_L73_error);
+            __Pyx_GIVEREF(__pyx_t_20);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_20)) __PYX_ERR(0, 208, __pyx_L83_error);
             __Pyx_INCREF(__pyx_n_s_w);
             __Pyx_GIVEREF(__pyx_n_s_w);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_n_s_w)) __PYX_ERR(0, 202, __pyx_L73_error);
-            __pyx_t_1 = 0;
-            __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L73_error)
-            __Pyx_GOTREF(__pyx_t_1);
-            if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_newline, __pyx_kp_s__3) < 0) __PYX_ERR(0, 202, __pyx_L73_error)
-            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_9, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L73_error)
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_n_s_w)) __PYX_ERR(0, 208, __pyx_L83_error);
+            __pyx_t_20 = 0;
+            __pyx_t_20 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 208, __pyx_L83_error)
+            __Pyx_GOTREF(__pyx_t_20);
+            if (PyDict_SetItem(__pyx_t_20, __pyx_n_s_newline, __pyx_kp_s__3) < 0) __PYX_ERR(0, 208, __pyx_L83_error)
+            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_9, __pyx_t_20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 208, __pyx_L83_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __pyx_t_13 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_exit); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 202, __pyx_L73_error)
+            __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+            __pyx_t_13 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_exit); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 208, __pyx_L83_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_enter); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 202, __pyx_L79_error)
+            __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_enter); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 208, __pyx_L89_error)
             __Pyx_GOTREF(__pyx_t_9);
-            __pyx_t_20 = NULL;
+            __pyx_t_1 = NULL;
             __pyx_t_4 = 0;
             #if CYTHON_UNPACK_METHODS
             if (likely(PyMethod_Check(__pyx_t_9))) {
-              __pyx_t_20 = PyMethod_GET_SELF(__pyx_t_9);
-              if (likely(__pyx_t_20)) {
+              __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_9);
+              if (likely(__pyx_t_1)) {
                 PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
-                __Pyx_INCREF(__pyx_t_20);
+                __Pyx_INCREF(__pyx_t_1);
                 __Pyx_INCREF(function);
                 __Pyx_DECREF_SET(__pyx_t_9, function);
                 __pyx_t_4 = 1;
@@ -8157,15 +8333,15 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
             }
             #endif
             {
-              PyObject *__pyx_callargs[2] = {__pyx_t_20, NULL};
-              __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
-              __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L79_error)
-              __Pyx_GOTREF(__pyx_t_1);
+              PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
+              __pyx_t_20 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
+              __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+              if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 208, __pyx_L89_error)
+              __Pyx_GOTREF(__pyx_t_20);
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
             }
-            __pyx_t_9 = __pyx_t_1;
-            __pyx_t_1 = 0;
+            __pyx_t_9 = __pyx_t_20;
+            __pyx_t_20 = 0;
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             /*try:*/ {
               {
@@ -8179,59 +8355,95 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                   __pyx_v_shares_output_file = __pyx_t_9;
                   __pyx_t_9 = 0;
 
-                  /* "zipparse.py":203
+                  /* "zipparse.py":209
  * 
  *     with open(outputCashSorted, 'w', newline='') as cash_output_file, open(outputSharesSorted, 'w', newline='') as shares_output_file:
  *         csv_cash_writer = csv.writer(cash_output_file)             # <<<<<<<<<<<<<<
  *         csv_shares_writer = csv.writer(shares_output_file)
  * 
  */
-                  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_csv); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L83_error)
+                  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_csv); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 209, __pyx_L93_error)
                   __Pyx_GOTREF(__pyx_t_3);
-                  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_writer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L83_error)
-                  __Pyx_GOTREF(__pyx_t_1);
+                  __pyx_t_20 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_writer); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 209, __pyx_L93_error)
+                  __Pyx_GOTREF(__pyx_t_20);
                   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                   __pyx_t_3 = NULL;
                   __pyx_t_4 = 0;
                   #if CYTHON_UNPACK_METHODS
-                  if (unlikely(PyMethod_Check(__pyx_t_1))) {
-                    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_1);
+                  if (unlikely(PyMethod_Check(__pyx_t_20))) {
+                    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_20);
                     if (likely(__pyx_t_3)) {
-                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_20);
                       __Pyx_INCREF(__pyx_t_3);
                       __Pyx_INCREF(function);
-                      __Pyx_DECREF_SET(__pyx_t_1, function);
+                      __Pyx_DECREF_SET(__pyx_t_20, function);
                       __pyx_t_4 = 1;
                     }
                   }
                   #endif
                   {
                     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_cash_output_file};
-                    __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                    __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_20, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
                     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-                    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 203, __pyx_L83_error)
+                    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 209, __pyx_L93_error)
                     __Pyx_GOTREF(__pyx_t_9);
-                    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
                   }
                   __pyx_v_csv_cash_writer = __pyx_t_9;
                   __pyx_t_9 = 0;
 
-                  /* "zipparse.py":204
+                  /* "zipparse.py":210
  *     with open(outputCashSorted, 'w', newline='') as cash_output_file, open(outputSharesSorted, 'w', newline='') as shares_output_file:
  *         csv_cash_writer = csv.writer(cash_output_file)
  *         csv_shares_writer = csv.writer(shares_output_file)             # <<<<<<<<<<<<<<
  * 
  *         csv_cash_writer.writerow(output_headers)
  */
-                  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_csv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L83_error)
-                  __Pyx_GOTREF(__pyx_t_1);
-                  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_writer); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L83_error)
+                  __Pyx_GetModuleGlobalName(__pyx_t_20, __pyx_n_s_csv); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 210, __pyx_L93_error)
+                  __Pyx_GOTREF(__pyx_t_20);
+                  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_20, __pyx_n_s_writer); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L93_error)
                   __Pyx_GOTREF(__pyx_t_3);
-                  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                  __pyx_t_1 = NULL;
+                  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                  __pyx_t_20 = NULL;
                   __pyx_t_4 = 0;
                   #if CYTHON_UNPACK_METHODS
                   if (unlikely(PyMethod_Check(__pyx_t_3))) {
+                    __pyx_t_20 = PyMethod_GET_SELF(__pyx_t_3);
+                    if (likely(__pyx_t_20)) {
+                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+                      __Pyx_INCREF(__pyx_t_20);
+                      __Pyx_INCREF(function);
+                      __Pyx_DECREF_SET(__pyx_t_3, function);
+                      __pyx_t_4 = 1;
+                    }
+                  }
+                  #endif
+                  {
+                    PyObject *__pyx_callargs[2] = {__pyx_t_20, __pyx_v_shares_output_file};
+                    __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                    __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
+                    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 210, __pyx_L93_error)
+                    __Pyx_GOTREF(__pyx_t_9);
+                    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                  }
+                  __pyx_v_csv_shares_writer = __pyx_t_9;
+                  __pyx_t_9 = 0;
+
+                  /* "zipparse.py":212
+ *         csv_shares_writer = csv.writer(shares_output_file)
+ * 
+ *         csv_cash_writer.writerow(output_headers)             # <<<<<<<<<<<<<<
+ *         csv_shares_writer.writerow(output_headers)
+ * 
+ */
+                  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_cash_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 212, __pyx_L93_error)
+                  __Pyx_GOTREF(__pyx_t_3);
+                  __Pyx_GetModuleGlobalName(__pyx_t_20, __pyx_n_s_output_headers); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 212, __pyx_L93_error)
+                  __Pyx_GOTREF(__pyx_t_20);
+                  __pyx_t_1 = NULL;
+                  __pyx_t_4 = 0;
+                  #if CYTHON_UNPACK_METHODS
+                  if (likely(PyMethod_Check(__pyx_t_3))) {
                     __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_3);
                     if (likely(__pyx_t_1)) {
                       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
@@ -8243,71 +8455,35 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                   }
                   #endif
                   {
-                    PyObject *__pyx_callargs[2] = {__pyx_t_1, __pyx_v_shares_output_file};
+                    PyObject *__pyx_callargs[2] = {__pyx_t_1, __pyx_t_20};
                     __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
                     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-                    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 204, __pyx_L83_error)
-                    __Pyx_GOTREF(__pyx_t_9);
-                    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                  }
-                  __pyx_v_csv_shares_writer = __pyx_t_9;
-                  __pyx_t_9 = 0;
-
-                  /* "zipparse.py":206
- *         csv_shares_writer = csv.writer(shares_output_file)
- * 
- *         csv_cash_writer.writerow(output_headers)             # <<<<<<<<<<<<<<
- *         csv_shares_writer.writerow(output_headers)
- * 
- */
-                  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_cash_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 206, __pyx_L83_error)
-                  __Pyx_GOTREF(__pyx_t_3);
-                  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_output_headers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 206, __pyx_L83_error)
-                  __Pyx_GOTREF(__pyx_t_1);
-                  __pyx_t_20 = NULL;
-                  __pyx_t_4 = 0;
-                  #if CYTHON_UNPACK_METHODS
-                  if (likely(PyMethod_Check(__pyx_t_3))) {
-                    __pyx_t_20 = PyMethod_GET_SELF(__pyx_t_3);
-                    if (likely(__pyx_t_20)) {
-                      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-                      __Pyx_INCREF(__pyx_t_20);
-                      __Pyx_INCREF(function);
-                      __Pyx_DECREF_SET(__pyx_t_3, function);
-                      __pyx_t_4 = 1;
-                    }
-                  }
-                  #endif
-                  {
-                    PyObject *__pyx_callargs[2] = {__pyx_t_20, __pyx_t_1};
-                    __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                    __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-                    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 206, __pyx_L83_error)
+                    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 212, __pyx_L93_error)
                     __Pyx_GOTREF(__pyx_t_9);
                     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                   }
                   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-                  /* "zipparse.py":207
+                  /* "zipparse.py":213
  * 
  *         csv_cash_writer.writerow(output_headers)
  *         csv_shares_writer.writerow(output_headers)             # <<<<<<<<<<<<<<
  * 
  *         for mainOwner in sortedOwnerByCash:
  */
-                  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_shares_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 207, __pyx_L83_error)
+                  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_shares_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 213, __pyx_L93_error)
                   __Pyx_GOTREF(__pyx_t_3);
-                  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_output_headers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 207, __pyx_L83_error)
-                  __Pyx_GOTREF(__pyx_t_1);
-                  __pyx_t_20 = NULL;
+                  __Pyx_GetModuleGlobalName(__pyx_t_20, __pyx_n_s_output_headers); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 213, __pyx_L93_error)
+                  __Pyx_GOTREF(__pyx_t_20);
+                  __pyx_t_1 = NULL;
                   __pyx_t_4 = 0;
                   #if CYTHON_UNPACK_METHODS
                   if (likely(PyMethod_Check(__pyx_t_3))) {
-                    __pyx_t_20 = PyMethod_GET_SELF(__pyx_t_3);
-                    if (likely(__pyx_t_20)) {
+                    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_3);
+                    if (likely(__pyx_t_1)) {
                       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-                      __Pyx_INCREF(__pyx_t_20);
+                      __Pyx_INCREF(__pyx_t_1);
                       __Pyx_INCREF(function);
                       __Pyx_DECREF_SET(__pyx_t_3, function);
                       __pyx_t_4 = 1;
@@ -8315,17 +8491,17 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                   }
                   #endif
                   {
-                    PyObject *__pyx_callargs[2] = {__pyx_t_20, __pyx_t_1};
+                    PyObject *__pyx_callargs[2] = {__pyx_t_1, __pyx_t_20};
                     __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                    __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-                    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 207, __pyx_L83_error)
+                    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+                    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 213, __pyx_L93_error)
                     __Pyx_GOTREF(__pyx_t_9);
                     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                   }
                   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-                  /* "zipparse.py":209
+                  /* "zipparse.py":215
  *         csv_shares_writer.writerow(output_headers)
  * 
  *         for mainOwner in sortedOwnerByCash:             # <<<<<<<<<<<<<<
@@ -8333,479 +8509,39 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  *                 for line in propertyIdSortedDict[propId]['Lines']:
  */
                   __pyx_t_24 = 0;
-                  __pyx_t_3 = __Pyx_dict_iterator(__pyx_v_sortedOwnerByCash, 1, ((PyObject *)NULL), (&__pyx_t_17), (&__pyx_t_32)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 209, __pyx_L83_error)
+                  __pyx_t_3 = __Pyx_dict_iterator(__pyx_v_sortedOwnerByCash, 1, ((PyObject *)NULL), (&__pyx_t_17), (&__pyx_t_34)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 215, __pyx_L93_error)
                   __Pyx_GOTREF(__pyx_t_3);
                   __Pyx_XDECREF(__pyx_t_9);
                   __pyx_t_9 = __pyx_t_3;
                   __pyx_t_3 = 0;
                   while (1) {
-                    __pyx_t_33 = __Pyx_dict_iter_next(__pyx_t_9, __pyx_t_17, &__pyx_t_24, &__pyx_t_3, NULL, NULL, __pyx_t_32);
-                    if (unlikely(__pyx_t_33 == 0)) break;
-                    if (unlikely(__pyx_t_33 == -1)) __PYX_ERR(0, 209, __pyx_L83_error)
+                    __pyx_t_35 = __Pyx_dict_iter_next(__pyx_t_9, __pyx_t_17, &__pyx_t_24, &__pyx_t_3, NULL, NULL, __pyx_t_34);
+                    if (unlikely(__pyx_t_35 == 0)) break;
+                    if (unlikely(__pyx_t_35 == -1)) __PYX_ERR(0, 215, __pyx_L93_error)
                     __Pyx_GOTREF(__pyx_t_3);
                     __Pyx_XDECREF_SET(__pyx_v_mainOwner, __pyx_t_3);
-                    __pyx_t_3 = 0;
-
-                    /* "zipparse.py":210
- * 
- *         for mainOwner in sortedOwnerByCash:
- *             for propId in sortedOwnerByCash[mainOwner]['Property Ids']:             # <<<<<<<<<<<<<<
- *                 for line in propertyIdSortedDict[propId]['Lines']:
- *                     print(f"writing owner cash sorted: {propId}")
- */
-                    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_sortedOwnerByCash, __pyx_v_mainOwner); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L83_error)
-                    __Pyx_GOTREF(__pyx_t_3);
-                    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_kp_s_Property_Ids); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L83_error)
-                    __Pyx_GOTREF(__pyx_t_1);
-                    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                    if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
-                      __pyx_t_3 = __pyx_t_1; __Pyx_INCREF(__pyx_t_3);
-                      __pyx_t_29 = 0;
-                      __pyx_t_18 = NULL;
-                    } else {
-                      __pyx_t_29 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_3);
-                      __pyx_t_18 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 210, __pyx_L83_error)
-                    }
-                    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                    for (;;) {
-                      if (likely(!__pyx_t_18)) {
-                        if (likely(PyList_CheckExact(__pyx_t_3))) {
-                          {
-                            Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_3);
-                            #if !CYTHON_ASSUME_SAFE_MACROS
-                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 210, __pyx_L83_error)
-                            #endif
-                            if (__pyx_t_29 >= __pyx_temp) break;
-                          }
-                          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_29); __Pyx_INCREF(__pyx_t_1); __pyx_t_29++; if (unlikely((0 < 0))) __PYX_ERR(0, 210, __pyx_L83_error)
-                          #else
-                          __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_29); __pyx_t_29++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L83_error)
-                          __Pyx_GOTREF(__pyx_t_1);
-                          #endif
-                        } else {
-                          {
-                            Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_3);
-                            #if !CYTHON_ASSUME_SAFE_MACROS
-                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 210, __pyx_L83_error)
-                            #endif
-                            if (__pyx_t_29 >= __pyx_temp) break;
-                          }
-                          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_29); __Pyx_INCREF(__pyx_t_1); __pyx_t_29++; if (unlikely((0 < 0))) __PYX_ERR(0, 210, __pyx_L83_error)
-                          #else
-                          __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_29); __pyx_t_29++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L83_error)
-                          __Pyx_GOTREF(__pyx_t_1);
-                          #endif
-                        }
-                      } else {
-                        __pyx_t_1 = __pyx_t_18(__pyx_t_3);
-                        if (unlikely(!__pyx_t_1)) {
-                          PyObject* exc_type = PyErr_Occurred();
-                          if (exc_type) {
-                            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                            else __PYX_ERR(0, 210, __pyx_L83_error)
-                          }
-                          break;
-                        }
-                        __Pyx_GOTREF(__pyx_t_1);
-                      }
-                      __Pyx_XDECREF_SET(__pyx_v_propId, __pyx_t_1);
-                      __pyx_t_1 = 0;
-
-                      /* "zipparse.py":211
- *         for mainOwner in sortedOwnerByCash:
- *             for propId in sortedOwnerByCash[mainOwner]['Property Ids']:
- *                 for line in propertyIdSortedDict[propId]['Lines']:             # <<<<<<<<<<<<<<
- *                     print(f"writing owner cash sorted: {propId}")
- *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:
- */
-                      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_1);
-                      __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_Lines); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 211, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_20);
-                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                      if (likely(PyList_CheckExact(__pyx_t_20)) || PyTuple_CheckExact(__pyx_t_20)) {
-                        __pyx_t_1 = __pyx_t_20; __Pyx_INCREF(__pyx_t_1);
-                        __pyx_t_35 = 0;
-                        __pyx_t_25 = NULL;
-                      } else {
-                        __pyx_t_35 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L83_error)
-                        __Pyx_GOTREF(__pyx_t_1);
-                        __pyx_t_25 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_25)) __PYX_ERR(0, 211, __pyx_L83_error)
-                      }
-                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                      for (;;) {
-                        if (likely(!__pyx_t_25)) {
-                          if (likely(PyList_CheckExact(__pyx_t_1))) {
-                            {
-                              Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
-                              #if !CYTHON_ASSUME_SAFE_MACROS
-                              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 211, __pyx_L83_error)
-                              #endif
-                              if (__pyx_t_35 >= __pyx_temp) break;
-                            }
-                            #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                            __pyx_t_20 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_35); __Pyx_INCREF(__pyx_t_20); __pyx_t_35++; if (unlikely((0 < 0))) __PYX_ERR(0, 211, __pyx_L83_error)
-                            #else
-                            __pyx_t_20 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_35); __pyx_t_35++; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 211, __pyx_L83_error)
-                            __Pyx_GOTREF(__pyx_t_20);
-                            #endif
-                          } else {
-                            {
-                              Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
-                              #if !CYTHON_ASSUME_SAFE_MACROS
-                              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 211, __pyx_L83_error)
-                              #endif
-                              if (__pyx_t_35 >= __pyx_temp) break;
-                            }
-                            #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                            __pyx_t_20 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_35); __Pyx_INCREF(__pyx_t_20); __pyx_t_35++; if (unlikely((0 < 0))) __PYX_ERR(0, 211, __pyx_L83_error)
-                            #else
-                            __pyx_t_20 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_35); __pyx_t_35++; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 211, __pyx_L83_error)
-                            __Pyx_GOTREF(__pyx_t_20);
-                            #endif
-                          }
-                        } else {
-                          __pyx_t_20 = __pyx_t_25(__pyx_t_1);
-                          if (unlikely(!__pyx_t_20)) {
-                            PyObject* exc_type = PyErr_Occurred();
-                            if (exc_type) {
-                              if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                              else __PYX_ERR(0, 211, __pyx_L83_error)
-                            }
-                            break;
-                          }
-                          __Pyx_GOTREF(__pyx_t_20);
-                        }
-                        __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_20);
-                        __pyx_t_20 = 0;
-
-                        /* "zipparse.py":212
- *             for propId in sortedOwnerByCash[mainOwner]['Property Ids']:
- *                 for line in propertyIdSortedDict[propId]['Lines']:
- *                     print(f"writing owner cash sorted: {propId}")             # <<<<<<<<<<<<<<
- *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:
- *                         csv_cash_writer.writerow(line)
- */
-                        __pyx_t_20 = __Pyx_PyObject_FormatSimple(__pyx_v_propId, __pyx_empty_unicode); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 212, __pyx_L83_error)
-                        __Pyx_GOTREF(__pyx_t_20);
-                        __pyx_t_27 = __Pyx_PyUnicode_Concat(__pyx_kp_u_writing_owner_cash_sorted, __pyx_t_20); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 212, __pyx_L83_error)
-                        __Pyx_GOTREF(__pyx_t_27);
-                        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                        __pyx_t_20 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_27); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 212, __pyx_L83_error)
-                        __Pyx_GOTREF(__pyx_t_20);
-                        __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-                        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-
-                        /* "zipparse.py":213
- *                 for line in propertyIdSortedDict[propId]['Lines']:
- *                     print(f"writing owner cash sorted: {propId}")
- *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:             # <<<<<<<<<<<<<<
- *                         csv_cash_writer.writerow(line)
- *         for propId in sortedEmptyOwnerByCash:
- */
-                        __pyx_t_20 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 213, __pyx_L83_error)
-                        __Pyx_GOTREF(__pyx_t_20);
-                        __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_t_20, __pyx_n_s_Cash); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 213, __pyx_L83_error)
-                        __Pyx_GOTREF(__pyx_t_27);
-                        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                        __pyx_t_20 = PyFloat_FromDouble(__pyx_v_minCash); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 213, __pyx_L83_error)
-                        __Pyx_GOTREF(__pyx_t_20);
-                        __pyx_t_2 = PyObject_RichCompare(__pyx_t_27, __pyx_t_20, Py_GE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L83_error)
-                        __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-                        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 213, __pyx_L83_error)
-                        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                        if (__pyx_t_6) {
-
-                          /* "zipparse.py":214
- *                     print(f"writing owner cash sorted: {propId}")
- *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:
- *                         csv_cash_writer.writerow(line)             # <<<<<<<<<<<<<<
- *         for propId in sortedEmptyOwnerByCash:
- *             for line in propertyIdSortedDict[propId]['Lines']:
- */
-                          __pyx_t_20 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_cash_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 214, __pyx_L83_error)
-                          __Pyx_GOTREF(__pyx_t_20);
-                          __pyx_t_27 = NULL;
-                          __pyx_t_4 = 0;
-                          #if CYTHON_UNPACK_METHODS
-                          if (likely(PyMethod_Check(__pyx_t_20))) {
-                            __pyx_t_27 = PyMethod_GET_SELF(__pyx_t_20);
-                            if (likely(__pyx_t_27)) {
-                              PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_20);
-                              __Pyx_INCREF(__pyx_t_27);
-                              __Pyx_INCREF(function);
-                              __Pyx_DECREF_SET(__pyx_t_20, function);
-                              __pyx_t_4 = 1;
-                            }
-                          }
-                          #endif
-                          {
-                            PyObject *__pyx_callargs[2] = {__pyx_t_27, __pyx_v_line};
-                            __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_20, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                            __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-                            if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 214, __pyx_L83_error)
-                            __Pyx_GOTREF(__pyx_t_2);
-                            __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                          }
-                          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-                          /* "zipparse.py":213
- *                 for line in propertyIdSortedDict[propId]['Lines']:
- *                     print(f"writing owner cash sorted: {propId}")
- *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:             # <<<<<<<<<<<<<<
- *                         csv_cash_writer.writerow(line)
- *         for propId in sortedEmptyOwnerByCash:
- */
-                        }
-
-                        /* "zipparse.py":211
- *         for mainOwner in sortedOwnerByCash:
- *             for propId in sortedOwnerByCash[mainOwner]['Property Ids']:
- *                 for line in propertyIdSortedDict[propId]['Lines']:             # <<<<<<<<<<<<<<
- *                     print(f"writing owner cash sorted: {propId}")
- *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:
- */
-                      }
-                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-                      /* "zipparse.py":210
- * 
- *         for mainOwner in sortedOwnerByCash:
- *             for propId in sortedOwnerByCash[mainOwner]['Property Ids']:             # <<<<<<<<<<<<<<
- *                 for line in propertyIdSortedDict[propId]['Lines']:
- *                     print(f"writing owner cash sorted: {propId}")
- */
-                    }
-                    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                  }
-                  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-
-                  /* "zipparse.py":215
- *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:
- *                         csv_cash_writer.writerow(line)
- *         for propId in sortedEmptyOwnerByCash:             # <<<<<<<<<<<<<<
- *             for line in propertyIdSortedDict[propId]['Lines']:
- *                 print(f"writing No owner cash sorted: {propId}")
- */
-                  __pyx_t_17 = 0;
-                  __pyx_t_3 = __Pyx_dict_iterator(__pyx_v_sortedEmptyOwnerByCash, 1, ((PyObject *)NULL), (&__pyx_t_24), (&__pyx_t_32)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 215, __pyx_L83_error)
-                  __Pyx_GOTREF(__pyx_t_3);
-                  __Pyx_XDECREF(__pyx_t_9);
-                  __pyx_t_9 = __pyx_t_3;
-                  __pyx_t_3 = 0;
-                  while (1) {
-                    __pyx_t_33 = __Pyx_dict_iter_next(__pyx_t_9, __pyx_t_24, &__pyx_t_17, &__pyx_t_3, NULL, NULL, __pyx_t_32);
-                    if (unlikely(__pyx_t_33 == 0)) break;
-                    if (unlikely(__pyx_t_33 == -1)) __PYX_ERR(0, 215, __pyx_L83_error)
-                    __Pyx_GOTREF(__pyx_t_3);
-                    __Pyx_XDECREF_SET(__pyx_v_propId, __pyx_t_3);
                     __pyx_t_3 = 0;
 
                     /* "zipparse.py":216
- *                         csv_cash_writer.writerow(line)
- *         for propId in sortedEmptyOwnerByCash:
- *             for line in propertyIdSortedDict[propId]['Lines']:             # <<<<<<<<<<<<<<
- *                 print(f"writing No owner cash sorted: {propId}")
- *                 if propertyIdSortedDict[propId]['Cash'] >= minCash:
- */
-                    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L83_error)
-                    __Pyx_GOTREF(__pyx_t_3);
-                    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_n_s_Lines); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L83_error)
-                    __Pyx_GOTREF(__pyx_t_1);
-                    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                    if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
-                      __pyx_t_3 = __pyx_t_1; __Pyx_INCREF(__pyx_t_3);
-                      __pyx_t_29 = 0;
-                      __pyx_t_18 = NULL;
-                    } else {
-                      __pyx_t_29 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_3);
-                      __pyx_t_18 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 216, __pyx_L83_error)
-                    }
-                    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                    for (;;) {
-                      if (likely(!__pyx_t_18)) {
-                        if (likely(PyList_CheckExact(__pyx_t_3))) {
-                          {
-                            Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_3);
-                            #if !CYTHON_ASSUME_SAFE_MACROS
-                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 216, __pyx_L83_error)
-                            #endif
-                            if (__pyx_t_29 >= __pyx_temp) break;
-                          }
-                          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_29); __Pyx_INCREF(__pyx_t_1); __pyx_t_29++; if (unlikely((0 < 0))) __PYX_ERR(0, 216, __pyx_L83_error)
-                          #else
-                          __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_29); __pyx_t_29++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L83_error)
-                          __Pyx_GOTREF(__pyx_t_1);
-                          #endif
-                        } else {
-                          {
-                            Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_3);
-                            #if !CYTHON_ASSUME_SAFE_MACROS
-                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 216, __pyx_L83_error)
-                            #endif
-                            if (__pyx_t_29 >= __pyx_temp) break;
-                          }
-                          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_29); __Pyx_INCREF(__pyx_t_1); __pyx_t_29++; if (unlikely((0 < 0))) __PYX_ERR(0, 216, __pyx_L83_error)
-                          #else
-                          __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_29); __pyx_t_29++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L83_error)
-                          __Pyx_GOTREF(__pyx_t_1);
-                          #endif
-                        }
-                      } else {
-                        __pyx_t_1 = __pyx_t_18(__pyx_t_3);
-                        if (unlikely(!__pyx_t_1)) {
-                          PyObject* exc_type = PyErr_Occurred();
-                          if (exc_type) {
-                            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                            else __PYX_ERR(0, 216, __pyx_L83_error)
-                          }
-                          break;
-                        }
-                        __Pyx_GOTREF(__pyx_t_1);
-                      }
-                      __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_1);
-                      __pyx_t_1 = 0;
-
-                      /* "zipparse.py":217
- *         for propId in sortedEmptyOwnerByCash:
- *             for line in propertyIdSortedDict[propId]['Lines']:
- *                 print(f"writing No owner cash sorted: {propId}")             # <<<<<<<<<<<<<<
- *                 if propertyIdSortedDict[propId]['Cash'] >= minCash:
- *                     csv_cash_writer.writerow(line)
- */
-                      __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_propId, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_1);
-                      __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_kp_u_writing_No_owner_cash_sorted, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 217, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_2);
-                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_1);
-                      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-                      /* "zipparse.py":218
- *             for line in propertyIdSortedDict[propId]['Lines']:
- *                 print(f"writing No owner cash sorted: {propId}")
- *                 if propertyIdSortedDict[propId]['Cash'] >= minCash:             # <<<<<<<<<<<<<<
- *                     csv_cash_writer.writerow(line)
  * 
- */
-                      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_1);
-                      __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_Cash); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_2);
-                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                      __pyx_t_1 = PyFloat_FromDouble(__pyx_v_minCash); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_1);
-                      __pyx_t_20 = PyObject_RichCompare(__pyx_t_2, __pyx_t_1, Py_GE); __Pyx_XGOTREF(__pyx_t_20); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 218, __pyx_L83_error)
-                      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_20); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 218, __pyx_L83_error)
-                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                      if (__pyx_t_6) {
-
-                        /* "zipparse.py":219
- *                 print(f"writing No owner cash sorted: {propId}")
- *                 if propertyIdSortedDict[propId]['Cash'] >= minCash:
- *                     csv_cash_writer.writerow(line)             # <<<<<<<<<<<<<<
- * 
- *         for mainOwner in sortedOwnerByShares:
- */
-                        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_cash_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L83_error)
-                        __Pyx_GOTREF(__pyx_t_1);
-                        __pyx_t_2 = NULL;
-                        __pyx_t_4 = 0;
-                        #if CYTHON_UNPACK_METHODS
-                        if (likely(PyMethod_Check(__pyx_t_1))) {
-                          __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_1);
-                          if (likely(__pyx_t_2)) {
-                            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-                            __Pyx_INCREF(__pyx_t_2);
-                            __Pyx_INCREF(function);
-                            __Pyx_DECREF_SET(__pyx_t_1, function);
-                            __pyx_t_4 = 1;
-                          }
-                        }
-                        #endif
-                        {
-                          PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_line};
-                          __pyx_t_20 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                          __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-                          if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 219, __pyx_L83_error)
-                          __Pyx_GOTREF(__pyx_t_20);
-                          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                        }
-                        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-
-                        /* "zipparse.py":218
- *             for line in propertyIdSortedDict[propId]['Lines']:
- *                 print(f"writing No owner cash sorted: {propId}")
- *                 if propertyIdSortedDict[propId]['Cash'] >= minCash:             # <<<<<<<<<<<<<<
- *                     csv_cash_writer.writerow(line)
- * 
- */
-                      }
-
-                      /* "zipparse.py":216
- *                         csv_cash_writer.writerow(line)
- *         for propId in sortedEmptyOwnerByCash:
- *             for line in propertyIdSortedDict[propId]['Lines']:             # <<<<<<<<<<<<<<
- *                 print(f"writing No owner cash sorted: {propId}")
- *                 if propertyIdSortedDict[propId]['Cash'] >= minCash:
- */
-                    }
-                    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                  }
-                  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-
-                  /* "zipparse.py":221
- *                     csv_cash_writer.writerow(line)
- * 
- *         for mainOwner in sortedOwnerByShares:             # <<<<<<<<<<<<<<
- *             for propId in sortedOwnerByShares[mainOwner]['Property Ids']:
+ *         for mainOwner in sortedOwnerByCash:
+ *             for propId in sortedOwnerByCash[mainOwner]['Property Ids']:             # <<<<<<<<<<<<<<
  *                 for line in propertyIdSortedDict[propId]['Lines']:
+ *                     print(f"writing owner cash sorted: {propId}")
  */
-                  __pyx_t_24 = 0;
-                  __pyx_t_3 = __Pyx_dict_iterator(__pyx_v_sortedOwnerByShares, 1, ((PyObject *)NULL), (&__pyx_t_17), (&__pyx_t_32)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L83_error)
-                  __Pyx_GOTREF(__pyx_t_3);
-                  __Pyx_XDECREF(__pyx_t_9);
-                  __pyx_t_9 = __pyx_t_3;
-                  __pyx_t_3 = 0;
-                  while (1) {
-                    __pyx_t_33 = __Pyx_dict_iter_next(__pyx_t_9, __pyx_t_17, &__pyx_t_24, &__pyx_t_3, NULL, NULL, __pyx_t_32);
-                    if (unlikely(__pyx_t_33 == 0)) break;
-                    if (unlikely(__pyx_t_33 == -1)) __PYX_ERR(0, 221, __pyx_L83_error)
+                    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_sortedOwnerByCash, __pyx_v_mainOwner); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L93_error)
                     __Pyx_GOTREF(__pyx_t_3);
-                    __Pyx_XDECREF_SET(__pyx_v_mainOwner, __pyx_t_3);
-                    __pyx_t_3 = 0;
-
-                    /* "zipparse.py":222
- * 
- *         for mainOwner in sortedOwnerByShares:
- *             for propId in sortedOwnerByShares[mainOwner]['Property Ids']:             # <<<<<<<<<<<<<<
- *                 for line in propertyIdSortedDict[propId]['Lines']:
- *                     print(f"writing owner shares sorted: {propId}")
- */
-                    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_sortedOwnerByShares, __pyx_v_mainOwner); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 222, __pyx_L83_error)
-                    __Pyx_GOTREF(__pyx_t_3);
-                    __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_kp_s_Property_Ids); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 222, __pyx_L83_error)
+                    __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_kp_s_Property_Ids); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 216, __pyx_L93_error)
                     __Pyx_GOTREF(__pyx_t_20);
                     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                     if (likely(PyList_CheckExact(__pyx_t_20)) || PyTuple_CheckExact(__pyx_t_20)) {
                       __pyx_t_3 = __pyx_t_20; __Pyx_INCREF(__pyx_t_3);
-                      __pyx_t_29 = 0;
+                      __pyx_t_32 = 0;
                       __pyx_t_18 = NULL;
                     } else {
-                      __pyx_t_29 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 222, __pyx_L83_error)
+                      __pyx_t_32 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L93_error)
                       __Pyx_GOTREF(__pyx_t_3);
-                      __pyx_t_18 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 222, __pyx_L83_error)
+                      __pyx_t_18 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 216, __pyx_L93_error)
                     }
                     __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
                     for (;;) {
@@ -8814,28 +8550,28 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                           {
                             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_3);
                             #if !CYTHON_ASSUME_SAFE_MACROS
-                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 222, __pyx_L83_error)
+                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 216, __pyx_L93_error)
                             #endif
-                            if (__pyx_t_29 >= __pyx_temp) break;
+                            if (__pyx_t_32 >= __pyx_temp) break;
                           }
                           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                          __pyx_t_20 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_29); __Pyx_INCREF(__pyx_t_20); __pyx_t_29++; if (unlikely((0 < 0))) __PYX_ERR(0, 222, __pyx_L83_error)
+                          __pyx_t_20 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_32); __Pyx_INCREF(__pyx_t_20); __pyx_t_32++; if (unlikely((0 < 0))) __PYX_ERR(0, 216, __pyx_L93_error)
                           #else
-                          __pyx_t_20 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_29); __pyx_t_29++; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 222, __pyx_L83_error)
+                          __pyx_t_20 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_32); __pyx_t_32++; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 216, __pyx_L93_error)
                           __Pyx_GOTREF(__pyx_t_20);
                           #endif
                         } else {
                           {
                             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_3);
                             #if !CYTHON_ASSUME_SAFE_MACROS
-                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 222, __pyx_L83_error)
+                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 216, __pyx_L93_error)
                             #endif
-                            if (__pyx_t_29 >= __pyx_temp) break;
+                            if (__pyx_t_32 >= __pyx_temp) break;
                           }
                           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                          __pyx_t_20 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_29); __Pyx_INCREF(__pyx_t_20); __pyx_t_29++; if (unlikely((0 < 0))) __PYX_ERR(0, 222, __pyx_L83_error)
+                          __pyx_t_20 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_32); __Pyx_INCREF(__pyx_t_20); __pyx_t_32++; if (unlikely((0 < 0))) __PYX_ERR(0, 216, __pyx_L93_error)
                           #else
-                          __pyx_t_20 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_29); __pyx_t_29++; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 222, __pyx_L83_error)
+                          __pyx_t_20 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_32); __pyx_t_32++; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 216, __pyx_L93_error)
                           __Pyx_GOTREF(__pyx_t_20);
                           #endif
                         }
@@ -8845,7 +8581,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                           PyObject* exc_type = PyErr_Occurred();
                           if (exc_type) {
                             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                            else __PYX_ERR(0, 222, __pyx_L83_error)
+                            else __PYX_ERR(0, 216, __pyx_L93_error)
                           }
                           break;
                         }
@@ -8854,26 +8590,26 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                       __Pyx_XDECREF_SET(__pyx_v_propId, __pyx_t_20);
                       __pyx_t_20 = 0;
 
-                      /* "zipparse.py":223
- *         for mainOwner in sortedOwnerByShares:
- *             for propId in sortedOwnerByShares[mainOwner]['Property Ids']:
+                      /* "zipparse.py":217
+ *         for mainOwner in sortedOwnerByCash:
+ *             for propId in sortedOwnerByCash[mainOwner]['Property Ids']:
  *                 for line in propertyIdSortedDict[propId]['Lines']:             # <<<<<<<<<<<<<<
- *                     print(f"writing owner shares sorted: {propId}")
- *                     if propertyIdSortedDict[propId]['Shares'] >= minShares:
+ *                     print(f"writing owner cash sorted: {propId}")
+ *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:
  */
-                      __pyx_t_20 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 223, __pyx_L83_error)
+                      __pyx_t_20 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 217, __pyx_L93_error)
                       __Pyx_GOTREF(__pyx_t_20);
-                      __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_20, __pyx_n_s_Lines); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L83_error)
+                      __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_20, __pyx_n_s_Lines); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L93_error)
                       __Pyx_GOTREF(__pyx_t_1);
                       __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
                       if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
                         __pyx_t_20 = __pyx_t_1; __Pyx_INCREF(__pyx_t_20);
-                        __pyx_t_35 = 0;
+                        __pyx_t_37 = 0;
                         __pyx_t_25 = NULL;
                       } else {
-                        __pyx_t_35 = -1; __pyx_t_20 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 223, __pyx_L83_error)
+                        __pyx_t_37 = -1; __pyx_t_20 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 217, __pyx_L93_error)
                         __Pyx_GOTREF(__pyx_t_20);
-                        __pyx_t_25 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_20); if (unlikely(!__pyx_t_25)) __PYX_ERR(0, 223, __pyx_L83_error)
+                        __pyx_t_25 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_20); if (unlikely(!__pyx_t_25)) __PYX_ERR(0, 217, __pyx_L93_error)
                       }
                       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                       for (;;) {
@@ -8882,28 +8618,28 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                             {
                               Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_20);
                               #if !CYTHON_ASSUME_SAFE_MACROS
-                              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 223, __pyx_L83_error)
+                              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 217, __pyx_L93_error)
                               #endif
-                              if (__pyx_t_35 >= __pyx_temp) break;
+                              if (__pyx_t_37 >= __pyx_temp) break;
                             }
                             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_20, __pyx_t_35); __Pyx_INCREF(__pyx_t_1); __pyx_t_35++; if (unlikely((0 < 0))) __PYX_ERR(0, 223, __pyx_L83_error)
+                            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_20, __pyx_t_37); __Pyx_INCREF(__pyx_t_1); __pyx_t_37++; if (unlikely((0 < 0))) __PYX_ERR(0, 217, __pyx_L93_error)
                             #else
-                            __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_20, __pyx_t_35); __pyx_t_35++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L83_error)
+                            __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_20, __pyx_t_37); __pyx_t_37++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L93_error)
                             __Pyx_GOTREF(__pyx_t_1);
                             #endif
                           } else {
                             {
                               Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_20);
                               #if !CYTHON_ASSUME_SAFE_MACROS
-                              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 223, __pyx_L83_error)
+                              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 217, __pyx_L93_error)
                               #endif
-                              if (__pyx_t_35 >= __pyx_temp) break;
+                              if (__pyx_t_37 >= __pyx_temp) break;
                             }
                             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_20, __pyx_t_35); __Pyx_INCREF(__pyx_t_1); __pyx_t_35++; if (unlikely((0 < 0))) __PYX_ERR(0, 223, __pyx_L83_error)
+                            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_20, __pyx_t_37); __Pyx_INCREF(__pyx_t_1); __pyx_t_37++; if (unlikely((0 < 0))) __PYX_ERR(0, 217, __pyx_L93_error)
                             #else
-                            __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_20, __pyx_t_35); __pyx_t_35++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L83_error)
+                            __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_20, __pyx_t_37); __pyx_t_37++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L93_error)
                             __Pyx_GOTREF(__pyx_t_1);
                             #endif
                           }
@@ -8913,7 +8649,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                             PyObject* exc_type = PyErr_Occurred();
                             if (exc_type) {
                               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                              else __PYX_ERR(0, 223, __pyx_L83_error)
+                              else __PYX_ERR(0, 217, __pyx_L93_error)
                             }
                             break;
                           }
@@ -8922,61 +8658,61 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                         __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_1);
                         __pyx_t_1 = 0;
 
-                        /* "zipparse.py":224
- *             for propId in sortedOwnerByShares[mainOwner]['Property Ids']:
+                        /* "zipparse.py":218
+ *             for propId in sortedOwnerByCash[mainOwner]['Property Ids']:
  *                 for line in propertyIdSortedDict[propId]['Lines']:
- *                     print(f"writing owner shares sorted: {propId}")             # <<<<<<<<<<<<<<
- *                     if propertyIdSortedDict[propId]['Shares'] >= minShares:
- *                         csv_shares_writer.writerow(line)
+ *                     print(f"writing owner cash sorted: {propId}")             # <<<<<<<<<<<<<<
+ *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:
+ *                         csv_cash_writer.writerow(line)
  */
-                        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_propId, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L83_error)
+                        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_propId, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L93_error)
                         __Pyx_GOTREF(__pyx_t_1);
-                        __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_kp_u_writing_owner_shares_sorted, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L83_error)
-                        __Pyx_GOTREF(__pyx_t_2);
+                        __pyx_t_30 = __Pyx_PyUnicode_Concat(__pyx_kp_u_writing_owner_cash_sorted, __pyx_t_1); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 218, __pyx_L93_error)
+                        __Pyx_GOTREF(__pyx_t_30);
                         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L83_error)
+                        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_30); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L93_error)
                         __Pyx_GOTREF(__pyx_t_1);
-                        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                        __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
                         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-                        /* "zipparse.py":225
+                        /* "zipparse.py":219
  *                 for line in propertyIdSortedDict[propId]['Lines']:
- *                     print(f"writing owner shares sorted: {propId}")
- *                     if propertyIdSortedDict[propId]['Shares'] >= minShares:             # <<<<<<<<<<<<<<
- *                         csv_shares_writer.writerow(line)
- *         for propId in sortedEmptyOwnerByShares:
+ *                     print(f"writing owner cash sorted: {propId}")
+ *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:             # <<<<<<<<<<<<<<
+ *                         csv_cash_writer.writerow(line)
+ *         for propId in sortedEmptyOwnerByCash:
  */
-                        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L83_error)
+                        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L93_error)
                         __Pyx_GOTREF(__pyx_t_1);
-                        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_Shares); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 225, __pyx_L83_error)
-                        __Pyx_GOTREF(__pyx_t_2);
+                        __pyx_t_30 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_Cash); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 219, __pyx_L93_error)
+                        __Pyx_GOTREF(__pyx_t_30);
                         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_minShares); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L83_error)
+                        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_minCash); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L93_error)
                         __Pyx_GOTREF(__pyx_t_1);
-                        __pyx_t_27 = PyObject_RichCompare(__pyx_t_2, __pyx_t_1, Py_GE); __Pyx_XGOTREF(__pyx_t_27); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 225, __pyx_L83_error)
+                        __pyx_t_2 = PyObject_RichCompare(__pyx_t_30, __pyx_t_1, Py_GE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L93_error)
+                        __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
+                        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 219, __pyx_L93_error)
                         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-                        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_27); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 225, __pyx_L83_error)
-                        __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
                         if (__pyx_t_6) {
 
-                          /* "zipparse.py":226
- *                     print(f"writing owner shares sorted: {propId}")
- *                     if propertyIdSortedDict[propId]['Shares'] >= minShares:
- *                         csv_shares_writer.writerow(line)             # <<<<<<<<<<<<<<
- *         for propId in sortedEmptyOwnerByShares:
+                          /* "zipparse.py":220
+ *                     print(f"writing owner cash sorted: {propId}")
+ *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:
+ *                         csv_cash_writer.writerow(line)             # <<<<<<<<<<<<<<
+ *         for propId in sortedEmptyOwnerByCash:
  *             for line in propertyIdSortedDict[propId]['Lines']:
  */
-                          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_shares_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L83_error)
+                          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_cash_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L93_error)
                           __Pyx_GOTREF(__pyx_t_1);
-                          __pyx_t_2 = NULL;
+                          __pyx_t_30 = NULL;
                           __pyx_t_4 = 0;
                           #if CYTHON_UNPACK_METHODS
                           if (likely(PyMethod_Check(__pyx_t_1))) {
-                            __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_1);
-                            if (likely(__pyx_t_2)) {
+                            __pyx_t_30 = PyMethod_GET_SELF(__pyx_t_1);
+                            if (likely(__pyx_t_30)) {
                               PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-                              __Pyx_INCREF(__pyx_t_2);
+                              __Pyx_INCREF(__pyx_t_30);
                               __Pyx_INCREF(function);
                               __Pyx_DECREF_SET(__pyx_t_1, function);
                               __pyx_t_4 = 1;
@@ -8984,16 +8720,456 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                           }
                           #endif
                           {
-                            PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_line};
-                            __pyx_t_27 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                            __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-                            if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 226, __pyx_L83_error)
-                            __Pyx_GOTREF(__pyx_t_27);
+                            PyObject *__pyx_callargs[2] = {__pyx_t_30, __pyx_v_line};
+                            __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                            __Pyx_XDECREF(__pyx_t_30); __pyx_t_30 = 0;
+                            if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 220, __pyx_L93_error)
+                            __Pyx_GOTREF(__pyx_t_2);
                             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                           }
-                          __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
+                          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-                          /* "zipparse.py":225
+                          /* "zipparse.py":219
+ *                 for line in propertyIdSortedDict[propId]['Lines']:
+ *                     print(f"writing owner cash sorted: {propId}")
+ *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:             # <<<<<<<<<<<<<<
+ *                         csv_cash_writer.writerow(line)
+ *         for propId in sortedEmptyOwnerByCash:
+ */
+                        }
+
+                        /* "zipparse.py":217
+ *         for mainOwner in sortedOwnerByCash:
+ *             for propId in sortedOwnerByCash[mainOwner]['Property Ids']:
+ *                 for line in propertyIdSortedDict[propId]['Lines']:             # <<<<<<<<<<<<<<
+ *                     print(f"writing owner cash sorted: {propId}")
+ *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:
+ */
+                      }
+                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+
+                      /* "zipparse.py":216
+ * 
+ *         for mainOwner in sortedOwnerByCash:
+ *             for propId in sortedOwnerByCash[mainOwner]['Property Ids']:             # <<<<<<<<<<<<<<
+ *                 for line in propertyIdSortedDict[propId]['Lines']:
+ *                     print(f"writing owner cash sorted: {propId}")
+ */
+                    }
+                    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                  }
+                  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+
+                  /* "zipparse.py":221
+ *                     if propertyIdSortedDict[propId]['Cash'] >= minCash:
+ *                         csv_cash_writer.writerow(line)
+ *         for propId in sortedEmptyOwnerByCash:             # <<<<<<<<<<<<<<
+ *             for line in propertyIdSortedDict[propId]['Lines']:
+ *                 print(f"writing No owner cash sorted: {propId}")
+ */
+                  __pyx_t_17 = 0;
+                  __pyx_t_3 = __Pyx_dict_iterator(__pyx_v_sortedEmptyOwnerByCash, 1, ((PyObject *)NULL), (&__pyx_t_24), (&__pyx_t_34)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L93_error)
+                  __Pyx_GOTREF(__pyx_t_3);
+                  __Pyx_XDECREF(__pyx_t_9);
+                  __pyx_t_9 = __pyx_t_3;
+                  __pyx_t_3 = 0;
+                  while (1) {
+                    __pyx_t_35 = __Pyx_dict_iter_next(__pyx_t_9, __pyx_t_24, &__pyx_t_17, &__pyx_t_3, NULL, NULL, __pyx_t_34);
+                    if (unlikely(__pyx_t_35 == 0)) break;
+                    if (unlikely(__pyx_t_35 == -1)) __PYX_ERR(0, 221, __pyx_L93_error)
+                    __Pyx_GOTREF(__pyx_t_3);
+                    __Pyx_XDECREF_SET(__pyx_v_propId, __pyx_t_3);
+                    __pyx_t_3 = 0;
+
+                    /* "zipparse.py":222
+ *                         csv_cash_writer.writerow(line)
+ *         for propId in sortedEmptyOwnerByCash:
+ *             for line in propertyIdSortedDict[propId]['Lines']:             # <<<<<<<<<<<<<<
+ *                 print(f"writing No owner cash sorted: {propId}")
+ *                 if propertyIdSortedDict[propId]['Cash'] >= minCash:
+ */
+                    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 222, __pyx_L93_error)
+                    __Pyx_GOTREF(__pyx_t_3);
+                    __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_n_s_Lines); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 222, __pyx_L93_error)
+                    __Pyx_GOTREF(__pyx_t_20);
+                    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                    if (likely(PyList_CheckExact(__pyx_t_20)) || PyTuple_CheckExact(__pyx_t_20)) {
+                      __pyx_t_3 = __pyx_t_20; __Pyx_INCREF(__pyx_t_3);
+                      __pyx_t_32 = 0;
+                      __pyx_t_18 = NULL;
+                    } else {
+                      __pyx_t_32 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 222, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_3);
+                      __pyx_t_18 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 222, __pyx_L93_error)
+                    }
+                    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                    for (;;) {
+                      if (likely(!__pyx_t_18)) {
+                        if (likely(PyList_CheckExact(__pyx_t_3))) {
+                          {
+                            Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_3);
+                            #if !CYTHON_ASSUME_SAFE_MACROS
+                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 222, __pyx_L93_error)
+                            #endif
+                            if (__pyx_t_32 >= __pyx_temp) break;
+                          }
+                          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+                          __pyx_t_20 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_32); __Pyx_INCREF(__pyx_t_20); __pyx_t_32++; if (unlikely((0 < 0))) __PYX_ERR(0, 222, __pyx_L93_error)
+                          #else
+                          __pyx_t_20 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_32); __pyx_t_32++; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 222, __pyx_L93_error)
+                          __Pyx_GOTREF(__pyx_t_20);
+                          #endif
+                        } else {
+                          {
+                            Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_3);
+                            #if !CYTHON_ASSUME_SAFE_MACROS
+                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 222, __pyx_L93_error)
+                            #endif
+                            if (__pyx_t_32 >= __pyx_temp) break;
+                          }
+                          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+                          __pyx_t_20 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_32); __Pyx_INCREF(__pyx_t_20); __pyx_t_32++; if (unlikely((0 < 0))) __PYX_ERR(0, 222, __pyx_L93_error)
+                          #else
+                          __pyx_t_20 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_32); __pyx_t_32++; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 222, __pyx_L93_error)
+                          __Pyx_GOTREF(__pyx_t_20);
+                          #endif
+                        }
+                      } else {
+                        __pyx_t_20 = __pyx_t_18(__pyx_t_3);
+                        if (unlikely(!__pyx_t_20)) {
+                          PyObject* exc_type = PyErr_Occurred();
+                          if (exc_type) {
+                            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+                            else __PYX_ERR(0, 222, __pyx_L93_error)
+                          }
+                          break;
+                        }
+                        __Pyx_GOTREF(__pyx_t_20);
+                      }
+                      __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_20);
+                      __pyx_t_20 = 0;
+
+                      /* "zipparse.py":223
+ *         for propId in sortedEmptyOwnerByCash:
+ *             for line in propertyIdSortedDict[propId]['Lines']:
+ *                 print(f"writing No owner cash sorted: {propId}")             # <<<<<<<<<<<<<<
+ *                 if propertyIdSortedDict[propId]['Cash'] >= minCash:
+ *                     csv_cash_writer.writerow(line)
+ */
+                      __pyx_t_20 = __Pyx_PyObject_FormatSimple(__pyx_v_propId, __pyx_empty_unicode); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 223, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_20);
+                      __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_kp_u_writing_No_owner_cash_sorted, __pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_2);
+                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                      __pyx_t_20 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_2); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 223, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_20);
+                      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+
+                      /* "zipparse.py":224
+ *             for line in propertyIdSortedDict[propId]['Lines']:
+ *                 print(f"writing No owner cash sorted: {propId}")
+ *                 if propertyIdSortedDict[propId]['Cash'] >= minCash:             # <<<<<<<<<<<<<<
+ *                     csv_cash_writer.writerow(line)
+ * 
+ */
+                      __pyx_t_20 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 224, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_20);
+                      __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_20, __pyx_n_s_Cash); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_2);
+                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                      __pyx_t_20 = PyFloat_FromDouble(__pyx_v_minCash); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 224, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_20);
+                      __pyx_t_1 = PyObject_RichCompare(__pyx_t_2, __pyx_t_20, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L93_error)
+                      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 224, __pyx_L93_error)
+                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                      if (__pyx_t_6) {
+
+                        /* "zipparse.py":225
+ *                 print(f"writing No owner cash sorted: {propId}")
+ *                 if propertyIdSortedDict[propId]['Cash'] >= minCash:
+ *                     csv_cash_writer.writerow(line)             # <<<<<<<<<<<<<<
+ * 
+ *         for mainOwner in sortedOwnerByShares:
+ */
+                        __pyx_t_20 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_cash_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 225, __pyx_L93_error)
+                        __Pyx_GOTREF(__pyx_t_20);
+                        __pyx_t_2 = NULL;
+                        __pyx_t_4 = 0;
+                        #if CYTHON_UNPACK_METHODS
+                        if (likely(PyMethod_Check(__pyx_t_20))) {
+                          __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_20);
+                          if (likely(__pyx_t_2)) {
+                            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_20);
+                            __Pyx_INCREF(__pyx_t_2);
+                            __Pyx_INCREF(function);
+                            __Pyx_DECREF_SET(__pyx_t_20, function);
+                            __pyx_t_4 = 1;
+                          }
+                        }
+                        #endif
+                        {
+                          PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_line};
+                          __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_20, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                          __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+                          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L93_error)
+                          __Pyx_GOTREF(__pyx_t_1);
+                          __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                        }
+                        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+                        /* "zipparse.py":224
+ *             for line in propertyIdSortedDict[propId]['Lines']:
+ *                 print(f"writing No owner cash sorted: {propId}")
+ *                 if propertyIdSortedDict[propId]['Cash'] >= minCash:             # <<<<<<<<<<<<<<
+ *                     csv_cash_writer.writerow(line)
+ * 
+ */
+                      }
+
+                      /* "zipparse.py":222
+ *                         csv_cash_writer.writerow(line)
+ *         for propId in sortedEmptyOwnerByCash:
+ *             for line in propertyIdSortedDict[propId]['Lines']:             # <<<<<<<<<<<<<<
+ *                 print(f"writing No owner cash sorted: {propId}")
+ *                 if propertyIdSortedDict[propId]['Cash'] >= minCash:
+ */
+                    }
+                    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                  }
+                  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+
+                  /* "zipparse.py":227
+ *                     csv_cash_writer.writerow(line)
+ * 
+ *         for mainOwner in sortedOwnerByShares:             # <<<<<<<<<<<<<<
+ *             for propId in sortedOwnerByShares[mainOwner]['Property Ids']:
+ *                 for line in propertyIdSortedDict[propId]['Lines']:
+ */
+                  __pyx_t_24 = 0;
+                  __pyx_t_3 = __Pyx_dict_iterator(__pyx_v_sortedOwnerByShares, 1, ((PyObject *)NULL), (&__pyx_t_17), (&__pyx_t_34)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L93_error)
+                  __Pyx_GOTREF(__pyx_t_3);
+                  __Pyx_XDECREF(__pyx_t_9);
+                  __pyx_t_9 = __pyx_t_3;
+                  __pyx_t_3 = 0;
+                  while (1) {
+                    __pyx_t_35 = __Pyx_dict_iter_next(__pyx_t_9, __pyx_t_17, &__pyx_t_24, &__pyx_t_3, NULL, NULL, __pyx_t_34);
+                    if (unlikely(__pyx_t_35 == 0)) break;
+                    if (unlikely(__pyx_t_35 == -1)) __PYX_ERR(0, 227, __pyx_L93_error)
+                    __Pyx_GOTREF(__pyx_t_3);
+                    __Pyx_XDECREF_SET(__pyx_v_mainOwner, __pyx_t_3);
+                    __pyx_t_3 = 0;
+
+                    /* "zipparse.py":228
+ * 
+ *         for mainOwner in sortedOwnerByShares:
+ *             for propId in sortedOwnerByShares[mainOwner]['Property Ids']:             # <<<<<<<<<<<<<<
+ *                 for line in propertyIdSortedDict[propId]['Lines']:
+ *                     print(f"writing owner shares sorted: {propId}")
+ */
+                    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_sortedOwnerByShares, __pyx_v_mainOwner); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 228, __pyx_L93_error)
+                    __Pyx_GOTREF(__pyx_t_3);
+                    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_kp_s_Property_Ids); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L93_error)
+                    __Pyx_GOTREF(__pyx_t_1);
+                    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                    if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
+                      __pyx_t_3 = __pyx_t_1; __Pyx_INCREF(__pyx_t_3);
+                      __pyx_t_32 = 0;
+                      __pyx_t_18 = NULL;
+                    } else {
+                      __pyx_t_32 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 228, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_3);
+                      __pyx_t_18 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 228, __pyx_L93_error)
+                    }
+                    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                    for (;;) {
+                      if (likely(!__pyx_t_18)) {
+                        if (likely(PyList_CheckExact(__pyx_t_3))) {
+                          {
+                            Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_3);
+                            #if !CYTHON_ASSUME_SAFE_MACROS
+                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 228, __pyx_L93_error)
+                            #endif
+                            if (__pyx_t_32 >= __pyx_temp) break;
+                          }
+                          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+                          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_32); __Pyx_INCREF(__pyx_t_1); __pyx_t_32++; if (unlikely((0 < 0))) __PYX_ERR(0, 228, __pyx_L93_error)
+                          #else
+                          __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_32); __pyx_t_32++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L93_error)
+                          __Pyx_GOTREF(__pyx_t_1);
+                          #endif
+                        } else {
+                          {
+                            Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_3);
+                            #if !CYTHON_ASSUME_SAFE_MACROS
+                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 228, __pyx_L93_error)
+                            #endif
+                            if (__pyx_t_32 >= __pyx_temp) break;
+                          }
+                          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+                          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_32); __Pyx_INCREF(__pyx_t_1); __pyx_t_32++; if (unlikely((0 < 0))) __PYX_ERR(0, 228, __pyx_L93_error)
+                          #else
+                          __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_32); __pyx_t_32++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L93_error)
+                          __Pyx_GOTREF(__pyx_t_1);
+                          #endif
+                        }
+                      } else {
+                        __pyx_t_1 = __pyx_t_18(__pyx_t_3);
+                        if (unlikely(!__pyx_t_1)) {
+                          PyObject* exc_type = PyErr_Occurred();
+                          if (exc_type) {
+                            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+                            else __PYX_ERR(0, 228, __pyx_L93_error)
+                          }
+                          break;
+                        }
+                        __Pyx_GOTREF(__pyx_t_1);
+                      }
+                      __Pyx_XDECREF_SET(__pyx_v_propId, __pyx_t_1);
+                      __pyx_t_1 = 0;
+
+                      /* "zipparse.py":229
+ *         for mainOwner in sortedOwnerByShares:
+ *             for propId in sortedOwnerByShares[mainOwner]['Property Ids']:
+ *                 for line in propertyIdSortedDict[propId]['Lines']:             # <<<<<<<<<<<<<<
+ *                     print(f"writing owner shares sorted: {propId}")
+ *                     if propertyIdSortedDict[propId]['Shares'] >= minShares:
+ */
+                      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_1);
+                      __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_Lines); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 229, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_20);
+                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                      if (likely(PyList_CheckExact(__pyx_t_20)) || PyTuple_CheckExact(__pyx_t_20)) {
+                        __pyx_t_1 = __pyx_t_20; __Pyx_INCREF(__pyx_t_1);
+                        __pyx_t_37 = 0;
+                        __pyx_t_25 = NULL;
+                      } else {
+                        __pyx_t_37 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L93_error)
+                        __Pyx_GOTREF(__pyx_t_1);
+                        __pyx_t_25 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_25)) __PYX_ERR(0, 229, __pyx_L93_error)
+                      }
+                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                      for (;;) {
+                        if (likely(!__pyx_t_25)) {
+                          if (likely(PyList_CheckExact(__pyx_t_1))) {
+                            {
+                              Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
+                              #if !CYTHON_ASSUME_SAFE_MACROS
+                              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 229, __pyx_L93_error)
+                              #endif
+                              if (__pyx_t_37 >= __pyx_temp) break;
+                            }
+                            #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+                            __pyx_t_20 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_37); __Pyx_INCREF(__pyx_t_20); __pyx_t_37++; if (unlikely((0 < 0))) __PYX_ERR(0, 229, __pyx_L93_error)
+                            #else
+                            __pyx_t_20 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_37); __pyx_t_37++; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 229, __pyx_L93_error)
+                            __Pyx_GOTREF(__pyx_t_20);
+                            #endif
+                          } else {
+                            {
+                              Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
+                              #if !CYTHON_ASSUME_SAFE_MACROS
+                              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 229, __pyx_L93_error)
+                              #endif
+                              if (__pyx_t_37 >= __pyx_temp) break;
+                            }
+                            #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+                            __pyx_t_20 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_37); __Pyx_INCREF(__pyx_t_20); __pyx_t_37++; if (unlikely((0 < 0))) __PYX_ERR(0, 229, __pyx_L93_error)
+                            #else
+                            __pyx_t_20 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_37); __pyx_t_37++; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 229, __pyx_L93_error)
+                            __Pyx_GOTREF(__pyx_t_20);
+                            #endif
+                          }
+                        } else {
+                          __pyx_t_20 = __pyx_t_25(__pyx_t_1);
+                          if (unlikely(!__pyx_t_20)) {
+                            PyObject* exc_type = PyErr_Occurred();
+                            if (exc_type) {
+                              if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+                              else __PYX_ERR(0, 229, __pyx_L93_error)
+                            }
+                            break;
+                          }
+                          __Pyx_GOTREF(__pyx_t_20);
+                        }
+                        __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_20);
+                        __pyx_t_20 = 0;
+
+                        /* "zipparse.py":230
+ *             for propId in sortedOwnerByShares[mainOwner]['Property Ids']:
+ *                 for line in propertyIdSortedDict[propId]['Lines']:
+ *                     print(f"writing owner shares sorted: {propId}")             # <<<<<<<<<<<<<<
+ *                     if propertyIdSortedDict[propId]['Shares'] >= minShares:
+ *                         csv_shares_writer.writerow(line)
+ */
+                        __pyx_t_20 = __Pyx_PyObject_FormatSimple(__pyx_v_propId, __pyx_empty_unicode); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 230, __pyx_L93_error)
+                        __Pyx_GOTREF(__pyx_t_20);
+                        __pyx_t_2 = __Pyx_PyUnicode_Concat(__pyx_kp_u_writing_owner_shares_sorted, __pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L93_error)
+                        __Pyx_GOTREF(__pyx_t_2);
+                        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                        __pyx_t_20 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_2); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 230, __pyx_L93_error)
+                        __Pyx_GOTREF(__pyx_t_20);
+                        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+
+                        /* "zipparse.py":231
+ *                 for line in propertyIdSortedDict[propId]['Lines']:
+ *                     print(f"writing owner shares sorted: {propId}")
+ *                     if propertyIdSortedDict[propId]['Shares'] >= minShares:             # <<<<<<<<<<<<<<
+ *                         csv_shares_writer.writerow(line)
+ *         for propId in sortedEmptyOwnerByShares:
+ */
+                        __pyx_t_20 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 231, __pyx_L93_error)
+                        __Pyx_GOTREF(__pyx_t_20);
+                        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_20, __pyx_n_s_Shares); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L93_error)
+                        __Pyx_GOTREF(__pyx_t_2);
+                        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                        __pyx_t_20 = PyFloat_FromDouble(__pyx_v_minShares); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 231, __pyx_L93_error)
+                        __Pyx_GOTREF(__pyx_t_20);
+                        __pyx_t_30 = PyObject_RichCompare(__pyx_t_2, __pyx_t_20, Py_GE); __Pyx_XGOTREF(__pyx_t_30); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 231, __pyx_L93_error)
+                        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_30); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 231, __pyx_L93_error)
+                        __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
+                        if (__pyx_t_6) {
+
+                          /* "zipparse.py":232
+ *                     print(f"writing owner shares sorted: {propId}")
+ *                     if propertyIdSortedDict[propId]['Shares'] >= minShares:
+ *                         csv_shares_writer.writerow(line)             # <<<<<<<<<<<<<<
+ *         for propId in sortedEmptyOwnerByShares:
+ *             for line in propertyIdSortedDict[propId]['Lines']:
+ */
+                          __pyx_t_20 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_shares_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 232, __pyx_L93_error)
+                          __Pyx_GOTREF(__pyx_t_20);
+                          __pyx_t_2 = NULL;
+                          __pyx_t_4 = 0;
+                          #if CYTHON_UNPACK_METHODS
+                          if (likely(PyMethod_Check(__pyx_t_20))) {
+                            __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_20);
+                            if (likely(__pyx_t_2)) {
+                              PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_20);
+                              __Pyx_INCREF(__pyx_t_2);
+                              __Pyx_INCREF(function);
+                              __Pyx_DECREF_SET(__pyx_t_20, function);
+                              __pyx_t_4 = 1;
+                            }
+                          }
+                          #endif
+                          {
+                            PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_line};
+                            __pyx_t_30 = __Pyx_PyObject_FastCall(__pyx_t_20, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                            __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+                            if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 232, __pyx_L93_error)
+                            __Pyx_GOTREF(__pyx_t_30);
+                            __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                          }
+                          __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
+
+                          /* "zipparse.py":231
  *                 for line in propertyIdSortedDict[propId]['Lines']:
  *                     print(f"writing owner shares sorted: {propId}")
  *                     if propertyIdSortedDict[propId]['Shares'] >= minShares:             # <<<<<<<<<<<<<<
@@ -9002,7 +9178,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  */
                         }
 
-                        /* "zipparse.py":223
+                        /* "zipparse.py":229
  *         for mainOwner in sortedOwnerByShares:
  *             for propId in sortedOwnerByShares[mainOwner]['Property Ids']:
  *                 for line in propertyIdSortedDict[propId]['Lines']:             # <<<<<<<<<<<<<<
@@ -9010,9 +9186,9 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  *                     if propertyIdSortedDict[propId]['Shares'] >= minShares:
  */
                       }
-                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-                      /* "zipparse.py":222
+                      /* "zipparse.py":228
  * 
  *         for mainOwner in sortedOwnerByShares:
  *             for propId in sortedOwnerByShares[mainOwner]['Property Ids']:             # <<<<<<<<<<<<<<
@@ -9024,7 +9200,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                   }
                   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-                  /* "zipparse.py":227
+                  /* "zipparse.py":233
  *                     if propertyIdSortedDict[propId]['Shares'] >= minShares:
  *                         csv_shares_writer.writerow(line)
  *         for propId in sortedEmptyOwnerByShares:             # <<<<<<<<<<<<<<
@@ -9032,159 +9208,159 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  *                 print(f"writing no owner shares sorted: {propId}")
  */
                   __pyx_t_17 = 0;
-                  __pyx_t_3 = __Pyx_dict_iterator(__pyx_v_sortedEmptyOwnerByShares, 1, ((PyObject *)NULL), (&__pyx_t_24), (&__pyx_t_32)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L83_error)
+                  __pyx_t_3 = __Pyx_dict_iterator(__pyx_v_sortedEmptyOwnerByShares, 1, ((PyObject *)NULL), (&__pyx_t_24), (&__pyx_t_34)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L93_error)
                   __Pyx_GOTREF(__pyx_t_3);
                   __Pyx_XDECREF(__pyx_t_9);
                   __pyx_t_9 = __pyx_t_3;
                   __pyx_t_3 = 0;
                   while (1) {
-                    __pyx_t_33 = __Pyx_dict_iter_next(__pyx_t_9, __pyx_t_24, &__pyx_t_17, &__pyx_t_3, NULL, NULL, __pyx_t_32);
-                    if (unlikely(__pyx_t_33 == 0)) break;
-                    if (unlikely(__pyx_t_33 == -1)) __PYX_ERR(0, 227, __pyx_L83_error)
+                    __pyx_t_35 = __Pyx_dict_iter_next(__pyx_t_9, __pyx_t_24, &__pyx_t_17, &__pyx_t_3, NULL, NULL, __pyx_t_34);
+                    if (unlikely(__pyx_t_35 == 0)) break;
+                    if (unlikely(__pyx_t_35 == -1)) __PYX_ERR(0, 233, __pyx_L93_error)
                     __Pyx_GOTREF(__pyx_t_3);
                     __Pyx_XDECREF_SET(__pyx_v_propId, __pyx_t_3);
                     __pyx_t_3 = 0;
 
-                    /* "zipparse.py":228
+                    /* "zipparse.py":234
  *                         csv_shares_writer.writerow(line)
  *         for propId in sortedEmptyOwnerByShares:
  *             for line in propertyIdSortedDict[propId]['Lines']:             # <<<<<<<<<<<<<<
  *                 print(f"writing no owner shares sorted: {propId}")
  *                 if propertyIdSortedDict[propId]['Shares'] >= minShares:
  */
-                    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 228, __pyx_L83_error)
+                    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L93_error)
                     __Pyx_GOTREF(__pyx_t_3);
-                    __pyx_t_20 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_n_s_Lines); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 228, __pyx_L83_error)
-                    __Pyx_GOTREF(__pyx_t_20);
+                    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_n_s_Lines); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L93_error)
+                    __Pyx_GOTREF(__pyx_t_1);
                     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                    if (likely(PyList_CheckExact(__pyx_t_20)) || PyTuple_CheckExact(__pyx_t_20)) {
-                      __pyx_t_3 = __pyx_t_20; __Pyx_INCREF(__pyx_t_3);
-                      __pyx_t_29 = 0;
+                    if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
+                      __pyx_t_3 = __pyx_t_1; __Pyx_INCREF(__pyx_t_3);
+                      __pyx_t_32 = 0;
                       __pyx_t_18 = NULL;
                     } else {
-                      __pyx_t_29 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 228, __pyx_L83_error)
+                      __pyx_t_32 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L93_error)
                       __Pyx_GOTREF(__pyx_t_3);
-                      __pyx_t_18 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 228, __pyx_L83_error)
+                      __pyx_t_18 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 234, __pyx_L93_error)
                     }
-                    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                     for (;;) {
                       if (likely(!__pyx_t_18)) {
                         if (likely(PyList_CheckExact(__pyx_t_3))) {
                           {
                             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_3);
                             #if !CYTHON_ASSUME_SAFE_MACROS
-                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 228, __pyx_L83_error)
+                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 234, __pyx_L93_error)
                             #endif
-                            if (__pyx_t_29 >= __pyx_temp) break;
+                            if (__pyx_t_32 >= __pyx_temp) break;
                           }
                           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                          __pyx_t_20 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_29); __Pyx_INCREF(__pyx_t_20); __pyx_t_29++; if (unlikely((0 < 0))) __PYX_ERR(0, 228, __pyx_L83_error)
+                          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_32); __Pyx_INCREF(__pyx_t_1); __pyx_t_32++; if (unlikely((0 < 0))) __PYX_ERR(0, 234, __pyx_L93_error)
                           #else
-                          __pyx_t_20 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_29); __pyx_t_29++; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 228, __pyx_L83_error)
-                          __Pyx_GOTREF(__pyx_t_20);
+                          __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_32); __pyx_t_32++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L93_error)
+                          __Pyx_GOTREF(__pyx_t_1);
                           #endif
                         } else {
                           {
                             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_3);
                             #if !CYTHON_ASSUME_SAFE_MACROS
-                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 228, __pyx_L83_error)
+                            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 234, __pyx_L93_error)
                             #endif
-                            if (__pyx_t_29 >= __pyx_temp) break;
+                            if (__pyx_t_32 >= __pyx_temp) break;
                           }
                           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                          __pyx_t_20 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_29); __Pyx_INCREF(__pyx_t_20); __pyx_t_29++; if (unlikely((0 < 0))) __PYX_ERR(0, 228, __pyx_L83_error)
+                          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_32); __Pyx_INCREF(__pyx_t_1); __pyx_t_32++; if (unlikely((0 < 0))) __PYX_ERR(0, 234, __pyx_L93_error)
                           #else
-                          __pyx_t_20 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_29); __pyx_t_29++; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 228, __pyx_L83_error)
-                          __Pyx_GOTREF(__pyx_t_20);
+                          __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_32); __pyx_t_32++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L93_error)
+                          __Pyx_GOTREF(__pyx_t_1);
                           #endif
                         }
                       } else {
-                        __pyx_t_20 = __pyx_t_18(__pyx_t_3);
-                        if (unlikely(!__pyx_t_20)) {
+                        __pyx_t_1 = __pyx_t_18(__pyx_t_3);
+                        if (unlikely(!__pyx_t_1)) {
                           PyObject* exc_type = PyErr_Occurred();
                           if (exc_type) {
                             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                            else __PYX_ERR(0, 228, __pyx_L83_error)
+                            else __PYX_ERR(0, 234, __pyx_L93_error)
                           }
                           break;
                         }
-                        __Pyx_GOTREF(__pyx_t_20);
+                        __Pyx_GOTREF(__pyx_t_1);
                       }
-                      __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_20);
-                      __pyx_t_20 = 0;
+                      __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_1);
+                      __pyx_t_1 = 0;
 
-                      /* "zipparse.py":229
+                      /* "zipparse.py":235
  *         for propId in sortedEmptyOwnerByShares:
  *             for line in propertyIdSortedDict[propId]['Lines']:
  *                 print(f"writing no owner shares sorted: {propId}")             # <<<<<<<<<<<<<<
  *                 if propertyIdSortedDict[propId]['Shares'] >= minShares:
  *                     csv_shares_writer.writerow(line)
  */
-                      __pyx_t_20 = __Pyx_PyObject_FormatSimple(__pyx_v_propId, __pyx_empty_unicode); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 229, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_20);
-                      __pyx_t_27 = __Pyx_PyUnicode_Concat(__pyx_kp_u_writing_no_owner_shares_sorted, __pyx_t_20); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 229, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_27);
-                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                      __pyx_t_20 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_27); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 229, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_20);
-                      __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                      __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_propId, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_1);
+                      __pyx_t_30 = __Pyx_PyUnicode_Concat(__pyx_kp_u_writing_no_owner_shares_sorted, __pyx_t_1); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 235, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_30);
+                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_30); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_1);
+                      __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
+                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-                      /* "zipparse.py":230
+                      /* "zipparse.py":236
  *             for line in propertyIdSortedDict[propId]['Lines']:
  *                 print(f"writing no owner shares sorted: {propId}")
  *                 if propertyIdSortedDict[propId]['Shares'] >= minShares:             # <<<<<<<<<<<<<<
  *                     csv_shares_writer.writerow(line)
  * 
  */
-                      __pyx_t_20 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 230, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_20);
-                      __pyx_t_27 = __Pyx_PyObject_Dict_GetItem(__pyx_t_20, __pyx_n_s_Shares); if (unlikely(!__pyx_t_27)) __PYX_ERR(0, 230, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_27);
-                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                      __pyx_t_20 = PyFloat_FromDouble(__pyx_v_minShares); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 230, __pyx_L83_error)
-                      __Pyx_GOTREF(__pyx_t_20);
-                      __pyx_t_1 = PyObject_RichCompare(__pyx_t_27, __pyx_t_20, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L83_error)
-                      __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
-                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 230, __pyx_L83_error)
+                      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_propertyIdSortedDict, __pyx_v_propId); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_1);
+                      __pyx_t_30 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_Shares); if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 236, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_30);
                       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                      __pyx_t_1 = PyFloat_FromDouble(__pyx_v_minShares); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L93_error)
+                      __Pyx_GOTREF(__pyx_t_1);
+                      __pyx_t_20 = PyObject_RichCompare(__pyx_t_30, __pyx_t_1, Py_GE); __Pyx_XGOTREF(__pyx_t_20); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 236, __pyx_L93_error)
+                      __Pyx_DECREF(__pyx_t_30); __pyx_t_30 = 0;
+                      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_20); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 236, __pyx_L93_error)
+                      __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
                       if (__pyx_t_6) {
 
-                        /* "zipparse.py":231
+                        /* "zipparse.py":237
  *                 print(f"writing no owner shares sorted: {propId}")
  *                 if propertyIdSortedDict[propId]['Shares'] >= minShares:
  *                     csv_shares_writer.writerow(line)             # <<<<<<<<<<<<<<
  * 
  *     # gather entire list
  */
-                        __pyx_t_20 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_shares_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 231, __pyx_L83_error)
-                        __Pyx_GOTREF(__pyx_t_20);
-                        __pyx_t_27 = NULL;
+                        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_csv_shares_writer, __pyx_n_s_writerow); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L93_error)
+                        __Pyx_GOTREF(__pyx_t_1);
+                        __pyx_t_30 = NULL;
                         __pyx_t_4 = 0;
                         #if CYTHON_UNPACK_METHODS
-                        if (likely(PyMethod_Check(__pyx_t_20))) {
-                          __pyx_t_27 = PyMethod_GET_SELF(__pyx_t_20);
-                          if (likely(__pyx_t_27)) {
-                            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_20);
-                            __Pyx_INCREF(__pyx_t_27);
+                        if (likely(PyMethod_Check(__pyx_t_1))) {
+                          __pyx_t_30 = PyMethod_GET_SELF(__pyx_t_1);
+                          if (likely(__pyx_t_30)) {
+                            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+                            __Pyx_INCREF(__pyx_t_30);
                             __Pyx_INCREF(function);
-                            __Pyx_DECREF_SET(__pyx_t_20, function);
+                            __Pyx_DECREF_SET(__pyx_t_1, function);
                             __pyx_t_4 = 1;
                           }
                         }
                         #endif
                         {
-                          PyObject *__pyx_callargs[2] = {__pyx_t_27, __pyx_v_line};
-                          __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_20, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
-                          __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-                          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L83_error)
-                          __Pyx_GOTREF(__pyx_t_1);
-                          __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+                          PyObject *__pyx_callargs[2] = {__pyx_t_30, __pyx_v_line};
+                          __pyx_t_20 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
+                          __Pyx_XDECREF(__pyx_t_30); __pyx_t_30 = 0;
+                          if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 237, __pyx_L93_error)
+                          __Pyx_GOTREF(__pyx_t_20);
+                          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
                         }
-                        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
 
-                        /* "zipparse.py":230
+                        /* "zipparse.py":236
  *             for line in propertyIdSortedDict[propId]['Lines']:
  *                 print(f"writing no owner shares sorted: {propId}")
  *                 if propertyIdSortedDict[propId]['Shares'] >= minShares:             # <<<<<<<<<<<<<<
@@ -9193,7 +9369,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
  */
                       }
 
-                      /* "zipparse.py":228
+                      /* "zipparse.py":234
  *                         csv_shares_writer.writerow(line)
  *         for propId in sortedEmptyOwnerByShares:
  *             for line in propertyIdSortedDict[propId]['Lines']:             # <<<<<<<<<<<<<<
@@ -9205,7 +9381,7 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                   }
                   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-                  /* "zipparse.py":202
+                  /* "zipparse.py":208
  *     print(f'No Owner exists sorting finished')
  * 
  *     with open(outputCashSorted, 'w', newline='') as cash_output_file, open(outputSharesSorted, 'w', newline='') as shares_output_file:             # <<<<<<<<<<<<<<
@@ -9216,58 +9392,58 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                 __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
                 __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
                 __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-                goto __pyx_L88_try_end;
-                __pyx_L83_error:;
+                goto __pyx_L98_try_end;
+                __pyx_L93_error:;
                 __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
                 __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
                 __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-                __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-                __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
                 __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-                __Pyx_XDECREF(__pyx_t_34); __pyx_t_34 = 0;
+                __Pyx_XDECREF(__pyx_t_30); __pyx_t_30 = 0;
+                __Pyx_XDECREF(__pyx_t_31); __pyx_t_31 = 0;
+                __Pyx_XDECREF(__pyx_t_36); __pyx_t_36 = 0;
                 __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
                 /*except:*/ {
                   __Pyx_AddTraceback("zipparse.generateLists", __pyx_clineno, __pyx_lineno, __pyx_filename);
-                  if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_3, &__pyx_t_1) < 0) __PYX_ERR(0, 202, __pyx_L85_except_error)
+                  if (__Pyx_GetException(&__pyx_t_9, &__pyx_t_3, &__pyx_t_20) < 0) __PYX_ERR(0, 208, __pyx_L95_except_error)
                   __Pyx_XGOTREF(__pyx_t_9);
                   __Pyx_XGOTREF(__pyx_t_3);
-                  __Pyx_XGOTREF(__pyx_t_1);
-                  __pyx_t_20 = PyTuple_Pack(3, __pyx_t_9, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 202, __pyx_L85_except_error)
-                  __Pyx_GOTREF(__pyx_t_20);
-                  __pyx_t_19 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_20, NULL);
+                  __Pyx_XGOTREF(__pyx_t_20);
+                  __pyx_t_1 = PyTuple_Pack(3, __pyx_t_9, __pyx_t_3, __pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L95_except_error)
+                  __Pyx_GOTREF(__pyx_t_1);
+                  __pyx_t_19 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_1, NULL);
                   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-                  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-                  if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 202, __pyx_L85_except_error)
+                  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+                  if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 208, __pyx_L95_except_error)
                   __Pyx_GOTREF(__pyx_t_19);
                   __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_19);
                   __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
-                  if (__pyx_t_6 < 0) __PYX_ERR(0, 202, __pyx_L85_except_error)
-                  __pyx_t_26 = (!__pyx_t_6);
-                  if (unlikely(__pyx_t_26)) {
+                  if (__pyx_t_6 < 0) __PYX_ERR(0, 208, __pyx_L95_except_error)
+                  __pyx_t_29 = (!__pyx_t_6);
+                  if (unlikely(__pyx_t_29)) {
                     __Pyx_GIVEREF(__pyx_t_9);
                     __Pyx_GIVEREF(__pyx_t_3);
-                    __Pyx_XGIVEREF(__pyx_t_1);
-                    __Pyx_ErrRestoreWithState(__pyx_t_9, __pyx_t_3, __pyx_t_1);
-                    __pyx_t_9 = 0; __pyx_t_3 = 0; __pyx_t_1 = 0; 
-                    __PYX_ERR(0, 202, __pyx_L85_except_error)
+                    __Pyx_XGIVEREF(__pyx_t_20);
+                    __Pyx_ErrRestoreWithState(__pyx_t_9, __pyx_t_3, __pyx_t_20);
+                    __pyx_t_9 = 0; __pyx_t_3 = 0; __pyx_t_20 = 0; 
+                    __PYX_ERR(0, 208, __pyx_L95_except_error)
                   }
                   __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
                   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-                  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-                  goto __pyx_L84_exception_handled;
+                  __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
+                  goto __pyx_L94_exception_handled;
                 }
-                __pyx_L85_except_error:;
+                __pyx_L95_except_error:;
                 __Pyx_XGIVEREF(__pyx_t_16);
                 __Pyx_XGIVEREF(__pyx_t_15);
                 __Pyx_XGIVEREF(__pyx_t_14);
                 __Pyx_ExceptionReset(__pyx_t_16, __pyx_t_15, __pyx_t_14);
-                goto __pyx_L73_error;
-                __pyx_L84_exception_handled:;
+                goto __pyx_L83_error;
+                __pyx_L94_exception_handled:;
                 __Pyx_XGIVEREF(__pyx_t_16);
                 __Pyx_XGIVEREF(__pyx_t_15);
                 __Pyx_XGIVEREF(__pyx_t_14);
                 __Pyx_ExceptionReset(__pyx_t_16, __pyx_t_15, __pyx_t_14);
-                __pyx_L88_try_end:;
+                __pyx_L98_try_end:;
               }
             }
             /*finally:*/ {
@@ -9275,76 +9451,76 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
                 if (__pyx_t_13) {
                   __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_tuple__2, NULL);
                   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-                  if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 202, __pyx_L73_error)
+                  if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 208, __pyx_L83_error)
                   __Pyx_GOTREF(__pyx_t_14);
                   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
                 }
-                goto __pyx_L82;
+                goto __pyx_L92;
               }
-              __pyx_L82:;
+              __pyx_L92:;
             }
-            goto __pyx_L122;
-            __pyx_L79_error:;
+            goto __pyx_L132;
+            __pyx_L89_error:;
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-            goto __pyx_L73_error;
-            __pyx_L122:;
+            goto __pyx_L83_error;
+            __pyx_L132:;
           }
         }
         __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-        goto __pyx_L78_try_end;
-        __pyx_L73_error:;
+        goto __pyx_L88_try_end;
+        __pyx_L83_error:;
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-        __Pyx_XDECREF(__pyx_t_27); __pyx_t_27 = 0;
-        __Pyx_XDECREF(__pyx_t_28); __pyx_t_28 = 0;
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __Pyx_XDECREF(__pyx_t_34); __pyx_t_34 = 0;
+        __Pyx_XDECREF(__pyx_t_30); __pyx_t_30 = 0;
+        __Pyx_XDECREF(__pyx_t_31); __pyx_t_31 = 0;
+        __Pyx_XDECREF(__pyx_t_36); __pyx_t_36 = 0;
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         /*except:*/ {
           __Pyx_AddTraceback("zipparse.generateLists", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_3, &__pyx_t_9) < 0) __PYX_ERR(0, 202, __pyx_L75_except_error)
-          __Pyx_XGOTREF(__pyx_t_1);
+          if (__Pyx_GetException(&__pyx_t_20, &__pyx_t_3, &__pyx_t_9) < 0) __PYX_ERR(0, 208, __pyx_L85_except_error)
+          __Pyx_XGOTREF(__pyx_t_20);
           __Pyx_XGOTREF(__pyx_t_3);
           __Pyx_XGOTREF(__pyx_t_9);
-          __pyx_t_20 = PyTuple_Pack(3, __pyx_t_1, __pyx_t_3, __pyx_t_9); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 202, __pyx_L75_except_error)
-          __Pyx_GOTREF(__pyx_t_20);
-          __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_20, NULL);
+          __pyx_t_1 = PyTuple_Pack(3, __pyx_t_20, __pyx_t_3, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L85_except_error)
+          __Pyx_GOTREF(__pyx_t_1);
+          __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_1, NULL);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 202, __pyx_L75_except_error)
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 208, __pyx_L85_except_error)
           __Pyx_GOTREF(__pyx_t_13);
-          __pyx_t_26 = __Pyx_PyObject_IsTrue(__pyx_t_13);
+          __pyx_t_29 = __Pyx_PyObject_IsTrue(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (__pyx_t_26 < 0) __PYX_ERR(0, 202, __pyx_L75_except_error)
-          __pyx_t_6 = (!__pyx_t_26);
+          if (__pyx_t_29 < 0) __PYX_ERR(0, 208, __pyx_L85_except_error)
+          __pyx_t_6 = (!__pyx_t_29);
           if (unlikely(__pyx_t_6)) {
-            __Pyx_GIVEREF(__pyx_t_1);
+            __Pyx_GIVEREF(__pyx_t_20);
             __Pyx_GIVEREF(__pyx_t_3);
             __Pyx_XGIVEREF(__pyx_t_9);
-            __Pyx_ErrRestoreWithState(__pyx_t_1, __pyx_t_3, __pyx_t_9);
-            __pyx_t_1 = 0; __pyx_t_3 = 0; __pyx_t_9 = 0; 
-            __PYX_ERR(0, 202, __pyx_L75_except_error)
+            __Pyx_ErrRestoreWithState(__pyx_t_20, __pyx_t_3, __pyx_t_9);
+            __pyx_t_20 = 0; __pyx_t_3 = 0; __pyx_t_9 = 0; 
+            __PYX_ERR(0, 208, __pyx_L85_except_error)
           }
-          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-          goto __pyx_L74_exception_handled;
+          goto __pyx_L84_exception_handled;
         }
-        __pyx_L75_except_error:;
+        __pyx_L85_except_error:;
         __Pyx_XGIVEREF(__pyx_t_12);
         __Pyx_XGIVEREF(__pyx_t_11);
         __Pyx_XGIVEREF(__pyx_t_10);
         __Pyx_ExceptionReset(__pyx_t_12, __pyx_t_11, __pyx_t_10);
         goto __pyx_L1_error;
-        __pyx_L74_exception_handled:;
+        __pyx_L84_exception_handled:;
         __Pyx_XGIVEREF(__pyx_t_12);
         __Pyx_XGIVEREF(__pyx_t_11);
         __Pyx_XGIVEREF(__pyx_t_10);
         __Pyx_ExceptionReset(__pyx_t_12, __pyx_t_11, __pyx_t_10);
-        __pyx_L78_try_end:;
+        __pyx_L88_try_end:;
       }
     }
     /*finally:*/ {
@@ -9352,129 +9528,129 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
         if (__pyx_t_8) {
           __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_tuple__2, NULL);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 202, __pyx_L1_error)
+          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 208, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
-        goto __pyx_L72;
+        goto __pyx_L82;
       }
-      __pyx_L72:;
+      __pyx_L82:;
     }
-    goto __pyx_L126;
-    __pyx_L69_error:;
+    goto __pyx_L136;
+    __pyx_L79_error:;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     goto __pyx_L1_error;
-    __pyx_L126:;
+    __pyx_L136:;
   }
 
-  /* "zipparse.py":239
+  /* "zipparse.py":245
  *     # print to CSV of both dictionaries
  * 
  *     endTime = datetime.now()             # <<<<<<<<<<<<<<
  *     print(f'Data successfully parsed and saved to {outputParsed}')
  *     print(f'Start Time: {startTime}\n End Time: {endTime}')
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_datetime); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_datetime); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 245, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_now); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 239, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_20 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_now); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_20);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
   #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_1))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_1);
+  if (unlikely(PyMethod_Check(__pyx_t_20))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_20);
     if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_20);
       __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_1, function);
+      __Pyx_DECREF_SET(__pyx_t_20, function);
       __pyx_t_4 = 1;
     }
   }
   #endif
   {
     PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
-    __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
+    __pyx_t_9 = __Pyx_PyObject_FastCall(__pyx_t_20, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 239, __pyx_L1_error)
+    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 245, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
   }
   __pyx_v_endTime = __pyx_t_9;
   __pyx_t_9 = 0;
 
-  /* "zipparse.py":240
+  /* "zipparse.py":246
  * 
  *     endTime = datetime.now()
  *     print(f'Data successfully parsed and saved to {outputParsed}')             # <<<<<<<<<<<<<<
  *     print(f'Start Time: {startTime}\n End Time: {endTime}')
  *     sys.stdout.flush()
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_outputParsed); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_outputParsed); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 246, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_9, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_20 = __Pyx_PyObject_FormatSimple(__pyx_t_9, __pyx_empty_unicode); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_20);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyUnicode_Concat(__pyx_kp_u_Data_successfully_parsed_and_sav, __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyUnicode_Concat(__pyx_kp_u_Data_successfully_parsed_and_sav, __pyx_t_20); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 246, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+  __pyx_t_20 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_9); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_20);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
 
-  /* "zipparse.py":241
+  /* "zipparse.py":247
  *     endTime = datetime.now()
  *     print(f'Data successfully parsed and saved to {outputParsed}')
  *     print(f'Start Time: {startTime}\n End Time: {endTime}')             # <<<<<<<<<<<<<<
  *     sys.stdout.flush()
  */
-  __pyx_t_1 = PyTuple_New(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_20 = PyTuple_New(4); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_20);
   __pyx_t_24 = 0;
-  __pyx_t_36 = 127;
+  __pyx_t_38 = 127;
   __Pyx_INCREF(__pyx_kp_u_Start_Time);
   __pyx_t_24 += 12;
   __Pyx_GIVEREF(__pyx_kp_u_Start_Time);
-  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_Start_Time);
-  __pyx_t_9 = __Pyx_PyObject_FormatSimple(__pyx_v_startTime, __pyx_empty_unicode); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 241, __pyx_L1_error)
+  PyTuple_SET_ITEM(__pyx_t_20, 0, __pyx_kp_u_Start_Time);
+  __pyx_t_9 = __Pyx_PyObject_FormatSimple(__pyx_v_startTime, __pyx_empty_unicode); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 247, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_36 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) > __pyx_t_36) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) : __pyx_t_36;
+  __pyx_t_38 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) > __pyx_t_38) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) : __pyx_t_38;
   __pyx_t_24 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_9);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_9);
+  PyTuple_SET_ITEM(__pyx_t_20, 1, __pyx_t_9);
   __pyx_t_9 = 0;
   __Pyx_INCREF(__pyx_kp_u_End_Time);
   __pyx_t_24 += 12;
   __Pyx_GIVEREF(__pyx_kp_u_End_Time);
-  PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u_End_Time);
-  __pyx_t_9 = __Pyx_PyObject_FormatSimple(__pyx_v_endTime, __pyx_empty_unicode); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 241, __pyx_L1_error)
+  PyTuple_SET_ITEM(__pyx_t_20, 2, __pyx_kp_u_End_Time);
+  __pyx_t_9 = __Pyx_PyObject_FormatSimple(__pyx_v_endTime, __pyx_empty_unicode); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 247, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_36 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) > __pyx_t_36) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) : __pyx_t_36;
+  __pyx_t_38 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) > __pyx_t_38) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) : __pyx_t_38;
   __pyx_t_24 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_9);
-  PyTuple_SET_ITEM(__pyx_t_1, 3, __pyx_t_9);
+  PyTuple_SET_ITEM(__pyx_t_20, 3, __pyx_t_9);
   __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyUnicode_Join(__pyx_t_1, 4, __pyx_t_24, __pyx_t_36); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyUnicode_Join(__pyx_t_20, 4, __pyx_t_24, __pyx_t_38); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 247, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+  __pyx_t_20 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_9); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_20);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
 
-  /* "zipparse.py":242
+  /* "zipparse.py":248
  *     print(f'Data successfully parsed and saved to {outputParsed}')
  *     print(f'Start Time: {startTime}\n End Time: {endTime}')
  *     sys.stdout.flush()             # <<<<<<<<<<<<<<
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_sys); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_sys); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_stdout); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_stdout); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_flush); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_flush); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -9493,15 +9669,15 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
   #endif
   {
     PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
-    __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
+    __pyx_t_20 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 242, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
+    if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 248, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_20);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
 
-  /* "zipparse.py":97
+  /* "zipparse.py":100
  *     return property_ids
  * 
  * def generateLists(arg1, arg2, arg3, arg4, arg5, arg6):             # <<<<<<<<<<<<<<
@@ -9518,9 +9694,9 @@ static PyObject *__pyx_pf_8zipparse_6generateLists(CYTHON_UNUSED PyObject *__pyx
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_20);
-  __Pyx_XDECREF(__pyx_t_27);
-  __Pyx_XDECREF(__pyx_t_28);
-  __Pyx_XDECREF(__pyx_t_34);
+  __Pyx_XDECREF(__pyx_t_30);
+  __Pyx_XDECREF(__pyx_t_31);
+  __Pyx_XDECREF(__pyx_t_36);
   __Pyx_AddTraceback("zipparse.generateLists", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -9754,8 +9930,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 93, __pyx_L1_error)
-  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 126, __pyx_L1_error)
-  __pyx_builtin_sorted = __Pyx_GetBuiltinName(__pyx_n_s_sorted); if (!__pyx_builtin_sorted) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_builtin_sorted = __Pyx_GetBuiltinName(__pyx_n_s_sorted); if (!__pyx_builtin_sorted) __PYX_ERR(0, 200, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -9770,8 +9946,8 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *                 with zip_ref.open(file_name) as file:
  *                     for line in file:
  *                         print(f"old zip Prop ID: {line.decode('utf-8')[209:228]}")             # <<<<<<<<<<<<<<
- *                         property_ids.add(int(line.decode('utf-8')[209:228]))
- *     return property_ids
+ *                         try:
+ *                             property_ids.add(int(line.decode('utf-8')[209:228]))
  */
   __pyx_slice_ = PySlice_New(__pyx_int_209, __pyx_int_228, Py_None); if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice_);
@@ -9788,25 +9964,25 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "zipparse.py":196
+  /* "zipparse.py":202
  *     sortedOwnerByCash = dict(sorted(ownerExistsSortedDict.items(), key=lambda item: item[1]['Cash Total'], reverse=True))
  *     sortedOwnerByShares = dict(sorted(ownerExistsSortedDict.items(), key=lambda item: item[1]['Shares Total'], reverse=True))
  *     print(f'Owner exists finished sorting')             # <<<<<<<<<<<<<<
  * 
  *     sortedEmptyOwnerByCash = dict(sorted(ownerEmptyDict.items(), key=lambda item: item[1]['Cash'], reverse=True))
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_u_Owner_exists_finished_sorting); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_u_Owner_exists_finished_sorting); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 202, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "zipparse.py":200
+  /* "zipparse.py":206
  *     sortedEmptyOwnerByCash = dict(sorted(ownerEmptyDict.items(), key=lambda item: item[1]['Cash'], reverse=True))
  *     sortedEmptyOwnerByShares = dict(sorted(ownerEmptyDict.items(), key=lambda item: item[1]['Shares'], reverse=True))
  *     print(f'No Owner exists sorting finished')             # <<<<<<<<<<<<<<
  * 
  *     with open(outputCashSorted, 'w', newline='') as cash_output_file, open(outputSharesSorted, 'w', newline='') as shares_output_file:
  */
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_u_No_Owner_exists_sorting_finished); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_u_No_Owner_exists_sorting_finished); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
@@ -10143,17 +10319,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__40);
   __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_zipparse_py, __pyx_n_s_extract_property_ids_from_zip, 86, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 86, __pyx_L1_error)
 
-  /* "zipparse.py":97
+  /* "zipparse.py":100
  *     return property_ids
  * 
  * def generateLists(arg1, arg2, arg3, arg4, arg5, arg6):             # <<<<<<<<<<<<<<
  *     startTime = datetime.now()
  * 
  */
-  __pyx_tuple__42 = PyTuple_Pack(41, __pyx_n_s_arg1, __pyx_n_s_arg2, __pyx_n_s_arg3, __pyx_n_s_arg4, __pyx_n_s_arg5, __pyx_n_s_arg6, __pyx_n_s_startTime, __pyx_n_s_oldZipPath, __pyx_n_s_newZipPath, __pyx_n_s_minCash, __pyx_n_s_maxCash, __pyx_n_s_minShares, __pyx_n_s_maxShares, __pyx_n_s_property_ids_old, __pyx_n_s_propertyIdSortedDict, __pyx_n_s_zip_ref, __pyx_n_s_output_file, __pyx_n_s_csv_writer, __pyx_n_s_file_name, __pyx_n_s_file, __pyx_n_s_line, __pyx_n_s_property_id_new, __pyx_n_s_parsed_data, __pyx_n_s_dollar_amount, __pyx_n_s_shares, __pyx_n_s_output_data, __pyx_n_s_propId, __pyx_n_s_mainOwner, __pyx_n_s_ownerExistsSortedDict, __pyx_n_s_ownerEmptyDict, __pyx_n_s_id, __pyx_n_s_propObj, __pyx_n_s_sortedOwnerByCash, __pyx_n_s_sortedOwnerByShares, __pyx_n_s_sortedEmptyOwnerByCash, __pyx_n_s_sortedEmptyOwnerByShares, __pyx_n_s_cash_output_file, __pyx_n_s_shares_output_file, __pyx_n_s_csv_cash_writer, __pyx_n_s_csv_shares_writer, __pyx_n_s_endTime); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_tuple__42 = PyTuple_Pack(41, __pyx_n_s_arg1, __pyx_n_s_arg2, __pyx_n_s_arg3, __pyx_n_s_arg4, __pyx_n_s_arg5, __pyx_n_s_arg6, __pyx_n_s_startTime, __pyx_n_s_oldZipPath, __pyx_n_s_newZipPath, __pyx_n_s_minCash, __pyx_n_s_maxCash, __pyx_n_s_minShares, __pyx_n_s_maxShares, __pyx_n_s_property_ids_old, __pyx_n_s_propertyIdSortedDict, __pyx_n_s_zip_ref, __pyx_n_s_output_file, __pyx_n_s_csv_writer, __pyx_n_s_file_name, __pyx_n_s_file, __pyx_n_s_line, __pyx_n_s_property_id_new, __pyx_n_s_parsed_data, __pyx_n_s_dollar_amount, __pyx_n_s_shares, __pyx_n_s_output_data, __pyx_n_s_propId, __pyx_n_s_mainOwner, __pyx_n_s_ownerExistsSortedDict, __pyx_n_s_ownerEmptyDict, __pyx_n_s_id, __pyx_n_s_propObj, __pyx_n_s_sortedOwnerByCash, __pyx_n_s_sortedOwnerByShares, __pyx_n_s_sortedEmptyOwnerByCash, __pyx_n_s_sortedEmptyOwnerByShares, __pyx_n_s_cash_output_file, __pyx_n_s_shares_output_file, __pyx_n_s_csv_cash_writer, __pyx_n_s_csv_shares_writer, __pyx_n_s_endTime); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__42);
   __Pyx_GIVEREF(__pyx_tuple__42);
-  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(6, 0, 0, 41, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_zipparse_py, __pyx_n_s_generateLists, 97, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(6, 0, 0, 41, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_zipparse_py, __pyx_n_s_generateLists, 100, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -10873,16 +11049,16 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_extract_property_ids_from_zip, __pyx_t_2) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "zipparse.py":97
+  /* "zipparse.py":100
  *     return property_ids
  * 
  * def generateLists(arg1, arg2, arg3, arg4, arg5, arg6):             # <<<<<<<<<<<<<<
  *     startTime = datetime.now()
  * 
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8zipparse_7generateLists, 0, __pyx_n_s_generateLists, NULL, __pyx_n_s_zipparse, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8zipparse_7generateLists, 0, __pyx_n_s_generateLists, NULL, __pyx_n_s_zipparse, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_generateLists, __pyx_t_2) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_generateLists, __pyx_t_2) < 0) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "zipparse.py":1

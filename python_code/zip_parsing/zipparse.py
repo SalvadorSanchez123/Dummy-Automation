@@ -91,7 +91,10 @@ def extract_property_ids_from_zip(zip_file_path):
                 with zip_ref.open(file_name) as file:
                     for line in file:
                         print(f"old zip Prop ID: {line.decode('utf-8')[209:228]}")
-                        property_ids.add(int(line.decode('utf-8')[209:228]))
+                        try:
+                            property_ids.add(int(line.decode('utf-8')[209:228]))
+                        except:
+                            continue
     return property_ids
 
 def generateLists(arg1, arg2, arg3, arg4, arg5, arg6):
@@ -131,13 +134,16 @@ def generateLists(arg1, arg2, arg3, arg4, arg5, arg6):
             if "_Transparency_" in file_name:
                 with zip_ref.open(file_name) as file:
                     for line in file:
-                        property_id_new = int(line.decode('utf-8')[209:228])
+                        try:
+                            property_id_new = int(line.decode('utf-8')[209:228])
+                        except:
+                            continue
+
                         print(f"newzip Prop ID: {property_id_new}")
                         if not property_ids_old.__contains__(property_id_new):
                             parsed_data = parse_line(line.decode('utf-8'), columns)
                             dollar_amount = float(parsed_data['Dollar Amount']) / 100
                             shares = float(parsed_data['Number of Shares Remitted']) / 100
-
 
                             if (dollar_amount >= minCash and dollar_amount <= maxCash) or (shares >= minShares and shares <= maxShares):
                                 # write output of unsorted properties to original file
