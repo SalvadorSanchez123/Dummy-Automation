@@ -79,40 +79,21 @@ const checkFileType = (file, cb) => {
 }
 
 const getZipDiffPage = async (req, res) => {
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+    console.log("Zip Page Newly Loaded");
     res.render("zip-diff", { files: getFiles(), outputFiles: getOutputs() });
 }
 
 const uploadZips = async (req, res) => {
-    // req.socket.setTimeout(10 * 60 * 1000);
-    // upload(req, res, err => {
-    //     if (err) {
-    //         res.send(`failed to upload files ... ${err}`);
-    //     }
-    //     else {
-    //         res.redirect("/zip");
-    //     }
-    // });
-
-    console.log("0000000000000000000000000000000000000000000000000000000000000000000000");
-    console.log("0000000000000000000000000000000000000000000000000000000000000000000000");
-    console.log("0000000000000000000000000000000000000000000000000000000000000000000000");
-    console.log("0000000000000000000000000000000000000000000000000000000000000000000000");
+    console.log("Started Zip Upload");
     console.log('start time: ... ' + Date.now());
     upload(req, res, err => {
         if (err) {
-            console.log("0000000000000000000000000000000000000000000000000000000000000000000000");
-            console.log("0000000000000000000000000000000000000000000000000000000000000000000000");
-            console.log("0000000000000000000000000000000000000000000000000000000000000000000000");
-            console.log("0000000000000000000000000000000000000000000000000000000000000000000000");
+            console.log("Ended Zip Upload");
             console.log('End time: ... ' + Date.now());
             res.send(`failed to upload files ... ${err}`);
         }
         else {
-            console.log("0000000000000000000000000000000000000000000000000000000000000000000000");
-            console.log("0000000000000000000000000000000000000000000000000000000000000000000000");
-            console.log("0000000000000000000000000000000000000000000000000000000000000000000000");
-            console.log("0000000000000000000000000000000000000000000000000000000000000000000000");
+            console.log("Ended Zip Upload");
             console.log('End time: ... ' + Date.now());
             res.redirect("/zip");
         }
@@ -149,11 +130,13 @@ const executeComparison = async (req, res) => {
     const maxCash = req.body.maxCash;
     const minShares = req.body.minShares;
     const maxShares = req.body.maxShares;
+    const state = req.body.state;
 
     const oldZip = getFiles().find((file) => file.includes('prev'));
     const newZip = getFiles().find((file) => file.includes('curr'));
 
-    const parsePythonProcess = spawn('python', ['./python_code/zip_parsing/run-cython-parse.py', oldZip, newZip, minCash, maxCash, minShares, maxShares]);
+    const parsePythonProcess = spawn('python', ['./python_code/zip_parsing/run-cython-parse.py', oldZip, newZip, minCash, maxCash, minShares, maxShares, state]);
+    // const parsePythonProcess = spawn('python', ['./python_code/zip_parsing/zipparse.py', oldZip, newZip, minCash, maxCash, minShares, maxShares, state]);
 
     parsePythonProcess.stdout.on('data', (data) => {
         console.log('data: ' + data);
