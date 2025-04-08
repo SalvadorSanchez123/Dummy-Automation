@@ -33,10 +33,10 @@ const getOutputs = () => {
 const storage = multer.diskStorage({
     destination: uploadDir,
     filename: (req, file, cb) => {
-        let newFileName = "";
+        let newFileName = "NONE";
         if (file?.originalname) {
-            let portionOfOriginalName = file.originalname.slice(-11,-4);
-            newFileName = file.fieldname + '-' + portionOfOriginalName + '-' + Date.now() + path.extname(file.originalname);
+            let portionOfOriginalName = file.originalname.slice(0,-4);
+            newFileName = file.fieldname + '--' + portionOfOriginalName + path.extname(file.originalname);
             let filesToDelete = getFiles().filter(file => file.includes(portionOfOriginalName));
             filesToDelete.forEach( file => {
                 fs.unlink(path.join(uploadDir, file), (err) => {
@@ -79,22 +79,23 @@ const checkFileType = (file, cb) => {
 }
 
 const getZipDiffPage = async (req, res) => {
-    console.log("Zip Page Newly Loaded");
+    console.log("Zip Page Newly Loaded" + new Date(Date.now()).toLocaleDateString());
     res.render("zip-diff", { files: getFiles(), outputFiles: getOutputs() });
 }
 
 const uploadZips = async (req, res) => {
     console.log("Started Zip Upload");
-    console.log('start time: ... ' + Date.now());
+    console.log('start time: ... ' + new Date(Date.now()).toLocaleDateString());
     upload(req, res, err => {
         if (err) {
-            console.log("Ended Zip Upload");
-            console.log('End time: ... ' + Date.now());
+            console.log("ERROR Zip Upload");
+            console.log(err);
+            console.log('End time: ... ' + new Date(Date.now()).toLocaleDateString());
             res.send(`failed to upload files ... ${err}`);
         }
         else {
-            console.log("Ended Zip Upload");
-            console.log('End time: ... ' + Date.now());
+            console.log("Success Zip Upload");
+            console.log('End time: ... ' + new Date(Date.now()).toLocaleDateString());
             res.redirect("/zip");
         }
     });

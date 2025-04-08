@@ -3,3 +3,4 @@ node_modules
 .env
 file_loads/
 .github/
+__pycache__/
