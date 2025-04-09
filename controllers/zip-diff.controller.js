@@ -35,8 +35,13 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         let newFileName = "NONE";
         if (file?.originalname) {
+            let nowDate = new Date(Date.now());
+            let year = nowDate.getFullYear();
+            let month = nowDate.getMonth() + 1;
+            let day = nowDate.getDate();
+            let dateStr = `${month}-${day}-${year}`;
             let portionOfOriginalName = file.originalname.slice(0,-4);
-            newFileName = file.fieldname + '--' + portionOfOriginalName + path.extname(file.originalname);
+            newFileName = file.fieldname + '--' + portionOfOriginalName + "--" + dateStr + path.extname(file.originalname);
             let filesToDelete = getFiles().filter(file => file.includes(portionOfOriginalName));
             filesToDelete.forEach( file => {
                 fs.unlink(path.join(uploadDir, file), (err) => {
@@ -79,7 +84,13 @@ const checkFileType = (file, cb) => {
 }
 
 const getZipDiffPage = async (req, res) => {
-    console.log("Zip Page Newly Loaded" + new Date(Date.now()).toLocaleDateString());
+    let nowDate = new Date(Date.now());
+            let year = nowDate.getFullYear();
+            let month = nowDate.getMonth() + 1;
+            let day = nowDate.getDate();
+    console.log("year " + year + ", month " + month + ", date " + day);
+    console.log("time: " + nowDate.toLocaleString().split(",")[1].trim())
+    console.log("Zip Page Newly Loaded " + new Date(Date.now()).toLocaleDateString());
     res.render("zip-diff", { files: getFiles(), outputFiles: getOutputs() });
 }
 

@@ -10,16 +10,11 @@ from sortedcontainers import SortedDict
 uploadPath = './file_loads/zip_uploads/'
 outputPath = './file_loads/csv_output/'
 
-# oldZipPath = uploadPath + sys.argv[1]
-# newZipPath = uploadPath + sys.argv[2]
-# minCash = float(sys.argv[3]) if sys.argv[3] != "" else float("-inf")
-# maxCash = float(sys.argv[4]) if sys.argv[4] != "" else float("inf")
-# minShares = float(sys.argv[5]) if sys.argv[5] != "" else float("-inf")
-# maxShares = float(sys.argv[6]) if sys.argv[6] != "" else float("inf")
-
-outputParsed = outputPath + 'original-unsorted-data.csv'
-outputCashSorted = outputPath + 'cash-sorted.csv'
-outputSharesSorted = outputPath + 'shares-sorted.csv'
+# nowDate = datetime.today().strftime('%Y-%b-%d %X').replace("-0", "-")
+nowDate = datetime.today().strftime('%Y-%b-%d').replace("-0", "-")
+outputParsed = outputPath + 'original-unsorted-data--' + nowDate + '.csv'
+outputCashSorted = outputPath + 'cash-sorted--' + nowDate + '.csv'
+outputSharesSorted = outputPath + 'shares-sorted--' + nowDate + '.csv'
 
 
 # Texas column lengths and headers
@@ -209,7 +204,7 @@ def extract_property_ids_from_zip(zip_file_path, state):
                             prop_id = None
                             if state == 'TX':
                                 prop_id = int(line.decode('utf-8')[209:228])
-                            if state == 'CA':
+                            elif state == 'CA':
                                 line_list = line.decode("utf-8").split('","')
                                 prop_id = int(line_list[0].lstrip('"'))
                             if prop_id is not None:
@@ -263,10 +258,13 @@ def generateLists(arg1, arg2, arg3, arg4, arg5, arg6, arg7):
     # Write the filtered data to the output CSV
     with zipfile.ZipFile(newZipPath, 'r') as zip_ref, open(outputParsed, 'w', newline='') as output_file:
         csv_writer = csv.writer(output_file)
+        maxOldPropID = None
+
         if state == 'TX':
             csv_writer.writerow(output_headers_TX)
-        if state == 'CA':
+        elif state == 'CA':
             csv_writer.writerow(output_headers_CA)
+            maxOldPropID = property_ids_old.pop()
 
         for file_name in zip_ref.namelist():
             if "_Transparency_" or ".csv" in file_name:
@@ -276,23 +274,29 @@ def generateLists(arg1, arg2, arg3, arg4, arg5, arg6, arg7):
                         try:
                             if state == 'TX':
                                 property_id_new = int(line.decode('utf-8')[209:228])
-                            if state == 'CA':
+                            elif state == 'CA':
                                 line_list = line.decode("utf-8").split('","')
                                 property_id_new = int(line_list[0].lstrip('"'))
-                            if property_id_new == None:
+                            elif property_id_new == None:
                                 continue
                         except:
                             continue
 
                         print(f"newzip Prop ID: {property_id_new}")
-                        if not property_ids_old.__contains__(property_id_new):
+                        validNewPropID = False
+                        if state == 'TX':
+                            validNewPropID = not property_ids_old.__contains__(property_id_new)
+                        elif state == 'CA':
+                            validNewPropID = property_id_new > maxOldPropID
+
+                        if validNewPropID:
                             parsed_data = parse_line(line.decode('utf-8'), state)
                             dollar_amount = None
                             shares = None
                             if state == 'TX':
                                 dollar_amount = float(parsed_data['Dollar Amount']) / 100
                                 shares = float(parsed_data['Number of Shares Remitted']) / 100
-                            if state == 'CA':
+                            elif state == 'CA':
                                 dollar_amount = float(parsed_data['Dollar Amount'])
                                 shares = float(parsed_data['Number of Shares Remitted'])
 
@@ -309,7 +313,7 @@ def generateLists(arg1, arg2, arg3, arg4, arg5, arg6, arg7):
                                 if len(parsed_data['Owner Address Line 1']) != 0:
                                     if state == 'TX':
                                         mainOwner = " ".join([parsed_data['Owner First Name'], parsed_data['Owner Last Name'], parsed_data['Owner Address Line 1']])
-                                    if state == 'CA':
+                                    elif state == 'CA':
                                         mainOwner = " ".join([parsed_data['Owner Name'], parsed_data['Owner Address Line 1']])
                                 if propertyIdSortedDict.__contains__(propId): # Already in the dictionary
                                     if propertyIdSortedDict[propId]['Main Owner'] == "":
@@ -323,7 +327,7 @@ def generateLists(arg1, arg2, arg3, arg4, arg5, arg6, arg7):
                                             'Cash': float(parsed_data['Dollar Amount']) / 100,
                                             'Shares': float(parsed_data['Number of Shares Remitted']) / 100
                                         }
-                                    if state == 'CA':
+                                    elif state == 'CA':
                                         propertyIdSortedDict[propId] = {
                                             'Main Owner': mainOwner,
                                             'Lines': [output_data],
@@ -378,7 +382,7 @@ def generateLists(arg1, arg2, arg3, arg4, arg5, arg6, arg7):
         if state == 'TX':
             csv_cash_writer.writerow(output_headers_TX)
             csv_shares_writer.writerow(output_headers_TX)
-        if state == 'CA':
+        elif state == 'CA':
             csv_cash_writer.writerow(output_headers_CA)
             csv_shares_writer.writerow(output_headers_CA)
 
